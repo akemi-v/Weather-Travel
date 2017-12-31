@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		18D82CCC1FF901F70073BC4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CCB1FF901F70073BC4B /* AppDelegate.m */; };
 		18D82CCF1FF901F70073BC4B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CCE1FF901F70073BC4B /* ViewController.m */; };
-		18D82CD21FF901F70073BC4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D82CD01FF901F70073BC4B /* Main.storyboard */; };
 		18D82CD51FF901F70073BC4B /* WeatherTravel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CD31FF901F70073BC4B /* WeatherTravel.xcdatamodeld */; };
 		18D82CD71FF901F70073BC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D82CD61FF901F70073BC4B /* Assets.xcassets */; };
 		18D82CDA1FF901F70073BC4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D82CD81FF901F70073BC4B /* LaunchScreen.storyboard */; };
@@ -33,7 +32,6 @@
 		18D82CCB1FF901F70073BC4B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		18D82CCD1FF901F70073BC4B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		18D82CCE1FF901F70073BC4B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		18D82CD11FF901F70073BC4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18D82CD41FF901F70073BC4B /* WeatherTravel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherTravel.xcdatamodel; sourceTree = "<group>"; };
 		18D82CD61FF901F70073BC4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18D82CD91FF901F70073BC4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 				18D82CCB1FF901F70073BC4B /* AppDelegate.m */,
 				18D82CCD1FF901F70073BC4B /* ViewController.h */,
 				18D82CCE1FF901F70073BC4B /* ViewController.m */,
-				18D82CD01FF901F70073BC4B /* Main.storyboard */,
 				18D82CD61FF901F70073BC4B /* Assets.xcassets */,
 				18D82CD81FF901F70073BC4B /* LaunchScreen.storyboard */,
 				18D82CDB1FF901F70073BC4B /* Info.plist */,
@@ -190,7 +187,6 @@
 			files = (
 				18D82CDA1FF901F70073BC4B /* LaunchScreen.storyboard in Resources */,
 				18D82CD71FF901F70073BC4B /* Assets.xcassets in Resources */,
-				18D82CD21FF901F70073BC4B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,14 +230,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		18D82CD01FF901F70073BC4B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18D82CD11FF901F70073BC4B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		18D82CD81FF901F70073BC4B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -364,6 +352,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5R44JKFPWH;
 				INFOPLIST_FILE = WeatherTravel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Maria-Semakova.WeatherTravel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -378,6 +367,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5R44JKFPWH;
 				INFOPLIST_FILE = WeatherTravel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Maria-Semakova.WeatherTravel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
