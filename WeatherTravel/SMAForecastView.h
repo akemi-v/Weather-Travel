@@ -24,4 +24,6 @@
 @property (nonatomic, strong) UILabel *cityLabel;
 @property (nonatomic, strong) UILabel *countryLabel;
 
+- (instancetype)initWithFrame:(CGRect)frame withForecastModel:(SMAForecastModel *)model;
+
 @end

@@ -8,6 +8,7 @@
 
 #import "SMAForecastView.h"
 #import "SMAForecastModel.h"
+#import "UIColor+CustomColors.h"
 
 @implementation SMAForecastView
 
@@ -18,6 +19,8 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        [self setupUI];
+        
         self.pictureView.image = model.picture;
         self.temperatureLabel.text = model.temperature;
         self.humidityLabel.text = model.humidity;
@@ -28,6 +31,11 @@
         self.countryLabel.text = model.country;
     }
     return self;
+}
+
+- (void)setupUI
+{
+    self.backgroundColor = [UIColor customPaleBlue];
 }
 
 @end
