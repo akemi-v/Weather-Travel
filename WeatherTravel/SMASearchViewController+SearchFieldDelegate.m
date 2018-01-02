@@ -11,6 +11,9 @@
 
 @implementation SMASearchViewController (SearchFieldDelegate)
 
+
+#pragma mark - UITextFieldDelegate
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     textField.returnKeyType = UIReturnKeySearch;

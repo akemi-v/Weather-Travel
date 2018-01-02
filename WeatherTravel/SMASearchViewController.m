@@ -21,6 +21,12 @@ static const CGFloat SMASearchFieldHeight = 50.f;
  */
 @property (nonatomic, strong) SMALocationSearchField *searchField;
 
+
+/**
+ Вью, который отображает прогноз и фотографию
+ */
+@property (nonatomic, strong) UIView *forecastView;
+
 @end
 
 
@@ -37,14 +43,21 @@ static const CGFloat SMASearchFieldHeight = 50.f;
 
 - (void)viewDidLayoutSubviews
 {
+    [super viewDidLayoutSubviews];
     CGRect viewBounds = self.view.bounds;
     CGFloat topBarOffset = self.topLayoutGuide.length;
     viewBounds.origin.y = -topBarOffset;
     self.view.bounds = viewBounds;
     
-    [UIView animateWithDuration:1.0 animations:^{
-        self.searchField.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), SMASearchFieldHeight);
-    }];
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.searchField.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), SMASearchFieldHeight);
+        } completion:^(BOOL finished) {
+            
+        }];
+    });
+    self.searchField.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), SMASearchFieldHeight);
 }
 
 - (void)didReceiveMemoryWarning

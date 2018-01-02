@@ -18,6 +18,8 @@
 		18D82CF91FFBA90C0073BC4B /* SMASearchViewController+SearchFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CF81FFBA90C0073BC4B /* SMASearchViewController+SearchFieldDelegate.m */; };
 		18D82CFC1FFBC1670073BC4B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D82CFB1FFBC1670073BC4B /* Media.xcassets */; };
 		18D82D021FFBD6D20073BC4B /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D011FFBD6D20073BC4B /* UIColor+CustomColors.m */; };
+		18D82D051FFBFE530073BC4B /* SMAForecastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D041FFBFE530073BC4B /* SMAForecastView.m */; };
+		18D82D081FFC03340073BC4B /* SMAForecastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D071FFC03340073BC4B /* SMAForecastModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		18D82CFB1FFBC1670073BC4B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		18D82D001FFBD6D20073BC4B /* UIColor+CustomColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
 		18D82D011FFBD6D20073BC4B /* UIColor+CustomColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
+		18D82D031FFBFE530073BC4B /* SMAForecastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAForecastView.h; sourceTree = "<group>"; };
+		18D82D041FFBFE530073BC4B /* SMAForecastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastView.m; sourceTree = "<group>"; };
+		18D82D061FFC03340073BC4B /* SMAForecastModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAForecastModel.h; sourceTree = "<group>"; };
+		18D82D071FFC03340073BC4B /* SMAForecastModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,10 @@
 				18D82CDC1FF901F70073BC4B /* main.m */,
 				18D82D001FFBD6D20073BC4B /* UIColor+CustomColors.h */,
 				18D82D011FFBD6D20073BC4B /* UIColor+CustomColors.m */,
+				18D82D031FFBFE530073BC4B /* SMAForecastView.h */,
+				18D82D041FFBFE530073BC4B /* SMAForecastView.m */,
+				18D82D061FFC03340073BC4B /* SMAForecastModel.h */,
+				18D82D071FFC03340073BC4B /* SMAForecastModel.m */,
 			);
 			path = WeatherTravel;
 			sourceTree = "<group>";
@@ -230,6 +240,8 @@
 				18D82CF91FFBA90C0073BC4B /* SMASearchViewController+SearchFieldDelegate.m in Sources */,
 				18D82CCC1FF901F70073BC4B /* AppDelegate.m in Sources */,
 				18D82D021FFBD6D20073BC4B /* UIColor+CustomColors.m in Sources */,
+				18D82D081FFC03340073BC4B /* SMAForecastModel.m in Sources */,
+				18D82D051FFBFE530073BC4B /* SMAForecastView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
