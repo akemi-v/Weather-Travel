@@ -15,9 +15,9 @@
  */
 @interface SMASearchViewController : UIViewController <UITextFieldDelegate>
 
-///**
-// Вью, который отображает прогноз и фотографию
-// */
-//@property (nonatomic, strong) SMAForecastView *forecastView;
+/**
+ Вью, который отображает прогноз и фотографию
+ */
+@property (nonatomic, strong) SMAForecastView *forecastView;
 
 @end
