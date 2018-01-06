@@ -13,6 +13,12 @@
 		18D82CDA1FF901F70073BC4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D82CD81FF901F70073BC4B /* LaunchScreen.storyboard */; };
 		18D82CDD1FF901F70073BC4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CDC1FF901F70073BC4B /* main.m */; };
 		18D82CE71FF901F70073BC4B /* WeatherTravelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CE61FF901F70073BC4B /* WeatherTravelTests.m */; };
+		18D82CF31FF923EC0073BC4B /* SMASearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CF21FF923EC0073BC4B /* SMASearchViewController.m */; };
+		18D82CF61FF92EE30073BC4B /* SMALocationSearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CF51FF92EE30073BC4B /* SMALocationSearchField.m */; };
+		18D82CFC1FFBC1670073BC4B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D82CFB1FFBC1670073BC4B /* Media.xcassets */; };
+		18D82D021FFBD6D20073BC4B /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D011FFBD6D20073BC4B /* UIColor+CustomColors.m */; };
+		18D82D051FFBFE530073BC4B /* SMAForecastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D041FFBFE530073BC4B /* SMAForecastView.m */; };
+		18D82D081FFC03340073BC4B /* SMAForecastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D071FFC03340073BC4B /* SMAForecastModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +43,17 @@
 		18D82CE21FF901F70073BC4B /* WeatherTravelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTravelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D82CE61FF901F70073BC4B /* WeatherTravelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherTravelTests.m; sourceTree = "<group>"; };
 		18D82CE81FF901F70073BC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18D82CF11FF923EC0073BC4B /* SMASearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMASearchViewController.h; sourceTree = "<group>"; };
+		18D82CF21FF923EC0073BC4B /* SMASearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMASearchViewController.m; sourceTree = "<group>"; };
+		18D82CF41FF92EE30073BC4B /* SMALocationSearchField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMALocationSearchField.h; sourceTree = "<group>"; };
+		18D82CF51FF92EE30073BC4B /* SMALocationSearchField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMALocationSearchField.m; sourceTree = "<group>"; };
+		18D82CFB1FFBC1670073BC4B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		18D82D001FFBD6D20073BC4B /* UIColor+CustomColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
+		18D82D011FFBD6D20073BC4B /* UIColor+CustomColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
+		18D82D031FFBFE530073BC4B /* SMAForecastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAForecastView.h; sourceTree = "<group>"; };
+		18D82D041FFBFE530073BC4B /* SMAForecastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastView.m; sourceTree = "<group>"; };
+		18D82D061FFC03340073BC4B /* SMAForecastModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAForecastModel.h; sourceTree = "<group>"; };
+		18D82D071FFC03340073BC4B /* SMAForecastModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,11 +97,22 @@
 			children = (
 				18D82CCA1FF901F70073BC4B /* AppDelegate.h */,
 				18D82CCB1FF901F70073BC4B /* AppDelegate.m */,
+				18D82CD31FF901F70073BC4B /* WeatherTravel.xcdatamodeld */,
+				18D82CF11FF923EC0073BC4B /* SMASearchViewController.h */,
+				18D82CF21FF923EC0073BC4B /* SMASearchViewController.m */,
+				18D82CF41FF92EE30073BC4B /* SMALocationSearchField.h */,
+				18D82CF51FF92EE30073BC4B /* SMALocationSearchField.m */,
 				18D82CD61FF901F70073BC4B /* Assets.xcassets */,
+				18D82CFB1FFBC1670073BC4B /* Media.xcassets */,
 				18D82CD81FF901F70073BC4B /* LaunchScreen.storyboard */,
 				18D82CDB1FF901F70073BC4B /* Info.plist */,
 				18D82CDC1FF901F70073BC4B /* main.m */,
-				18D82CD31FF901F70073BC4B /* WeatherTravel.xcdatamodeld */,
+				18D82D001FFBD6D20073BC4B /* UIColor+CustomColors.h */,
+				18D82D011FFBD6D20073BC4B /* UIColor+CustomColors.m */,
+				18D82D031FFBFE530073BC4B /* SMAForecastView.h */,
+				18D82D041FFBFE530073BC4B /* SMAForecastView.m */,
+				18D82D061FFC03340073BC4B /* SMAForecastModel.h */,
+				18D82D071FFC03340073BC4B /* SMAForecastModel.m */,
 			);
 			path = WeatherTravel;
 			sourceTree = "<group>";
@@ -181,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D82CDA1FF901F70073BC4B /* LaunchScreen.storyboard in Resources */,
+				18D82CFC1FFBC1670073BC4B /* Media.xcassets in Resources */,
 				18D82CD71FF901F70073BC4B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,7 +230,12 @@
 			files = (
 				18D82CD51FF901F70073BC4B /* WeatherTravel.xcdatamodeld in Sources */,
 				18D82CDD1FF901F70073BC4B /* main.m in Sources */,
+				18D82CF31FF923EC0073BC4B /* SMASearchViewController.m in Sources */,
+				18D82CF61FF92EE30073BC4B /* SMALocationSearchField.m in Sources */,
 				18D82CCC1FF901F70073BC4B /* AppDelegate.m in Sources */,
+				18D82D021FFBD6D20073BC4B /* UIColor+CustomColors.m in Sources */,
+				18D82D081FFC03340073BC4B /* SMAForecastModel.m in Sources */,
+				18D82D051FFBFE530073BC4B /* SMAForecastView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SMASearchViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +20,12 @@
 {
     self.window = [UIWindow new];
     UITabBarController *tabBarController = [UITabBarController new];
+    
+    UITabBarItem *leftTabBarItem = [[UITabBarItem alloc]initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0];
+    SMASearchViewController *searchViewController = [SMASearchViewController new];
+    searchViewController.tabBarItem = leftTabBarItem;
+    
+    tabBarController.viewControllers = @[searchViewController];
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
