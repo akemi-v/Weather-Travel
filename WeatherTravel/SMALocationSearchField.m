@@ -33,13 +33,12 @@
     self.backgroundColor = [UIColor customGloomyBlue];
     self.textColor = [UIColor customYellow];
     
-    self.layer.shadowColor = [UIColor customYellow].CGColor;
+    self.layer.shadowColor = [UIColor yellowColor].CGColor;
     self.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.layer.shadowOpacity = 1.0f;
     self.layer.shadowRadius = 1.0f;
     
     self.placeholder = @"Введите название города";
-    
     
     self.leftViewMode = UITextFieldViewModeAlways;
     UIImage *icon = [UIImage imageNamed:@"search"];

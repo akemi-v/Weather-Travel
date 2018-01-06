@@ -23,6 +23,12 @@
 @property (nonatomic, strong) NSString *city;
 @property (nonatomic, strong) NSString *country;
 
+/**
+ Инициализация модели
+
+ @param info Данные модели
+ @return Объект модели
+ */
 - (instancetype)initWithForecastInfo:(NSDictionary *)info;
 
 @end

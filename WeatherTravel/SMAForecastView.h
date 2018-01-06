@@ -24,6 +24,11 @@
 @property (nonatomic, strong) UILabel *cityLabel;
 @property (nonatomic, strong) UILabel *countryLabel;
 
-- (instancetype)initWithFrame:(CGRect)frame withForecastModel:(SMAForecastModel *)model;
+/**
+ Настройка вью по модели прогноза
+
+ @param model Модель прогноза
+ */
+- (void)setupWithForecastModel:(SMAForecastModel *)model;
 
 @end

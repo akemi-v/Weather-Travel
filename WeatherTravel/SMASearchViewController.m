@@ -48,22 +48,24 @@ static const CGFloat SMASearchFieldHeight = 50.f;
         [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.searchField.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), SMASearchFieldHeight);
             
-            CGRect frame = CGRectMake(10, 150, CGRectGetWidth(self.view.frame) - 20, 300);
-            SMAForecastModel *model = [[SMAForecastModel alloc] initWithForecastInfo:@{
-                                                                                       @"temperature":@"-100",
-                                                                                       @"humidity":@"50%",
-                                                                                       @"clouds":@"overcast",
+            SMAForecastModel *model = [[SMAForecastModel alloc] initWithForecastInfo: @{
+                                                                                       @"temperature": @"-100",
+                                                                                       @"humidity": @"50%",
+                                                                                       @"clouds": @"overcast",
                                                                                        @"time": @"00:00",
-                                                                                       @"date":@"today",
+                                                                                       @"date": @"today",
                                                                                        @"city": @"Moscow",
                                                                                        @"country": @"Russia"
                                                                                        }];
-            self.forecastView = [[SMAForecastView alloc] initWithFrame:frame withForecastModel:model];
+            self.forecastView = [SMAForecastView new];
+            [self.forecastView setupWithForecastModel:model];
+            self.forecastView.translatesAutoresizingMaskIntoConstraints = NO;
             self.forecastView.layer.opacity = 0.f;
-            [self.view addSubview:self.forecastView];
+            [self.view addSubview:self.forecastView];            
         } completion:nil];
     });
     self.searchField.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), SMASearchFieldHeight);
+    [self setupConstraints];
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,6 +90,50 @@ static const CGFloat SMASearchFieldHeight = 50.f;
     self.searchField = [[SMALocationSearchField alloc] initWithFrame:CGRectMake(0, CGRectGetMidY(self.view.frame), CGRectGetWidth(self.view.frame), SMASearchFieldHeight)];
     self.searchField.delegate = self;
     [self.view addSubview:self.searchField];
+}
+
+- (void)setupConstraints
+{
+    NSMutableArray *allConstraints = [NSMutableArray array];
+    CGFloat tabBarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame) + self.topLayoutGuide.length;
+    NSDictionary *metrics = @{
+                              @"searchFieldHeight": [[NSNumber alloc] initWithFloat:SMASearchFieldHeight],
+                              @"tabBarHeight": [[NSNumber alloc] initWithFloat:tabBarHeight]
+                              };
+    NSDictionary *views = @{@"forecastView": self.forecastView};
+    
+    NSArray *verticalConstraints = [NSLayoutConstraint
+                                    constraintsWithVisualFormat:@"V:|-searchFieldHeight-[forecastView]-tabBarHeight-|"
+                                    options:0 metrics:metrics views:views];
+    [allConstraints addObjectsFromArray:verticalConstraints];
+    NSArray *horizontalConstraints = [NSLayoutConstraint
+                                      constraintsWithVisualFormat:@"H:|[forecastView]|"
+                                      options:0 metrics:metrics views:views];
+    [allConstraints addObjectsFromArray:horizontalConstraints];
+    
+    [self.view addConstraints:allConstraints];
+    [self.view setNeedsLayout];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    textField.returnKeyType = UIReturnKeySearch;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.forecastView.layer.opacity = 0.1f;
+        self.forecastView.transform = CGAffineTransformMakeScale(0.05f, 0.05f);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.forecastView.layer.opacity = 1.f;
+            self.forecastView.transform = CGAffineTransformIdentity;
+        }];
+    }];
+    return YES;
 }
 
 @end
