@@ -20,6 +20,6 @@
  @param data Данные для парсинга
  @return Модель данных, полученная в результате парсинга
  */
-- (id)parse:(NSData *)data;
++ (id)parse:(NSData *)data;
 
 @end

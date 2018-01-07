@@ -20,6 +20,6 @@
  @param parameters Параметры, необходимые для включения в реквест
  @return Реквест
  */
-- (NSMutableURLRequest *)getUrlRequestWithParameters:(NSDictionary *)parameters;
++ (NSMutableURLRequest *)getUrlRequestWithParameters:(NSDictionary *)parameters;
 
 @end
