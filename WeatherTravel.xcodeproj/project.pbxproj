@@ -54,8 +54,8 @@
 		18D82D041FFBFE530073BC4B /* SMAForecastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastView.m; sourceTree = "<group>"; };
 		18D82D061FFC03340073BC4B /* SMAForecastModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAForecastModel.h; sourceTree = "<group>"; };
 		18D82D071FFC03340073BC4B /* SMAForecastModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastModel.m; sourceTree = "<group>"; };
-		18E30199200283B400B5F7ED /* ParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserProtocol.h; sourceTree = "<group>"; };
-		18E3019A200283BC00B5F7ED /* RequestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestProtocol.h; sourceTree = "<group>"; };
+		18E30199200283B400B5F7ED /* SMAParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAParserProtocol.h; sourceTree = "<group>"; };
+		18E3019A200283BC00B5F7ED /* SMARequestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMARequestProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +126,7 @@
 		18C8B38C20023D9000F554D6 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				18E3019A200283BC00B5F7ED /* RequestProtocol.h */,
+				18E3019A200283BC00B5F7ED /* SMARequestProtocol.h */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -134,7 +134,7 @@
 		18C8B38D20023D9600F554D6 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
-				18E30199200283B400B5F7ED /* ParserProtocol.h */,
+				18E30199200283B400B5F7ED /* SMAParserProtocol.h */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
