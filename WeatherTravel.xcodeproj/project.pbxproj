@@ -54,6 +54,8 @@
 		18D82D041FFBFE530073BC4B /* SMAForecastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastView.m; sourceTree = "<group>"; };
 		18D82D061FFC03340073BC4B /* SMAForecastModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAForecastModel.h; sourceTree = "<group>"; };
 		18D82D071FFC03340073BC4B /* SMAForecastModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastModel.m; sourceTree = "<group>"; };
+		18E30199200283B400B5F7ED /* ParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserProtocol.h; sourceTree = "<group>"; };
+		18E3019A200283BC00B5F7ED /* RequestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18C8B3852002359F00F554D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18D82D061FFC03340073BC4B /* SMAForecastModel.h */,
+				18D82D071FFC03340073BC4B /* SMAForecastModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18C8B386200235A800F554D6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18D82CF41FF92EE30073BC4B /* SMALocationSearchField.h */,
+				18D82CF51FF92EE30073BC4B /* SMALocationSearchField.m */,
+				18D82D031FFBFE530073BC4B /* SMAForecastView.h */,
+				18D82D041FFBFE530073BC4B /* SMAForecastView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18C8B387200235AD00F554D6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18D82CF11FF923EC0073BC4B /* SMASearchViewController.h */,
+				18D82CF21FF923EC0073BC4B /* SMASearchViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		18C8B388200235F100F554D6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				18D82D001FFBD6D20073BC4B /* UIColor+CustomColors.h */,
+				18D82D011FFBD6D20073BC4B /* UIColor+CustomColors.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		18C8B3892002364100F554D6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				18C8B38D20023D9600F554D6 /* Parsers */,
+				18C8B38C20023D9000F554D6 /* Requests */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		18C8B38C20023D9000F554D6 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				18E3019A200283BC00B5F7ED /* RequestProtocol.h */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		18C8B38D20023D9600F554D6 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				18E30199200283B400B5F7ED /* ParserProtocol.h */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
 		18D82CBE1FF901F70073BC4B = {
 			isa = PBXGroup;
 			children = (
@@ -95,24 +160,19 @@
 		18D82CC91FF901F70073BC4B /* WeatherTravel */ = {
 			isa = PBXGroup;
 			children = (
+				18C8B3892002364100F554D6 /* Networking */,
+				18C8B388200235F100F554D6 /* Helpers */,
+				18C8B3852002359F00F554D6 /* Model */,
+				18C8B386200235A800F554D6 /* View */,
+				18C8B387200235AD00F554D6 /* Controller */,
 				18D82CCA1FF901F70073BC4B /* AppDelegate.h */,
 				18D82CCB1FF901F70073BC4B /* AppDelegate.m */,
 				18D82CD31FF901F70073BC4B /* WeatherTravel.xcdatamodeld */,
-				18D82CF11FF923EC0073BC4B /* SMASearchViewController.h */,
-				18D82CF21FF923EC0073BC4B /* SMASearchViewController.m */,
-				18D82CF41FF92EE30073BC4B /* SMALocationSearchField.h */,
-				18D82CF51FF92EE30073BC4B /* SMALocationSearchField.m */,
 				18D82CD61FF901F70073BC4B /* Assets.xcassets */,
 				18D82CFB1FFBC1670073BC4B /* Media.xcassets */,
 				18D82CD81FF901F70073BC4B /* LaunchScreen.storyboard */,
 				18D82CDB1FF901F70073BC4B /* Info.plist */,
 				18D82CDC1FF901F70073BC4B /* main.m */,
-				18D82D001FFBD6D20073BC4B /* UIColor+CustomColors.h */,
-				18D82D011FFBD6D20073BC4B /* UIColor+CustomColors.m */,
-				18D82D031FFBFE530073BC4B /* SMAForecastView.h */,
-				18D82D041FFBFE530073BC4B /* SMAForecastView.m */,
-				18D82D061FFC03340073BC4B /* SMAForecastModel.h */,
-				18D82D071FFC03340073BC4B /* SMAForecastModel.m */,
 			);
 			path = WeatherTravel;
 			sourceTree = "<group>";
@@ -317,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -366,7 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
