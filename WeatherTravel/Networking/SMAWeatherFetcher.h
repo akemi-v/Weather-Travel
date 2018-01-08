@@ -1,5 +1,5 @@
 //
-//  WeatherFetcher.h
+//  SMAWeatherFetcher.h
 //  WeatherTravel
 //
 //  Created by Maria Semakova on 1/8/18.
@@ -11,7 +11,7 @@
 /**
  Класс объекта, возвращающего погодные данные по географическим координатам
  */
-@interface WeatherFetcher : NSObject
+@interface SMAWeatherFetcher : NSObject
 
 /**
  Метод, получающий погодные данные по координатам
