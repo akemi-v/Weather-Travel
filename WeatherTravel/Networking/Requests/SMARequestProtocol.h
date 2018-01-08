@@ -1,5 +1,5 @@
 //
-//  RequestProtocol.h
+//  SMARequestProtocol.h
 //  WeatherTravel
 //
 //  Created by Maria Semakova on 1/7/18.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@protocol RequestProtocol <NSObject>
+@protocol SMARequestProtocol <NSObject>
 
 - (NSMutableURLRequest *)getUrlRequestWithParameters:(NSDictionary *)parameters;
 

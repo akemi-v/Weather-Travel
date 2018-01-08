@@ -1,5 +1,5 @@
 //
-//  ParserProtocol.h
+//  SMAParserProtocol.h
 //  WeatherTravel
 //
 //  Created by Maria Semakova on 1/7/18.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@protocol ParserProtocol <NSObject>
+@protocol SMAParserProtocol <NSObject>
 
 - (id)parse:(NSData *)data;
 
