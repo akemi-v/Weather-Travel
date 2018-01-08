@@ -9,8 +9,17 @@
 #import <Foundation/Foundation.h>
 
 
+/**
+ Протокол JSON парсера
+ */
 @protocol SMAParserProtocol <NSObject>
 
+/**
+ Парсинг
+ 
+ @param data Данные для парсинга
+ @return Модель данных, полученная в результате парсинга
+ */
 + (id)parse:(NSData *)data;
 
 @end

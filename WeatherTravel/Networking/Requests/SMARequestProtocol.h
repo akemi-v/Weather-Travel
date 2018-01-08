@@ -9,8 +9,17 @@
 #import <Foundation/Foundation.h>
 
 
+/**
+ Протокол реквестов
+ */
 @protocol SMARequestProtocol <NSObject>
 
+/**
+ Получение реквеста
+ 
+ @param parameters Параметры, необходимые для включения в реквест
+ @return Реквест
+ */
 + (NSMutableURLRequest *)getUrlRequestWithParameters:(NSDictionary *)parameters;
 
 @end
