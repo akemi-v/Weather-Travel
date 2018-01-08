@@ -10,6 +10,7 @@
 #import "SMASearchViewController.h"
 #import "SMALocationSearchField.h"
 #import "UIColor+CustomColors.h"
+#import "SMAGeocoder.h"
 
 static const CGFloat SMASearchFieldHeight = 50.f;
 
@@ -124,6 +125,13 @@ static const CGFloat SMASearchFieldHeight = 50.f;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    __block NSDictionary *coords;
+    SMAGeocoder *geoCoder = [SMAGeocoder new];
+    [geoCoder getCoordinatesFromCityName:textField.text completion:^(NSDictionary *coordinates) {
+        coords = coordinates;
+        NSLog(@"Coordinates: %@", coords);
+    }];
+    
     [UIView animateWithDuration:0.5 animations:^{
         self.forecastView.layer.opacity = 0.1f;
         self.forecastView.transform = CGAffineTransformMakeScale(0.05f, 0.05f);

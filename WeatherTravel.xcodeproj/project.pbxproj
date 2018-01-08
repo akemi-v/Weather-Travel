@@ -19,6 +19,9 @@
 		18D82D021FFBD6D20073BC4B /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D011FFBD6D20073BC4B /* UIColor+CustomColors.m */; };
 		18D82D051FFBFE530073BC4B /* SMAForecastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D041FFBFE530073BC4B /* SMAForecastView.m */; };
 		18D82D081FFC03340073BC4B /* SMAForecastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D071FFC03340073BC4B /* SMAForecastModel.m */; };
+		18E3019D2002897C00B5F7ED /* SMAGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E3019B2002897C00B5F7ED /* SMAGeocoder.m */; };
+		18E301A020028A9100B5F7ED /* SMAGoogleCoordinatesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E3019F20028A9100B5F7ED /* SMAGoogleCoordinatesRequest.m */; };
+		18E301A3200298C000B5F7ED /* SMAGoogleCoordinatesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301A2200298C000B5F7ED /* SMAGoogleCoordinatesParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +57,14 @@
 		18D82D041FFBFE530073BC4B /* SMAForecastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastView.m; sourceTree = "<group>"; };
 		18D82D061FFC03340073BC4B /* SMAForecastModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAForecastModel.h; sourceTree = "<group>"; };
 		18D82D071FFC03340073BC4B /* SMAForecastModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastModel.m; sourceTree = "<group>"; };
-		18E30199200283B400B5F7ED /* ParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserProtocol.h; sourceTree = "<group>"; };
-		18E3019A200283BC00B5F7ED /* RequestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestProtocol.h; sourceTree = "<group>"; };
+		18E30199200283B400B5F7ED /* SMAParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAParserProtocol.h; sourceTree = "<group>"; };
+		18E3019A200283BC00B5F7ED /* SMARequestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMARequestProtocol.h; sourceTree = "<group>"; };
+		18E3019B2002897C00B5F7ED /* SMAGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAGeocoder.m; sourceTree = "<group>"; };
+		18E3019C2002897C00B5F7ED /* SMAGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAGeocoder.h; sourceTree = "<group>"; };
+		18E3019E20028A9100B5F7ED /* SMAGoogleCoordinatesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAGoogleCoordinatesRequest.h; sourceTree = "<group>"; };
+		18E3019F20028A9100B5F7ED /* SMAGoogleCoordinatesRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAGoogleCoordinatesRequest.m; sourceTree = "<group>"; };
+		18E301A1200298C000B5F7ED /* SMAGoogleCoordinatesParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAGoogleCoordinatesParser.h; sourceTree = "<group>"; };
+		18E301A2200298C000B5F7ED /* SMAGoogleCoordinatesParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAGoogleCoordinatesParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +126,8 @@
 		18C8B3892002364100F554D6 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				18E3019C2002897C00B5F7ED /* SMAGeocoder.h */,
+				18E3019B2002897C00B5F7ED /* SMAGeocoder.m */,
 				18C8B38D20023D9600F554D6 /* Parsers */,
 				18C8B38C20023D9000F554D6 /* Requests */,
 			);
@@ -126,7 +137,9 @@
 		18C8B38C20023D9000F554D6 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				18E3019A200283BC00B5F7ED /* RequestProtocol.h */,
+				18E3019A200283BC00B5F7ED /* SMARequestProtocol.h */,
+				18E3019E20028A9100B5F7ED /* SMAGoogleCoordinatesRequest.h */,
+				18E3019F20028A9100B5F7ED /* SMAGoogleCoordinatesRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -134,7 +147,9 @@
 		18C8B38D20023D9600F554D6 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
-				18E30199200283B400B5F7ED /* ParserProtocol.h */,
+				18E30199200283B400B5F7ED /* SMAParserProtocol.h */,
+				18E301A1200298C000B5F7ED /* SMAGoogleCoordinatesParser.h */,
+				18E301A2200298C000B5F7ED /* SMAGoogleCoordinatesParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -294,7 +309,10 @@
 				18D82CF61FF92EE30073BC4B /* SMALocationSearchField.m in Sources */,
 				18D82CCC1FF901F70073BC4B /* AppDelegate.m in Sources */,
 				18D82D021FFBD6D20073BC4B /* UIColor+CustomColors.m in Sources */,
+				18E301A3200298C000B5F7ED /* SMAGoogleCoordinatesParser.m in Sources */,
 				18D82D081FFC03340073BC4B /* SMAForecastModel.m in Sources */,
+				18E3019D2002897C00B5F7ED /* SMAGeocoder.m in Sources */,
+				18E301A020028A9100B5F7ED /* SMAGoogleCoordinatesRequest.m in Sources */,
 				18D82D051FFBFE530073BC4B /* SMAForecastView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
