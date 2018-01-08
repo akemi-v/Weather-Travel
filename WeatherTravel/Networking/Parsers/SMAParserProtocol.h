@@ -11,6 +11,6 @@
 
 @protocol SMAParserProtocol <NSObject>
 
-- (id)parse:(NSData *)data;
++ (id)parse:(NSData *)data;
 
 @end

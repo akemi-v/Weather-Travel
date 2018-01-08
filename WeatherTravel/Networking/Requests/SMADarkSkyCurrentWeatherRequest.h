@@ -10,7 +10,7 @@
 #import "SMARequestProtocol.h"
 
 
-@interface SMADarkSkyCurrentWeatherRequest : NSObject
+@interface SMADarkSkyCurrentWeatherRequest : NSObject <SMARequestProtocol>
 
 + (NSMutableURLRequest *)getUrlRequestWithParameters:(NSDictionary *)parameters;
 
