@@ -11,6 +11,6 @@
 
 @protocol SMARequestProtocol <NSObject>
 
-- (NSMutableURLRequest *)getUrlRequestWithParameters:(NSDictionary *)parameters;
++ (NSMutableURLRequest *)getUrlRequestWithParameters:(NSDictionary *)parameters;
 
 @end

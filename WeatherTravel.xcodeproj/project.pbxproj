@@ -21,6 +21,7 @@
 		18D82D081FFC03340073BC4B /* SMAForecastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D071FFC03340073BC4B /* SMAForecastModel.m */; };
 		18E301A62002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301A52002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.m */; };
 		18E301A92002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301A82002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m */; };
+		18E301AC2003832900B5F7ED /* WeatherFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301AB2003832900B5F7ED /* WeatherFetcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		18E301A52002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMADarkSkyCurrentWeatherRequest.m; sourceTree = "<group>"; };
 		18E301A72002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMADarkSkyCurrentWeatherParser.h; sourceTree = "<group>"; };
 		18E301A82002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMADarkSkyCurrentWeatherParser.m; sourceTree = "<group>"; };
+		18E301AA2003832800B5F7ED /* WeatherFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherFetcher.h; sourceTree = "<group>"; };
+		18E301AB2003832900B5F7ED /* WeatherFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherFetcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,8 @@
 			children = (
 				18C8B38D20023D9600F554D6 /* Parsers */,
 				18C8B38C20023D9000F554D6 /* Requests */,
+				18E301AA2003832800B5F7ED /* WeatherFetcher.h */,
+				18E301AB2003832900B5F7ED /* WeatherFetcher.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 				18D82CD51FF901F70073BC4B /* WeatherTravel.xcdatamodeld in Sources */,
 				18D82CDD1FF901F70073BC4B /* main.m in Sources */,
 				18E301A92002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m in Sources */,
+				18E301AC2003832900B5F7ED /* WeatherFetcher.m in Sources */,
 				18D82CF31FF923EC0073BC4B /* SMASearchViewController.m in Sources */,
 				18D82CF61FF92EE30073BC4B /* SMALocationSearchField.m in Sources */,
 				18D82CCC1FF901F70073BC4B /* AppDelegate.m in Sources */,
