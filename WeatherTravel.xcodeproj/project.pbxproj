@@ -25,6 +25,7 @@
 		18E301A62002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301A52002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.m */; };
 		18E301A92002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301A82002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m */; };
 		18E301AC2003832900B5F7ED /* SMAWeatherFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301AB2003832900B5F7ED /* SMAWeatherFetcher.m */; };
+		18E301AF2004168E00B5F7ED /* SMAFlickrImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301AE2004168E00B5F7ED /* SMAFlickrImageRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,9 @@
 		18E301A82002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMADarkSkyCurrentWeatherParser.m; sourceTree = "<group>"; };
 		18E301AA2003832800B5F7ED /* SMAWeatherFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAWeatherFetcher.h; sourceTree = "<group>"; };
 		18E301AB2003832900B5F7ED /* SMAWeatherFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAWeatherFetcher.m; sourceTree = "<group>"; };
+		18E301AD2004168E00B5F7ED /* SMAFlickrImageRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAFlickrImageRequest.h; sourceTree = "<group>"; };
+		18E301AE2004168E00B5F7ED /* SMAFlickrImageRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAFlickrImageRequest.m; sourceTree = "<group>"; };
+		18E301B02005731A00B5F7ED /* Enums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 			children = (
 				18D82D001FFBD6D20073BC4B /* UIColor+CustomColors.h */,
 				18D82D011FFBD6D20073BC4B /* UIColor+CustomColors.m */,
+				18E301B02005731A00B5F7ED /* Enums.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -153,6 +158,8 @@
 				18E301A52002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.m */,
 				18E3019E20028A9100B5F7ED /* SMAGoogleCoordinatesRequest.h */,
 				18E3019F20028A9100B5F7ED /* SMAGoogleCoordinatesRequest.m */,
+				18E301AD2004168E00B5F7ED /* SMAFlickrImageRequest.h */,
+				18E301AE2004168E00B5F7ED /* SMAFlickrImageRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -326,6 +333,7 @@
 				18D82CF61FF92EE30073BC4B /* SMALocationSearchField.m in Sources */,
 				18D82CCC1FF901F70073BC4B /* AppDelegate.m in Sources */,
 				18D82D021FFBD6D20073BC4B /* UIColor+CustomColors.m in Sources */,
+				18E301AF2004168E00B5F7ED /* SMAFlickrImageRequest.m in Sources */,
 				18E301A62002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.m in Sources */,
 				18E301A3200298C000B5F7ED /* SMAGoogleCoordinatesParser.m in Sources */,
 				18D82D081FFC03340073BC4B /* SMAForecastModel.m in Sources */,
