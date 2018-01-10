@@ -26,6 +26,7 @@
 		18E301A92002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301A82002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m */; };
 		18E301AC2003832900B5F7ED /* SMAWeatherFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301AB2003832900B5F7ED /* SMAWeatherFetcher.m */; };
 		18E301AF2004168E00B5F7ED /* SMAFlickrImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301AE2004168E00B5F7ED /* SMAFlickrImageRequest.m */; };
+		18E301B32005777700B5F7ED /* SMAFlickrImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301B22005777700B5F7ED /* SMAFlickrImageParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		18E301AD2004168E00B5F7ED /* SMAFlickrImageRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAFlickrImageRequest.h; sourceTree = "<group>"; };
 		18E301AE2004168E00B5F7ED /* SMAFlickrImageRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAFlickrImageRequest.m; sourceTree = "<group>"; };
 		18E301B02005731A00B5F7ED /* Enums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
+		18E301B12005777700B5F7ED /* SMAFlickrImageParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAFlickrImageParser.h; sourceTree = "<group>"; };
+		18E301B22005777700B5F7ED /* SMAFlickrImageParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAFlickrImageParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +175,8 @@
 				18E301A82002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m */,
 				18E301A1200298C000B5F7ED /* SMAGoogleCoordinatesParser.h */,
 				18E301A2200298C000B5F7ED /* SMAGoogleCoordinatesParser.m */,
+				18E301B12005777700B5F7ED /* SMAFlickrImageParser.h */,
+				18E301B22005777700B5F7ED /* SMAFlickrImageParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 				18E301A3200298C000B5F7ED /* SMAGoogleCoordinatesParser.m in Sources */,
 				18D82D081FFC03340073BC4B /* SMAForecastModel.m in Sources */,
 				18E3019D2002897C00B5F7ED /* SMAGeocoder.m in Sources */,
+				18E301B32005777700B5F7ED /* SMAFlickrImageParser.m in Sources */,
 				18E301A020028A9100B5F7ED /* SMAGoogleCoordinatesRequest.m in Sources */,
 				18D82D051FFBFE530073BC4B /* SMAForecastView.m in Sources */,
 			);
