@@ -27,6 +27,7 @@
 		18E301AC2003832900B5F7ED /* SMAWeatherFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301AB2003832900B5F7ED /* SMAWeatherFetcher.m */; };
 		18E301AF2004168E00B5F7ED /* SMAFlickrImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301AE2004168E00B5F7ED /* SMAFlickrImageRequest.m */; };
 		18E301B32005777700B5F7ED /* SMAFlickrImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301B22005777700B5F7ED /* SMAFlickrImageParser.m */; };
+		18E301B62006476400B5F7ED /* SMAImageFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301B52006476400B5F7ED /* SMAImageFetcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		18E301B02005731A00B5F7ED /* Enums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
 		18E301B12005777700B5F7ED /* SMAFlickrImageParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAFlickrImageParser.h; sourceTree = "<group>"; };
 		18E301B22005777700B5F7ED /* SMAFlickrImageParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAFlickrImageParser.m; sourceTree = "<group>"; };
+		18E301B42006476400B5F7ED /* SMAImageFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAImageFetcher.h; sourceTree = "<group>"; };
+		18E301B52006476400B5F7ED /* SMAImageFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAImageFetcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,12 +146,14 @@
 		18C8B3892002364100F554D6 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				18E3019C2002897C00B5F7ED /* SMAGeocoder.h */,
-				18E3019B2002897C00B5F7ED /* SMAGeocoder.m */,
 				18C8B38D20023D9600F554D6 /* Parsers */,
 				18C8B38C20023D9000F554D6 /* Requests */,
+				18E3019C2002897C00B5F7ED /* SMAGeocoder.h */,
+				18E3019B2002897C00B5F7ED /* SMAGeocoder.m */,
 				18E301AA2003832800B5F7ED /* SMAWeatherFetcher.h */,
 				18E301AB2003832900B5F7ED /* SMAWeatherFetcher.m */,
+				18E301B42006476400B5F7ED /* SMAImageFetcher.h */,
+				18E301B52006476400B5F7ED /* SMAImageFetcher.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 				18D82CDD1FF901F70073BC4B /* main.m in Sources */,
 				18E301A92002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m in Sources */,
 				18E301AC2003832900B5F7ED /* SMAWeatherFetcher.m in Sources */,
+				18E301B62006476400B5F7ED /* SMAImageFetcher.m in Sources */,
 				18D82CF31FF923EC0073BC4B /* SMASearchViewController.m in Sources */,
 				18D82CF61FF92EE30073BC4B /* SMALocationSearchField.m in Sources */,
 				18D82CCC1FF901F70073BC4B /* AppDelegate.m in Sources */,
