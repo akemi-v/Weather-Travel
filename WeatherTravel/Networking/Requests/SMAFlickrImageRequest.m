@@ -49,11 +49,12 @@
     NSURLQueryItem *method = [NSURLQueryItem queryItemWithName:@"method" value:@"flickr.photos.search"];
     NSURLQueryItem *apiKey = [NSURLQueryItem queryItemWithName:@"api_key" value:@"893bb425c9623527bf0b2447a5878d19"];
     NSURLQueryItem *tagMode = [NSURLQueryItem queryItemWithName:@"tag_mode" value:@"all"];
+    NSURLQueryItem *sort = [NSURLQueryItem queryItemWithName:@"sort" value:@"relevance"];
     NSURLQueryItem *perPage = [NSURLQueryItem queryItemWithName:@"per_page" value:[NSString stringWithFormat:@"%d", 100]];
     NSURLQueryItem *format = [NSURLQueryItem queryItemWithName:@"format" value:@"json"];
     NSURLQueryItem *imgFormat = [NSURLQueryItem queryItemWithName:@"extras" value:@"url_q,url_o"];
     NSURLQueryItem *noCallBack = [NSURLQueryItem queryItemWithName:@"nojsoncallback" value:@"1"];
-    urlComponents.queryItems = @[method, apiKey, tagMode, perPage, format, imgFormat, noCallBack];
+    urlComponents.queryItems = @[method, apiKey, tagMode, sort, perPage, format, imgFormat, noCallBack];
     
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     switch (mode) {

@@ -8,6 +8,11 @@
 
 #import "SMAFlickrImageParser.h"
 
+// Минимальное число возвращаемых фотографий для того
+// Если число меньше, то создается реквест с другими параметрами)
+static const NSUInteger SMAPhotosThreshold = 5;
+
+
 @implementation SMAFlickrImageParser
 
 + (id)parse:(NSData *)data
@@ -35,6 +40,18 @@
         return nil;
     }
     
+    NSString *numOfPhotos = photos[@"total"];
+    if (!numOfPhotos)
+    {
+        NSLog(@"Отсутствует ключ total");
+        return nil;
+    }
+    
+    if ([numOfPhotos intValue] < SMAPhotosThreshold)
+    {
+        return nil;
+    }
+    
     NSArray *photoArray = photos[@"photo"];
     if (!photoArray)
     {
@@ -48,7 +65,7 @@
         {
             NSDictionary *photoInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                                        photo[@"url_q"], @"url_square",
-                                       photo[@"url_o"], @"url_orig", 
+                                       photo[@"url_o"], @"url_orig",
                                        nil];
             return photoInfo;
         }
