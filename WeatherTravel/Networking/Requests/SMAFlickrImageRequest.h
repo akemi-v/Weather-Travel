@@ -1,18 +1,19 @@
 //
-//  SMADarkSkyCurrentWeatherRequest.h
+//  SMAFlickrImageRequest.h
 //  WeatherTravel
 //
-//  Created by Maria Semakova on 1/8/18.
+//  Created by Maria Semakova on 1/9/18.
 //  Copyright © 2018 Maria Semakova. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "SMARequestProtocol.h"
 
+
 /**
- Реквест погодных данных Dark Sky API
+ Реквест фотографий Flickr API
  */
-@interface SMADarkSkyCurrentWeatherRequest : NSObject <SMARequestProtocol>
+@interface SMAFlickrImageRequest : NSObject <SMARequestProtocol>
 
 + (NSMutableURLRequest *)getUrlRequestWithParameters:(NSDictionary *)parameters;
 
