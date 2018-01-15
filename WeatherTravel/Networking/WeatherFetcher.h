@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 /**
  Класс объекта, возвращающего погодные данные по географическим координатам
  */
@@ -17,6 +18,7 @@
  Метод, получающий погодные данные по координатам
 
  @param coordinates Географические координаты локации
+ @param completionHandler Блок, выполняемый после получения данных о погоде
  */
 - (void)getWeatherFromCoordinates:(NSDictionary *)coordinates completion:(void (^)(NSDictionary *weatherData))completionHandler;
 
