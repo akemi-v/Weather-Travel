@@ -1,5 +1,5 @@
 //
-//  WeatherFetcher.h
+//  SMAWeatherFetcher.h
 //  WeatherTravel
 //
 //  Created by Maria Semakova on 1/8/18.
@@ -12,10 +12,10 @@
 /**
  Класс объекта, возвращающего погодные данные по географическим координатам
  */
-@interface WeatherFetcher : NSObject
+@interface SMAWeatherFetcher : NSObject
 
 /**
- Метод, получающий погодные данные по координатам
+ Метод, возвращающий погодные данные по координатам
 
  @param coordinates Географические координаты локации
  @param completionHandler Блок, выполняемый после получения данных о погоде
