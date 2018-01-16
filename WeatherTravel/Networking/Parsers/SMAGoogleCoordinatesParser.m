@@ -36,18 +36,44 @@
     }
     
     NSDictionary *geometry = [results firstObject][@"geometry"];
-    if (!results)
+    if (!geometry)
     {
         NSLog(@"Отсутствует ключ geometry");
         return nil;
     }
     
-    NSDictionary *location = geometry[@"location"];
-    if (!location)
+    NSDictionary *locationCoordinates = geometry[@"location"];
+    if (!locationCoordinates)
     {
         NSLog(@"Отсутствует ключ location");
         return nil;
     }
+    
+    NSArray *addressComponents = [results firstObject][@"address_components"];
+    if (!addressComponents)
+    {
+        NSLog(@"Отсутствует ключ address_components");
+        return nil;
+    }
+    
+    NSString *city = [addressComponents firstObject][@"short_name"];
+    if (!city)
+    {
+        NSLog(@"Отсутствует ключ short_name");
+        return nil;
+    }
+    
+    NSString *country = [addressComponents lastObject][@"long_name"];
+    if (!country)
+    {
+        NSLog(@"Отсутствует ключ long_name");
+        return nil;
+    }
+    
+    NSMutableDictionary *location = [locationCoordinates mutableCopy];
+    [location setObject:city forKey:@"city"];
+    [location setObject:country forKey:@"country"];
+    
     return location;
 }
 

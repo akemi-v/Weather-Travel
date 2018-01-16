@@ -10,7 +10,7 @@
 #import "SMASearchViewController.h"
 #import "SMALocationSearchField.h"
 #import "UIColor+CustomColors.h"
-#import "SMAGeocoder.h"
+#import "SMAForecastService.h"
 
 static const CGFloat SMASearchFieldHeight = 50.f;
 
@@ -21,6 +21,11 @@ static const CGFloat SMASearchFieldHeight = 50.f;
  Строка ввода названия локации для поиска
  */
 @property (nonatomic, strong) SMALocationSearchField *searchField;
+
+/**
+ Сервис, составляющий модель прогноза
+ */
+@property (nonatomic, strong) SMAForecastService *forecastService;
 
 @end
 
@@ -34,6 +39,7 @@ static const CGFloat SMASearchFieldHeight = 50.f;
 {
     [super viewDidLoad];
     [self setupUI];
+    self.forecastService = [SMAForecastService new];
 }
 
 - (void)viewDidLayoutSubviews
@@ -52,7 +58,7 @@ static const CGFloat SMASearchFieldHeight = 50.f;
             SMAForecastModel *model = [[SMAForecastModel alloc] initWithForecastInfo: @{
                                                                                        @"temperature": @"-100",
                                                                                        @"humidity": @"50%",
-                                                                                       @"clouds": @"overcast",
+                                                                                       @"summary_weather": @"overcast",
                                                                                        @"time": @"00:00",
                                                                                        @"date": @"today",
                                                                                        @"city": @"Moscow",
@@ -125,11 +131,11 @@ static const CGFloat SMASearchFieldHeight = 50.f;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    __block NSDictionary *coords;
-    SMAGeocoder *geoCoder = [SMAGeocoder new];
-    [geoCoder getCoordinatesFromCityName:textField.text completion:^(NSDictionary *coordinates) {
-        coords = coordinates;
-        NSLog(@"Coordinates: %@", coords);
+//    SMAForecastModel *model = [SMAForecastModel new];
+    [self.forecastService getForecastForCity:textField.text completion:^(SMAForecastModel *model) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.forecastView setupWithForecastModel:model];
+        });
     }];
     
     [UIView animateWithDuration:0.5 animations:^{

@@ -28,33 +28,33 @@
         return nil;
     }
     
-    NSString *temperature = currently[@"temperature"];
+    NSString *temperature = [NSString stringWithFormat:@"%3.1f", [currently[@"temperature"] doubleValue]];
     if (!temperature)
     {
         NSLog(@"Отсутствует ключ temperature");
         return nil;
     }
     
-    NSString *humidity = currently[@"humidity"];
+    NSString *humidity = [NSString stringWithFormat:@"%3.0f", [currently[@"humidity"] doubleValue] * 100];
     if (!humidity)
     {
         NSLog(@"Отсутствует ключ humidity");
         return nil;
     }
     
-    NSString *clouds = currently[@"icon"];
-    if (!clouds)
+    NSString *summaryWeather = currently[@"icon"];
+    if (!summaryWeather)
     {
         NSLog(@"Отсутствует ключ icon");
         return nil;
     }
     
-    [clouds stringByReplacingOccurrencesOfString:@"-" withString:@" "];
+    summaryWeather = [summaryWeather stringByReplacingOccurrencesOfString:@"-" withString:@","];
     
     NSDictionary *weatherData = [NSDictionary dictionaryWithObjectsAndKeys:
                                  temperature, @"temperature",
                                  humidity, @"humidity",
-                                 clouds, @"clouds",
+                                 summaryWeather, @"summary_weather",
                                  nil];
     return weatherData;
 }

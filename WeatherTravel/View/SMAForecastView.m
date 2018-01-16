@@ -9,18 +9,40 @@
 #import "SMAForecastView.h"
 #import "SMAForecastModel.h"
 #import "UIColor+CustomColors.h"
+#import "SMAImageLoader.h"
 
 static const CGFloat SMAForecastLabelHeight = 25.f;
 static const CGFloat SMAForecastOffset = 8.f;
 
 
+@interface SMAForecastView ()
+
+@property (nonatomic, strong) SMAImageLoader *imageLoader;
+
+@end
+
 @implementation SMAForecastView
+
+#pragma mark - init
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+        self.imageLoader = [SMAImageLoader new];
+    }
+    return self;
+}
 
 #pragma mark - UI
 
 - (void)setupWithForecastModel:(SMAForecastModel *)model
 {
-    [self setupUI];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self setupUI];
+    });
     NSDictionary *strokeTextAttributes = @{
                                            NSFontAttributeName: [UIFont boldSystemFontOfSize:25.f],
                                            NSStrokeColorAttributeName: [UIColor blackColor],
@@ -28,16 +50,18 @@ static const CGFloat SMAForecastOffset = 8.f;
                                            NSStrokeWidthAttributeName: @-3.0
                                            };
     
-    self.pictureView.image = model.picture;
+    [self.imageLoader loadImageFromRemoteURL:model.urlOrigImage completion:^(UIImage *image) {
+        self.pictureView.image = image;
+    }];
     self.temperatureLabel.attributedText = [[NSAttributedString alloc]
-                                            initWithString:model.temperature
+                                            initWithString: [NSString stringWithFormat:@"%@ °C", model.temperature]
                                             attributes:strokeTextAttributes];
     self.humidityLabel.attributedText = [[NSAttributedString alloc]
-                                         initWithString:model.humidity
+                                         initWithString:[NSString stringWithFormat:@"Humidity: %@%%", model.humidity]
                                          attributes:strokeTextAttributes];
-    self.cloudsLabel.attributedText = [[NSAttributedString alloc]
-                                       initWithString:model.clouds
-                                       attributes:strokeTextAttributes];
+    self.summaryWeatherLabel.attributedText = [[NSAttributedString alloc]
+                                               initWithString:model.summaryWeather
+                                               attributes:strokeTextAttributes];
     self.timeLabel.attributedText = [[NSAttributedString alloc]
                                      initWithString:model.time
                                      attributes:strokeTextAttributes];
@@ -54,9 +78,12 @@ static const CGFloat SMAForecastOffset = 8.f;
 
 - (void)setupUI
 {
+    
     self.backgroundColor = [UIColor customPaleBlue];
     
-    self.pictureView = [[UIImageView alloc] initWithFrame:self.frame];
+    self.pictureView = [UIImageView new];
+    self.pictureView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.pictureView.contentMode = UIViewContentModeScaleAspectFill;
     [self addSubview:self.pictureView];
     
     self.temperatureLabel = [UILabel new];
@@ -67,9 +94,9 @@ static const CGFloat SMAForecastOffset = 8.f;
     self.humidityLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.humidityLabel];
     
-    self.cloudsLabel = [UILabel new];
-    self.cloudsLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.cloudsLabel];
+    self.summaryWeatherLabel = [UILabel new];
+    self.summaryWeatherLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.summaryWeatherLabel];
     
     self.timeLabel = [UILabel new];
     self.timeLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -97,51 +124,61 @@ static const CGFloat SMAForecastOffset = 8.f;
                               @"offset": [[NSNumber alloc] initWithFloat:SMAForecastOffset],
                               @"height": [[NSNumber alloc] initWithFloat:SMAForecastLabelHeight]
                               };
-    NSDictionary *labels = @{
-                             @"temperatureLabel": self.temperatureLabel,
-                             @"humidityLabel": self.humidityLabel,
-                             @"cloudsLabel": self.cloudsLabel,
-                             @"timeLabel": self.timeLabel,
-                             @"dateLabel": self.dateLabel,
-                             @"cityLabel": self.cityLabel,
-                             @"countryLabel": self.countryLabel
-                             };
+    NSDictionary *views = @{
+                            @"pictureView": self.pictureView,
+                            @"temperatureLabel": self.temperatureLabel,
+                            @"humidityLabel": self.humidityLabel,
+                            @"summaryLabel": self.summaryWeatherLabel,
+                            @"timeLabel": self.timeLabel,
+                            @"dateLabel": self.dateLabel,
+                            @"cityLabel": self.cityLabel,
+                            @"countryLabel": self.countryLabel
+                            };
+    
+    NSArray *verticalConstraintsPictureView = [NSLayoutConstraint
+                                               constraintsWithVisualFormat:@"V:|[pictureView]|"
+                                               options:0 metrics:metrics views:views];
+    [allConstraints addObjectsFromArray:verticalConstraintsPictureView];
+    NSArray *horizontalConstraintsPictureView = [NSLayoutConstraint
+                                                 constraintsWithVisualFormat:@"H:|[pictureView]|"
+                                                 options:0 metrics:metrics views:views];
+    [allConstraints addObjectsFromArray:horizontalConstraintsPictureView];
     
     NSArray *verticalConstraints = [NSLayoutConstraint
-                                    constraintsWithVisualFormat:@"V:|-[temperatureLabel(height)]-offset-[humidityLabel(height)]-offset-[cloudsLabel(height)]->=0-[timeLabel(height)]-offset-[dateLabel(height)]-offset-[cityLabel(height)]-offset-[countryLabel(height)]-|"
-                                    options:0 metrics:metrics views:labels];
+                                    constraintsWithVisualFormat:@"V:|-[temperatureLabel(height)]-offset-[humidityLabel(height)]-offset-[summaryLabel(height)]->=0-[timeLabel(height)]-offset-[dateLabel(height)]-offset-[cityLabel(height)]-offset-[countryLabel(height)]-|"
+                                    options:0 metrics:metrics views:views];
     [allConstraints addObjectsFromArray:verticalConstraints];
     NSArray *horizontalConstraintsTemp = [NSLayoutConstraint
                                           constraintsWithVisualFormat:@"H:|->=0-[temperatureLabel]-|"
-                                          options:0 metrics:metrics views:labels];
+                                          options:0 metrics:metrics views:views];
     [allConstraints addObjectsFromArray:horizontalConstraintsTemp];
     NSArray *horizontalConstraintsHum = [NSLayoutConstraint
                                          constraintsWithVisualFormat:@"H:|->=0-[humidityLabel]-|"
-                                         options:0 metrics:metrics views:labels];
+                                         options:0 metrics:metrics views:views];
     [allConstraints addObjectsFromArray:horizontalConstraintsHum];
-    NSArray *horizontalConstraintsClouds = [NSLayoutConstraint
-                                            constraintsWithVisualFormat:@"H:|->=0-[cloudsLabel]-|"
-                                            options:0 metrics:metrics views:labels];
-    [allConstraints addObjectsFromArray:horizontalConstraintsClouds];
+    NSArray *horizontalConstraintsSummary = [NSLayoutConstraint
+                                             constraintsWithVisualFormat:@"H:|->=0-[summaryLabel]-|"
+                                             options:0 metrics:metrics views:views];
+    [allConstraints addObjectsFromArray:horizontalConstraintsSummary];
     NSArray *horizontalConstraintsTime = [NSLayoutConstraint
                                           constraintsWithVisualFormat:@"H:|-[timeLabel]->=0-|"
-                                          options:0 metrics:metrics views:labels];
+                                          options:0 metrics:metrics views:views];
     [allConstraints addObjectsFromArray:horizontalConstraintsTime];
     NSArray *horizontalConstraintsDate = [NSLayoutConstraint
                                           constraintsWithVisualFormat:@"H:|-[dateLabel]->=0-|"
-                                          options:0 metrics:metrics views:labels];
+                                          options:0 metrics:metrics views:views];
     [allConstraints addObjectsFromArray:horizontalConstraintsDate];
     NSArray *horizontalConstraintsCity = [NSLayoutConstraint
                                           constraintsWithVisualFormat:@"H:|-[cityLabel]->=0-|"
-                                          options:0 metrics:metrics views:labels];
+                                          options:0 metrics:metrics views:views];
     [allConstraints addObjectsFromArray:horizontalConstraintsCity];
     NSArray *horizontalConstraintsCountry = [NSLayoutConstraint
                                              constraintsWithVisualFormat:@"H:|-[countryLabel]->=0-|"
-                                             options:0 metrics:metrics views:labels];
+                                             options:0 metrics:metrics views:views];
     [allConstraints addObjectsFromArray:horizontalConstraintsCountry];
     
     [self addConstraints: allConstraints];
-
+    
 }
 
 @end
