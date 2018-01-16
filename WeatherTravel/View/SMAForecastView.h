@@ -18,7 +18,7 @@
 @property (nonatomic, strong) UIImageView *pictureView;
 @property (nonatomic, strong) UILabel *temperatureLabel;
 @property (nonatomic, strong) UILabel *humidityLabel;
-@property (nonatomic, strong) UILabel *cloudsLabel;
+@property (nonatomic, strong) UILabel *summaryWeatherLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UILabel *dateLabel;
 @property (nonatomic, strong) UILabel *cityLabel;

@@ -17,10 +17,10 @@
     self = [super init];
     if (self)
     {
-        self.picture = info[@"picture"];
+        self.image = info[@"image"];
         self.temperature = info[@"temperature"];
         self.humidity = info[@"humidity"];
-        self.clouds = info[@"clouds"];
+        self.summaryWeather = info[@"summary_weather"];
         self.time = info[@"time"];
         self.date = info[@"date"];
         self.city = info[@"city"];

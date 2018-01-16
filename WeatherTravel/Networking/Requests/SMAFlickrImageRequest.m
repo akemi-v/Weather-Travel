@@ -85,9 +85,9 @@
                                                     withURLComponents:(NSURLComponents *)urlComponents
 {
     NSString *projectWeatherGroupId = @"1463451@N25"; // Project Weather group ID
-    NSString *weatherString = parameters[@"weather"];
+    NSString *summaryString = parameters[@"summary_weather"];
     NSString *cityString = parameters[@"city"];
-    NSArray *tagsArray = @[weatherString, cityString];
+    NSArray *tagsArray = @[summaryString, cityString];
     NSString *tagsString = [tagsArray componentsJoinedByString:@","];
     
     NSURLQueryItem *tags = [NSURLQueryItem queryItemWithName:@"tags" value:tagsString];
@@ -102,9 +102,9 @@
 + (NSMutableURLRequest *)getUrlRequestPlaceWeatherWithParameters:(NSDictionary *)parameters
                                                withURLComponents:(NSURLComponents *)urlComponents
 {
-    NSString *weatherString = parameters[@"weather"];
+    NSString *summaryString = parameters[@"summary_weather"];
     NSString *cityString = parameters[@"city"];
-    NSArray *tagsArray = @[weatherString, cityString];
+    NSArray *tagsArray = @[summaryString, cityString];
     NSString *tagsString = [tagsArray componentsJoinedByString:@","];
     
     NSURLQueryItem *tags = [NSURLQueryItem queryItemWithName:@"tags" value:tagsString];

@@ -42,19 +42,19 @@
         return nil;
     }
     
-    NSString *clouds = currently[@"icon"];
-    if (!clouds)
+    NSString *summaryWeather = currently[@"icon"];
+    if (!summaryWeather)
     {
         NSLog(@"Отсутствует ключ icon");
         return nil;
     }
     
-    [clouds stringByReplacingOccurrencesOfString:@"-" withString:@" "];
+    summaryWeather = [summaryWeather stringByReplacingOccurrencesOfString:@"-" withString:@","];
     
     NSDictionary *weatherData = [NSDictionary dictionaryWithObjectsAndKeys:
                                  temperature, @"temperature",
                                  humidity, @"humidity",
-                                 clouds, @"clouds",
+                                 summaryWeather, @"summary_weather",
                                  nil];
     return weatherData;
 }

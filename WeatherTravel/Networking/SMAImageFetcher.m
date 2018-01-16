@@ -68,7 +68,8 @@
                                                            {
                                                                NSLog(@"Недостаточное число фотографий. Создается запрос для поиска вне группы");
                                                                NSMutableDictionary *newParameters = [parameters mutableCopy];
-                                                               newParameters[@"mode"] = [NSString stringWithFormat:@"%d", PlaceWeather];
+                                                               NSString *modeString = [NSString stringWithFormat:@"%d", PlaceWeather];
+                                                               [newParameters setObject:modeString forKey:@"mode"];
                                                                [self getImageWithPlaceWeatherRequest:newParameters completion:completionHandler];
                                                                return;
                                                            }
@@ -101,7 +102,8 @@
                                                            {
                                                                NSLog(@"Недостаточное число фотографий. Создается запрос для поиска без погоды");
                                                                NSMutableDictionary *newParameters = [parameters mutableCopy];
-                                                               newParameters[@"mode"] = [NSString stringWithFormat:@"%d", Place];
+                                                               NSString *modeString = [NSString stringWithFormat:@"%d", Place];
+                                                               [newParameters setObject:modeString forKey:@"mode"];
                                                                [self getImageWithPlaceRequest:newParameters completion:completionHandler];
                                                                return;
                                                            }
