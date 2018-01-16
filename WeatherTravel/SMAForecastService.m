@@ -59,10 +59,10 @@
             [forecastInfo setObject:weatherData[@"summary_weather"] forKey:@"summary_weather"];
             [forecastInfo setObject:timeString forKey:@"time"];
             [forecastInfo setObject:dateString forKey:@"date"];
-            [forecastInfo setObject:cityName forKey:@"city"];
-            [forecastInfo setObject:@"COUNTRY????" forKey:@"country"];
+            [forecastInfo setObject:coordinates[@"city"] forKey:@"city"];
+            [forecastInfo setObject:coordinates[@"country"] forKey:@"country"];
             NSMutableDictionary *parameters = [weatherData mutableCopy];
-            [parameters setObject:cityName forKey:@"city"];
+            [parameters setObject:coordinates[@"city"] forKey:@"city"];
             [self.imageFetcher getImageURLsWithParameters:parameters completion:^(NSDictionary *imageURLs) {
                 [self.imageLoader loadImageFromRemoteURL:imageURLs[@"url_orig"] completion:^(UIImage *image) {
                     [forecastInfo setObject:image forKey:@"image"];
