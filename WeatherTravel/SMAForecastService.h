@@ -23,6 +23,7 @@
  Метод, возвращающий SMAForecastModel для города
 
  @param cityName Название города
+ @param completionHandler Блок, выполняемый после получения координат
  */
 - (void)getForecastForCity:(NSString *)cityName completion:(void (^)(SMAForecastModel *model))completionHandler;
 
