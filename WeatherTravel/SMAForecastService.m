@@ -64,12 +64,11 @@
             NSMutableDictionary *parameters = [weatherData mutableCopy];
             [parameters setObject:coordinates[@"city"] forKey:@"city"];
             [self.imageFetcher getImageURLsWithParameters:parameters completion:^(NSDictionary *imageURLs) {
-                [self.imageLoader loadImageFromRemoteURL:imageURLs[@"url_orig"] completion:^(UIImage *image) {
-                    [forecastInfo setObject:image forKey:@"image"];
-                    
-                    SMAForecastModel *model = [[SMAForecastModel alloc] initWithForecastInfo:forecastInfo];
-                    completionHandler(model);
-                }];
+                [forecastInfo setObject:imageURLs[@"url_orig"] forKey:@"url_orig"];
+                [forecastInfo setObject:imageURLs[@"url_square"] forKey:@"url_square"];
+                
+                SMAForecastModel *model = [[SMAForecastModel alloc] initWithForecastInfo:forecastInfo];
+                completionHandler(model);
             }];
         }];
     }];

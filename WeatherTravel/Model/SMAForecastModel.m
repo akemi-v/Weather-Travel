@@ -17,7 +17,6 @@
     self = [super init];
     if (self)
     {
-        self.image = info[@"image"];
         self.temperature = info[@"temperature"];
         self.humidity = info[@"humidity"];
         self.summaryWeather = info[@"summary_weather"];
@@ -25,6 +24,8 @@
         self.date = info[@"date"];
         self.city = info[@"city"];
         self.country = info[@"country"];
+        self.urlOrigImage = info[@"url_orig"];
+        self.urlSquareImage = info[@"url_square"];
     }
     return self;
 }

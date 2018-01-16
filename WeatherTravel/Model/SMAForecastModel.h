@@ -14,7 +14,6 @@
  */
 @interface SMAForecastModel : NSObject
 
-@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSString *temperature;
 @property (nonatomic, strong) NSString *humidity;
 @property (nonatomic, strong) NSString *summaryWeather;
@@ -22,6 +21,8 @@
 @property (nonatomic, strong) NSString *date;
 @property (nonatomic, strong) NSString *city;
 @property (nonatomic, strong) NSString *country;
+@property (nonatomic, strong) NSString *urlOrigImage;
+@property (nonatomic, strong) NSString *urlSquareImage;
 
 /**
  Инициализация модели
