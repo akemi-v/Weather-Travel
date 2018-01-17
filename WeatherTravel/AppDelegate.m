@@ -28,9 +28,13 @@
     
     UITabBarItem *rightTabBarItem = [[UITabBarItem alloc]initWithTabBarSystemItem:UITabBarSystemItemHistory tag:1];
     SMAHistoryViewController *historyViewController = [SMAHistoryViewController new];
-    historyViewController.tabBarItem = rightTabBarItem;
+    UINavigationController *historyNavigationController = [[UINavigationController alloc]
+                                                           initWithRootViewController:historyViewController];
+    historyNavigationController.navigationItem.title = @"История";
+    historyNavigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    historyNavigationController.tabBarItem = rightTabBarItem;
     
-    tabBarController.viewControllers = @[searchViewController, historyViewController];
+    tabBarController.viewControllers = @[searchViewController, historyNavigationController];
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

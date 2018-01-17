@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ Вьюконтроллер, который принимает показывает историю запросов погоды
+ */
 @interface SMAHistoryViewController : UIViewController
 
 @end

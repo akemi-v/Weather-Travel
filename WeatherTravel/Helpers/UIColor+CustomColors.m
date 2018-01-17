@@ -30,4 +30,9 @@
     return [UIColor colorWithRed:0.38 green:0.53 blue:0.52 alpha:1.0];
 }
 
++ (UIColor *)customDarkBlue
+{
+    return [UIColor colorWithRed:0.14 green:0.27 blue:0.26 alpha:1.0];
+}
+
 @end
