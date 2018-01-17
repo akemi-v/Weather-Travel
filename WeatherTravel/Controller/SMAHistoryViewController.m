@@ -18,6 +18,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
 @interface SMAHistoryViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, copy) NSMutableArray *forecasts;
 
 @end
 
@@ -36,10 +37,6 @@ static const CGFloat SMAItemsPerRow = 3.f;
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-//    CGRect viewBounds = self.view.bounds;
-//    CGFloat topBarOffset = self.topLayoutGuide.length;
-//    viewBounds.origin.y = -topBarOffset;
-//    self.view.bounds = viewBounds;
     [self setupConstraints];
 }
 
@@ -59,6 +56,12 @@ static const CGFloat SMAItemsPerRow = 3.f;
 {
     self.title = @"История";
     self.view.backgroundColor = UIColor.customDarkBlue;
+    
+    CGRect viewBounds = self.view.bounds;
+    CGFloat topBarOffset = self.topLayoutGuide.length;
+    viewBounds.origin.y = -topBarOffset;
+    self.view.bounds = viewBounds;
+    
     [self setupCollectionView];
     [self setupConstraints];
 }
@@ -83,11 +86,6 @@ static const CGFloat SMAItemsPerRow = 3.f;
 
 - (void)setupConstraints
 {
-    CGRect viewBounds = self.view.bounds;
-    CGFloat topBarOffset = self.topLayoutGuide.length;
-    viewBounds.origin.y = -topBarOffset;
-    self.view.bounds = viewBounds;
-    
     NSMutableArray *allConstraints = [NSMutableArray array];
     NSDictionary *views = @{@"collectionView": self.collectionView};
     NSDictionary *metrics = @{

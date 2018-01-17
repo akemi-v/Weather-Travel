@@ -15,6 +15,7 @@
 @interface SMAHistoryCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) UILabel *cityLabel;
+@property (nonatomic, strong) UILabel *dateLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UIImageView *imageView;
 
