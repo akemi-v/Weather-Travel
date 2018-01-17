@@ -131,6 +131,8 @@ static const CGFloat SMASearchFieldHeight = 50.f;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [textField resignFirstResponder];
+    
     [self.forecastService getForecastForCity:textField.text completion:^(SMAForecastModel *model) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.forecastView setupWithForecastModel:model];
