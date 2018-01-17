@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SMAForecastModel.h"
 
 
 /**
@@ -18,5 +19,7 @@
 @property (nonatomic, strong) UILabel *dateLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UIImageView *imageView;
+
+- (void)configureWithForecastModel:(SMAForecastModel *)model;
 
 @end

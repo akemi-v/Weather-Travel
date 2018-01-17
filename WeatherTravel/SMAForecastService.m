@@ -34,7 +34,7 @@
     return self;
 }
 
-- (void)getForecastForCity:(NSString *)cityName completion:(void (^)(SMAForecastModel *model))completionHandler
+- (void)getForecastForCityOnline:(NSString *)cityName completion:(void (^)(SMAForecastModel *model))completionHandler
 {
     __block NSMutableDictionary *forecastInfo = [NSMutableDictionary new];
     [self.geocoder getCoordinatesFromCityName:cityName completion:^(NSDictionary *coordinates) {
@@ -72,7 +72,10 @@
             }];
         }];
     }];
+}
 
+- (void)getForecastHistoryCompletion:(void (^)(NSArray *forecastModels))completionHandler
+{
     
 }
 
