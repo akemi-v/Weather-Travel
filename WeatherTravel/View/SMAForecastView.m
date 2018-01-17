@@ -45,8 +45,8 @@ static const CGFloat SMAForecastOffset = 8.f;
     });
     NSDictionary *strokeTextAttributes = @{
                                            NSFontAttributeName: [UIFont boldSystemFontOfSize:25.f],
-                                           NSStrokeColorAttributeName: [UIColor blackColor],
-                                           NSForegroundColorAttributeName: [UIColor whiteColor],
+                                           NSStrokeColorAttributeName: UIColor.blackColor,
+                                           NSForegroundColorAttributeName: UIColor.whiteColor,
                                            NSStrokeWidthAttributeName: @-3.0
                                            };
     
@@ -79,7 +79,7 @@ static const CGFloat SMAForecastOffset = 8.f;
 - (void)setupUI
 {
     
-    self.backgroundColor = [UIColor customPaleBlue];
+    self.backgroundColor = UIColor.customPaleBlue;
     
     self.pictureView = [UIImageView new];
     self.pictureView.translatesAutoresizingMaskIntoConstraints = NO;

@@ -88,7 +88,7 @@ static const CGFloat SMASearchFieldHeight = 50.f;
  */
 - (void)setupUI
 {
-    self.view.backgroundColor = [UIColor customBlue];
+    self.view.backgroundColor = UIColor.customBlue;
     [self setupSearchField];
 }
 
