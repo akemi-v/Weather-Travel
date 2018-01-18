@@ -89,6 +89,7 @@
                 
                 dispatch_group_notify(loadImagesGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     SMAForecastModel *model = [[SMAForecastModel alloc] initWithForecastInfo:forecastInfo];
+                    [SMACoreDataService insertForecast:model];
                     completionHandler(model);
                 });
             }];
