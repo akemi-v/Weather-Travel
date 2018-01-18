@@ -63,7 +63,7 @@ static const CGFloat SMAForecastOffset = 8.f;
                                                initWithString:model.summaryWeather
                                                attributes:strokeTextAttributes];
     self.timeLabel.attributedText = [[NSAttributedString alloc]
-                                     initWithString:model.time
+                                     initWithString:[NSString stringWithFormat:@"%@ (local)", model.time]
                                      attributes:strokeTextAttributes];
     self.dateLabel.attributedText = [[NSAttributedString alloc]
                                      initWithString:model.date
