@@ -50,8 +50,10 @@ static const CGFloat SMAForecastOffset = 8.f;
                                            NSStrokeWidthAttributeName: @-3.0
                                            };
     
-    [self.imageLoader loadImageFromRemoteURL:model.urlOrigImage completion:^(UIImage *image) {
-        self.pictureView.image = image;
+    [self.imageLoader loadImageFromFileURL:model.urlOrigImage completion:^(UIImage *image) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.pictureView.image = image;
+        });
     }];
     self.temperatureLabel.attributedText = [[NSAttributedString alloc]
                                             initWithString: [NSString stringWithFormat:@"%@ °C", model.temperature]

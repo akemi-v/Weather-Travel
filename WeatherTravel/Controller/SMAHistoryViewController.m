@@ -119,7 +119,6 @@ static const CGFloat SMAItemsPerRow = 3.f;
     
     
     cell.backgroundColor = UIColor.customBlue;
-//    cell.cityLabel.text = @"City";
     [cell configureWithForecastModel:self.forecasts[indexPath.row]];
     return cell;
 }

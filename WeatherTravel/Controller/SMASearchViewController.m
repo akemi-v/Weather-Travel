@@ -54,18 +54,7 @@ static const CGFloat SMASearchFieldHeight = 50.f;
     dispatch_once(&once, ^{
         [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.searchField.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), SMASearchFieldHeight);
-            
-//            SMAForecastModel *model = [[SMAForecastModel alloc] initWithForecastInfo: @{
-//                                                                                       @"temperature": @"-100",
-//                                                                                       @"humidity": @"50%",
-//                                                                                       @"summary_weather": @"overcast",
-//                                                                                       @"time": @"00:00",
-//                                                                                       @"date": @"today",
-//                                                                                       @"city": @"Moscow",
-//                                                                                       @"country": @"Russia"
-//                                                                                       }];
             self.forecastView = [SMAForecastView new];
-//            [self.forecastView setupWithForecastModel:model];
             self.forecastView.translatesAutoresizingMaskIntoConstraints = NO;
             self.forecastView.layer.opacity = 0.f;
             [self.view addSubview:self.forecastView];            
