@@ -34,6 +34,7 @@
     historyNavigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     historyNavigationController.tabBarItem = rightTabBarItem;
     
+    searchViewController.delegate = historyViewController;
     tabBarController.viewControllers = @[searchViewController, historyNavigationController];
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];

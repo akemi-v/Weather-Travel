@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SMASearchViewControllerDelegateProtocol.h"
 
 /**
  Вьюконтроллер, который принимает показывает историю запросов погоды
  */
-@interface SMAHistoryViewController : UIViewController
+@interface SMAHistoryViewController : UIViewController <SMASearchViewControllerDelegate>
+
+- (void)reloadData;
 
 @end

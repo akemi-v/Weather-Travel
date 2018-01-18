@@ -28,7 +28,6 @@ static const CGFloat SMASearchFieldHeight = 50.f;
 @property (nonatomic, strong) SMAForecastService *forecastService;
 @property (nonatomic, strong) SMAImageLoader *imageLoader;
 
-
 @end
 
 
@@ -129,6 +128,7 @@ static const CGFloat SMASearchFieldHeight = 50.f;
         [self.forecastView setupWithForecastModel:model];
         [self.imageLoader loadImageFromFileURL:model.urlOrigImage completion:^(UIImage *image) {
             self.forecastView.pictureView.image = image;
+            [self.delegate reload];
         }];
     }];
     

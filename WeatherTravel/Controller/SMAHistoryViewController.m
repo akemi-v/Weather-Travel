@@ -36,16 +36,24 @@ static const CGFloat SMAItemsPerRow = 3.f;
     self.forecastService = [SMAForecastService new];
     self.imageLoader = [SMAImageLoader new];
     [self setupUI];
-    [self.forecastService getForecastsHistoryCompletion:^(NSArray<SMAForecastModel *> *models) {
-        self.forecasts = [models mutableCopy];
-        [self.collectionView reloadData];
-    }];
+//    [self.forecastService getForecastsHistoryCompletion:^(NSArray<SMAForecastModel *> *models) {
+//        self.forecasts = [models mutableCopy];
+//        [self.collectionView reloadData];
+//    }];
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     [self setupConstraints];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.forecastService getForecastsHistoryCompletion:^(NSArray<SMAForecastModel *> *models) {
+        self.forecasts = [models mutableCopy];
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,6 +120,13 @@ static const CGFloat SMAItemsPerRow = 3.f;
     [self.view setNeedsLayout];
 }
 
+- (void)reloadData
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.collectionView reloadData];
+    });
+}
+
 
 #pragma mark - UICollectionViewDataSource
 
@@ -156,5 +171,18 @@ static const CGFloat SMAItemsPerRow = 3.f;
 {
     [self.collectionView.collectionViewLayout invalidateLayout];
 }
+
+#pragma mark - SMASeatchViewControllerDelegate
+
+- (void)reload
+{
+    [self.forecastService getForecastsHistoryCompletion:^(NSArray<SMAForecastModel *> *models) {
+        self.forecasts = [models mutableCopy];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView reloadData];
+        });
+    }];
+}
+
 
 @end
