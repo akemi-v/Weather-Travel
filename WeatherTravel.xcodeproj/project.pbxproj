@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1847A2C720096575000953E3 /* SMAImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2C620096575000953E3 /* SMAImageLoader.m */; };
 		1847A2CA200CDEB7000953E3 /* SMAForecastService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2C9200CDEB7000953E3 /* SMAForecastService.m */; };
+		1847A2DA2010138E000953E3 /* SMACoreDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2D92010138E000953E3 /* SMACoreDataService.m */; };
+		1847A2DD201013BA000953E3 /* SMACoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2DC201013BA000953E3 /* SMACoreDataStack.m */; };
 		18D82CCC1FF901F70073BC4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CCB1FF901F70073BC4B /* AppDelegate.m */; };
 		18D82CD51FF901F70073BC4B /* WeatherTravel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CD31FF901F70073BC4B /* WeatherTravel.xcdatamodeld */; };
 		18D82CD71FF901F70073BC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D82CD61FF901F70073BC4B /* Assets.xcassets */; };
@@ -47,6 +49,10 @@
 		1847A2C620096575000953E3 /* SMAImageLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAImageLoader.m; sourceTree = "<group>"; };
 		1847A2C8200CDEB7000953E3 /* SMAForecastService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAForecastService.h; sourceTree = "<group>"; };
 		1847A2C9200CDEB7000953E3 /* SMAForecastService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastService.m; sourceTree = "<group>"; };
+		1847A2D82010138E000953E3 /* SMACoreDataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMACoreDataService.h; sourceTree = "<group>"; };
+		1847A2D92010138E000953E3 /* SMACoreDataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMACoreDataService.m; sourceTree = "<group>"; };
+		1847A2DB201013BA000953E3 /* SMACoreDataStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMACoreDataStack.h; sourceTree = "<group>"; };
+		1847A2DC201013BA000953E3 /* SMACoreDataStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMACoreDataStack.m; sourceTree = "<group>"; };
 		18D82CC71FF901F70073BC4B /* WeatherTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D82CCA1FF901F70073BC4B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18D82CCB1FF901F70073BC4B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -110,6 +116,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1847A2D7200FF578000953E3 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				1847A2D82010138E000953E3 /* SMACoreDataService.h */,
+				1847A2D92010138E000953E3 /* SMACoreDataService.m */,
+				1847A2DB201013BA000953E3 /* SMACoreDataStack.h */,
+				1847A2DC201013BA000953E3 /* SMACoreDataStack.m */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		18C8B3852002359F00F554D6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +232,7 @@
 		18D82CC91FF901F70073BC4B /* WeatherTravel */ = {
 			isa = PBXGroup;
 			children = (
+				1847A2D7200FF578000953E3 /* Core Data */,
 				18C8B3892002364100F554D6 /* Networking */,
 				18C8B388200235F100F554D6 /* Helpers */,
 				18C8B3852002359F00F554D6 /* Model */,
@@ -347,11 +365,13 @@
 			files = (
 				18D82CD51FF901F70073BC4B /* WeatherTravel.xcdatamodeld in Sources */,
 				18D82CDD1FF901F70073BC4B /* main.m in Sources */,
+				1847A2DA2010138E000953E3 /* SMACoreDataService.m in Sources */,
 				18E301A92002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m in Sources */,
 				18E301AC2003832900B5F7ED /* SMAWeatherFetcher.m in Sources */,
 				18E301B62006476400B5F7ED /* SMAImageFetcher.m in Sources */,
 				18D82CF31FF923EC0073BC4B /* SMASearchViewController.m in Sources */,
 				18D82CF61FF92EE30073BC4B /* SMALocationSearchField.m in Sources */,
+				1847A2DD201013BA000953E3 /* SMACoreDataStack.m in Sources */,
 				18D82CCC1FF901F70073BC4B /* AppDelegate.m in Sources */,
 				1847A2C720096575000953E3 /* SMAImageLoader.m in Sources */,
 				18D82D021FFBD6D20073BC4B /* UIColor+CustomColors.m in Sources */,

@@ -15,7 +15,7 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"Forecast"];
 }
 
-@dynamic id;
+@dynamic idString;
 @dynamic temperature;
 @dynamic humidity;
 @dynamic summaryWeather;

@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<Forecast *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSString *id;
+@property (nullable, nonatomic, copy) NSString *idString;
 @property (nullable, nonatomic, copy) NSString *temperature;
 @property (nullable, nonatomic, copy) NSString *humidity;
 @property (nullable, nonatomic, copy) NSString *summaryWeather;
