@@ -26,8 +26,6 @@
  @param completionHandler Блок, выполняемый после получения названия города
  */
 - (void)getForecastForCityOnline:(NSString *)cityName completion:(void (^)(SMAForecastModel *model))completionHandler;
-- (void)getForecastHistoryCompletion:(void (^)(NSArray *forecastModels))completionHandler;
-
 
 /**
  Метод, возвращающий историю прогнозов

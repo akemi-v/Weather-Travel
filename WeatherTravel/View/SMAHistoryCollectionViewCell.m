@@ -38,6 +38,7 @@ static const CGFloat SMACollectionViewCellOffset = 5.f;
         self.dateLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [self.contentView addSubview:self.dateLabel];
         self.imageView = [UIImageView new];
+        self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
         [self.contentView addSubview:self.imageView];
         
         [self setupConstraints];
@@ -61,11 +62,11 @@ static const CGFloat SMACollectionViewCellOffset = 5.f;
                             @"cityLabel": self.cityLabel
                             };
     NSArray *verticalConstraintsImageView = [NSLayoutConstraint
-                                    constraintsWithVisualFormat:@"V:|imageView|"
+                                    constraintsWithVisualFormat:@"V:|[imageView]|"
                                     options:0 metrics:metrics views:views];
     [allConstraints addObjectsFromArray:verticalConstraintsImageView];
     NSArray *horizontalConstraintsImageView = [NSLayoutConstraint
-                                       constraintsWithVisualFormat:@"H:|imageView|"
+                                       constraintsWithVisualFormat:@"H:|[imageView]|"
                                        options:0 metrics:metrics views:views];
     [allConstraints addObjectsFromArray:horizontalConstraintsImageView];
     NSArray *verticalConstraints = [NSLayoutConstraint

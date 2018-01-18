@@ -36,7 +36,7 @@
     SMACoreDataStack *stack = [SMACoreDataStack sharedInstance];
     NSManagedObjectContext *context = stack.backgroundContext;
     __block NSArray<Forecast *> *forecasts = nil;
-    [context performBlock:^{
+    [context performBlockAndWait:^{
         NSFetchRequest *fetchRequest = [Forecast fetchRequest];
         NSSortDescriptor *dateSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
         NSSortDescriptor *timeSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES];

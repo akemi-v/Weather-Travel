@@ -9,6 +9,7 @@
 #import "SMAHistoryViewController.h"
 #import "SMAHistoryCollectionViewCell.h"
 #import "UIColor+CustomColors.h"
+#import "SMAForecastService.h"
 
 static NSString *const SMAHistoryCollectionViewID = @"SMAHistoryCollectionViewCell";
 static const CGFloat SMACollectionViewOffset = 2.f;
@@ -18,7 +19,8 @@ static const CGFloat SMAItemsPerRow = 3.f;
 @interface SMAHistoryViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, copy) NSMutableArray *forecasts;
+@property (nonatomic, copy) NSMutableArray <SMAForecastModel *> *forecasts;
+@property (nonatomic, strong) SMAForecastService *forecastService;
 
 @end
 
@@ -30,8 +32,12 @@ static const CGFloat SMAItemsPerRow = 3.f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.forecastService = [SMAForecastService new];
     [self setupUI];
+    [self.forecastService getForecastsHistoryCompletion:^(NSArray<SMAForecastModel *> *models) {
+        self.forecasts = [models mutableCopy];
+        [self.collectionView reloadData];
+    }];
 }
 
 - (void)viewDidLayoutSubviews
