@@ -18,14 +18,24 @@ static const CGFloat SMAForecastOffset = 8.f;
 @implementation SMAForecastView
 
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+        [self setupUI];
+    }
+    return self;
+}
+
 #pragma mark - UI
 
 - (void)setupWithForecastModel:(SMAForecastModel *)model
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [self setupUI];
-    });
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        [self setupUI];
+//    });
     NSDictionary *strokeTextAttributes = @{
                                            NSFontAttributeName: [UIFont boldSystemFontOfSize:25.f],
                                            NSStrokeColorAttributeName: UIColor.blackColor,

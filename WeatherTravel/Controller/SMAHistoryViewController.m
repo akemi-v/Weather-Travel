@@ -13,6 +13,7 @@
 
 static NSString *const SMAHistoryCollectionViewID = @"SMAHistoryCollectionViewCell";
 static const CGFloat SMACollectionViewOffset = 2.f;
+static const CGFloat SMAForecastOffset = 20.f;
 static const CGFloat SMAItemsPerRow = 3.f;
 
 
@@ -36,15 +37,23 @@ static const CGFloat SMAItemsPerRow = 3.f;
     self.forecastService = [SMAForecastService new];
     self.imageLoader = [SMAImageLoader new];
     [self setupUI];
-//    [self.forecastService getForecastsHistoryCompletion:^(NSArray<SMAForecastModel *> *models) {
-//        self.forecasts = [models mutableCopy];
-//        [self.collectionView reloadData];
-//    }];
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    CGRect viewBounds = self.view.bounds;
+    CGFloat topBarOffset = self.topLayoutGuide.length;
+    viewBounds.origin.y = -topBarOffset;
+    self.view.bounds = viewBounds;
+    
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        self.forecastView = [SMAForecastView new];
+        self.forecastView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.forecastView.layer.opacity = 0.f;
+        [self.view addSubview:self.forecastView];
+    });
     [self setupConstraints];
 }
 
@@ -72,14 +81,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
 {
     self.title = @"История";
     self.view.backgroundColor = UIColor.customDarkBlue;
-    
-    CGRect viewBounds = self.view.bounds;
-    CGFloat topBarOffset = self.topLayoutGuide.length;
-    viewBounds.origin.y = -topBarOffset;
-    self.view.bounds = viewBounds;
-    
     [self setupCollectionView];
-    [self setupConstraints];
 }
 
 - (void)setupCollectionView
@@ -102,10 +104,17 @@ static const CGFloat SMAItemsPerRow = 3.f;
 
 - (void)setupConstraints
 {
+    CGFloat topForecastOffset = SMAForecastOffset;
+    CGFloat bottomForecastOffset = CGRectGetHeight(self.tabBarController.tabBar.frame) + self.topLayoutGuide.length + SMAForecastOffset;
     NSMutableArray *allConstraints = [NSMutableArray array];
-    NSDictionary *views = @{@"collectionView": self.collectionView};
+    NSDictionary *views = @{@"collectionView": self.collectionView,
+                            @"forecastView": self.forecastView
+                            };
     NSDictionary *metrics = @{
-                              @"offset": [[NSNumber alloc] initWithFloat:SMACollectionViewOffset]
+                              @"offset": [[NSNumber alloc] initWithFloat:SMACollectionViewOffset],
+                              @"topForecastOffset": [[NSNumber alloc] initWithFloat:topForecastOffset],
+                              @"bottomForecastOffset": [[NSNumber alloc] initWithFloat:bottomForecastOffset],
+                              @"forecastSideOffset": [[NSNumber alloc] initWithFloat:SMAForecastOffset]
                               };
     NSArray *verticalConstraints = [NSLayoutConstraint
                                     constraintsWithVisualFormat:@"V:|-offset-[collectionView]-offset-|"
@@ -115,6 +124,15 @@ static const CGFloat SMAItemsPerRow = 3.f;
                                       constraintsWithVisualFormat:@"H:|[collectionView]|"
                                       options:0 metrics:nil views:views];
     [allConstraints addObjectsFromArray:horizontalConstraints];
+    
+    NSArray *verticalConstraintsForecastView = [NSLayoutConstraint
+                                                constraintsWithVisualFormat:@"V:|-topForecastOffset-[forecastView]-bottomForecastOffset-|"
+                                                options:0 metrics:metrics views:views];
+    [allConstraints addObjectsFromArray:verticalConstraintsForecastView];
+    NSArray *horizontalConstraintsForecastView = [NSLayoutConstraint
+                                                  constraintsWithVisualFormat:@"H:|-forecastSideOffset-[forecastView]-forecastSideOffset-|"
+                                                  options:0 metrics:metrics views:views];
+    [allConstraints addObjectsFromArray:horizontalConstraintsForecastView];
     
     [self.view addConstraints:allConstraints];
     [self.view setNeedsLayout];
@@ -154,6 +172,36 @@ static const CGFloat SMAItemsPerRow = 3.f;
     return 1;
 }
 
+
+#pragma mark - UICollectionViewDataSource
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    SMAForecastModel *model = self.forecasts[indexPath.row];
+    self.forecastView.layer.opacity = 0.1f;
+    [self.forecastView setupWithForecastModel:model];
+    [self.imageLoader loadImageFromFileURL:model.urlOrigImage completion:^(UIImage *image) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.forecastView.layer.opacity = 0.1f;
+            self.forecastView.transform = CGAffineTransformMakeScale(0.05f, 0.05f);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.5 animations:^{
+                self.forecastView.layer.opacity = 1.f;
+                self.forecastView.transform = CGAffineTransformIdentity;
+                self.forecastView.pictureView.image = image;
+                self.forecastView.pictureView.clipsToBounds = YES;
+                for (id obj in self.view.subviews)
+                {
+                    UIView *view = (UIView *)obj;
+                    if (![view isKindOfClass:[SMAForecastView class]])
+                    {
+                        view.layer.opacity = 0.2f;
+                    }
+                }
+            }];
+        }];
+    }];
+}
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 

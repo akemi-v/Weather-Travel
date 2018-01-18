@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "SMASearchViewControllerDelegateProtocol.h"
+#import "SMAForecastView.h"
 
 /**
  Вьюконтроллер, который принимает показывает историю запросов погоды
  */
 @interface SMAHistoryViewController : UIViewController <SMASearchViewControllerDelegate>
+
+/**
+ Вью, который отображает прогноз и фотографию
+ */
+@property (nonatomic, strong) SMAForecastView *forecastView;
 
 - (void)reloadData;
 
