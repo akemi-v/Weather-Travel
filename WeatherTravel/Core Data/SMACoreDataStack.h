@@ -12,9 +12,9 @@
 @interface SMACoreDataStack : NSObject
 
 @property (nonatomic, strong, readonly) NSPersistentContainer *persistentContainer;
-//@property (nonatomic, strong, readonly) NSManagedObjectContext *masterContext;
-//@property (nonatomic, strong, readonly) NSManagedObjectContext *mainContext;
-//@property (nonatomic, strong, readonly) NSManagedObjectContext *backgroundContext;
+@property (nonatomic, strong, readonly) NSManagedObjectContext *masterContext;
+@property (nonatomic, strong, readonly) NSManagedObjectContext *mainContext;
+@property (nonatomic, strong, readonly) NSManagedObjectContext *backgroundContext;
 
 + (instancetype)sharedInstance;
 - (void)saveContext:(NSManagedObjectContext *)context;

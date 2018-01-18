@@ -14,7 +14,7 @@
 
 @interface SMACoreDataService : NSObject
 
-+ (void)insertForecast:(SMAForecastModel *)forecastModel inContext:(NSManagedObjectContext *)context;
-+ (NSArray <Forecast *> *)fetchHistoryForecastsInContext:(NSManagedObjectContext *)context;
++ (void)insertForecast:(SMAForecastModel *)forecastModel;
++ (NSArray <Forecast *> *)fetchHistoryForecasts;
 
 @end

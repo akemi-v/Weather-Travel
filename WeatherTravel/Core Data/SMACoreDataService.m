@@ -10,9 +10,10 @@
 
 @implementation SMACoreDataService
 
-+ (void)insertForecast:(SMAForecastModel *)forecastModel inContext:(NSManagedObjectContext *)context
++ (void)insertForecast:(SMAForecastModel *)forecastModel
 {
     SMACoreDataStack *stack = [SMACoreDataStack sharedInstance];
+    NSManagedObjectContext *context = stack.masterContext;
     Forecast *forecast = [[Forecast alloc] initWithContext:context];
     forecast.idString = [self randomId];
     forecast.temperature = forecastModel.temperature;
@@ -30,8 +31,10 @@
     }];
 }
 
-+ (NSArray <Forecast *> *)fetchHistoryForecastsInContext:(NSManagedObjectContext *)context
++ (NSArray <Forecast *> *)fetchHistoryForecasts
 {
+    SMACoreDataStack *stack = [SMACoreDataStack sharedInstance];
+    NSManagedObjectContext *context = stack.backgroundContext;
     __block NSArray<Forecast *> *forecasts = nil;
     [context performBlock:^{
         NSFetchRequest *fetchRequest = [Forecast fetchRequest];
