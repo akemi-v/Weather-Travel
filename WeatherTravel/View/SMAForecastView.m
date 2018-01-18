@@ -15,25 +15,8 @@ static const CGFloat SMAForecastLabelHeight = 25.f;
 static const CGFloat SMAForecastOffset = 8.f;
 
 
-@interface SMAForecastView ()
-
-@property (nonatomic, strong) SMAImageLoader *imageLoader;
-
-@end
-
 @implementation SMAForecastView
 
-#pragma mark - init
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self)
-    {
-        self.imageLoader = [SMAImageLoader new];
-    }
-    return self;
-}
 
 #pragma mark - UI
 
@@ -50,11 +33,6 @@ static const CGFloat SMAForecastOffset = 8.f;
                                            NSStrokeWidthAttributeName: @-3.0
                                            };
     
-    [self.imageLoader loadImageFromFileURL:model.urlOrigImage completion:^(UIImage *image) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.pictureView.image = image;
-        });
-    }];
     self.temperatureLabel.attributedText = [[NSAttributedString alloc]
                                             initWithString: [NSString stringWithFormat:@"%@ °C", model.temperature]
                                             attributes:strokeTextAttributes];

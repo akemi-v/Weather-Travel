@@ -97,6 +97,12 @@ static const CGFloat SMACollectionViewCellOffset = 5.f;
                                            NSForegroundColorAttributeName: UIColor.whiteColor,
                                            NSStrokeWidthAttributeName: @-3.0
                                            };
+    NSDictionary *strokeTextAttributesSmall = @{
+                                           NSFontAttributeName: [UIFont boldSystemFontOfSize:17.f],
+                                           NSStrokeColorAttributeName: UIColor.blackColor,
+                                           NSForegroundColorAttributeName: UIColor.whiteColor,
+                                           NSStrokeWidthAttributeName: @-2.0
+                                           };
     
     [self.imageLoader loadImageFromFileURL:model.urlSquareImage completion:^(UIImage *image) {
         self.imageView.image = image;
@@ -104,10 +110,10 @@ static const CGFloat SMACollectionViewCellOffset = 5.f;
 
     self.timeLabel.attributedText = [[NSAttributedString alloc]
                                      initWithString:model.time
-                                     attributes:strokeTextAttributes];
+                                     attributes:strokeTextAttributesSmall];
     self.dateLabel.attributedText = [[NSAttributedString alloc]
                                      initWithString:model.date
-                                     attributes:strokeTextAttributes];
+                                     attributes:strokeTextAttributesSmall];
     self.cityLabel.attributedText = [[NSAttributedString alloc]
                                      initWithString:model.city
                                      attributes:strokeTextAttributes];

@@ -26,6 +26,8 @@ static const CGFloat SMASearchFieldHeight = 50.f;
  Сервис, составляющий модель прогноза
  */
 @property (nonatomic, strong) SMAForecastService *forecastService;
+@property (nonatomic, strong) SMAImageLoader *imageLoader;
+
 
 @end
 
@@ -40,6 +42,7 @@ static const CGFloat SMASearchFieldHeight = 50.f;
     [super viewDidLoad];
     [self setupUI];
     self.forecastService = [SMAForecastService new];
+    self.imageLoader = [SMAImageLoader new];
 }
 
 - (void)viewDidLayoutSubviews
@@ -123,9 +126,10 @@ static const CGFloat SMASearchFieldHeight = 50.f;
     [textField resignFirstResponder];
     
     [self.forecastService getForecastForCityOnline:textField.text completion:^(SMAForecastModel *model) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.forecastView setupWithForecastModel:model];
-        });
+        [self.forecastView setupWithForecastModel:model];
+        [self.imageLoader loadImageFromFileURL:model.urlOrigImage completion:^(UIImage *image) {
+            self.forecastView.pictureView.image = image;
+        }];
     }];
     
     [UIView animateWithDuration:0.5 animations:^{
