@@ -8,6 +8,8 @@
 
 #import "SMAForecastService.h"
 #import "SMAForecastModel.h"
+#import "SMACoreDataService.h"
+//#import "Forecast+CoreDataProperties.h"
 
 
 @interface SMAForecastService ()
@@ -72,8 +74,34 @@
             }];
         }];
     }];
+}
 
-    
+- (void)getForecastsHistoryCompletion:(void (^)(NSArray <SMAForecastModel *> *models))completionHandler
+{
+    NSArray <Forecast *> *forecasts = [SMACoreDataService fetchHistoryForecasts];
+    if (!forecasts)
+    {
+        NSLog(@"Нет данных в истории");
+        return;
+    }
+    NSMutableArray <SMAForecastModel *> *models = [NSMutableArray new];
+    for (id forecast in forecasts)
+    {
+        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [forecast valueForKey:@"temperature"], @"temperature",
+                                    [forecast valueForKey:@"humidity"], @"humidity",
+                                    [forecast valueForKey:@"summaryWeather"], @"summary_weather",
+                                    [forecast valueForKey:@"time"], @"time",
+                                    [forecast valueForKey:@"date"], @"date",
+                                    [forecast valueForKey:@"city"], @"city",
+                                    [forecast valueForKey:@"country"], @"country",
+                                    [forecast valueForKey:@"urlOrig"], @"url_orig",
+                                    [forecast valueForKey:@"urlSquare"], @"url_square",
+                                    nil];
+        SMAForecastModel *model = [[SMAForecastModel alloc] initWithForecastInfo:parameters];
+        [models addObject:model];
+    }
+    completionHandler(models);
 }
 
 @end
