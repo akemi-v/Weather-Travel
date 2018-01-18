@@ -21,6 +21,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, copy) NSMutableArray <SMAForecastModel *> *forecasts;
 @property (nonatomic, strong) SMAForecastService *forecastService;
+@property (nonatomic, strong) SMAImageLoader *imageLoader;
 
 @end
 
@@ -33,6 +34,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
 {
     [super viewDidLoad];
     self.forecastService = [SMAForecastService new];
+    self.imageLoader = [SMAImageLoader new];
     [self setupUI];
     [self.forecastService getForecastsHistoryCompletion:^(NSArray<SMAForecastModel *> *models) {
         self.forecasts = [models mutableCopy];
@@ -123,9 +125,12 @@ static const CGFloat SMAItemsPerRow = 3.f;
     SMAHistoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:SMAHistoryCollectionViewID
                                                                             forIndexPath:indexPath];
     
-    
+    SMAForecastModel *model = self.forecasts[indexPath.row];
     cell.backgroundColor = UIColor.customBlue;
-    [cell configureWithForecastModel:self.forecasts[indexPath.row]];
+    [cell configureWithForecastModel:model];
+    [self.imageLoader loadImageFromFileURL:model.urlSquareImage completion:^(UIImage *image) {
+        cell.imageView.image = image;
+    }];
     return cell;
 }
 

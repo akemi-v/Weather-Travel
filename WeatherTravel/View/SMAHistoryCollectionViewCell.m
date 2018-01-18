@@ -12,12 +12,6 @@
 
 static const CGFloat SMACollectionViewCellOffset = 5.f;
 
-@interface SMAHistoryCollectionViewCell ()
-
-@property (nonatomic, strong) SMAImageLoader *imageLoader;
-
-@end
-
 
 @implementation SMAHistoryCollectionViewCell
 
@@ -28,6 +22,9 @@ static const CGFloat SMACollectionViewCellOffset = 5.f;
     self = [super initWithFrame:frame];
     if (self)
     {
+        self.imageView = [UIImageView new];
+        self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.contentView addSubview:self.imageView];
         self.cityLabel = [UILabel new];
         self.cityLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [self.contentView addSubview:self.cityLabel];
@@ -37,9 +34,6 @@ static const CGFloat SMACollectionViewCellOffset = 5.f;
         self.dateLabel = [UILabel new];
         self.dateLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [self.contentView addSubview:self.dateLabel];
-        self.imageView = [UIImageView new];
-        self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.contentView addSubview:self.imageView];
         
         [self setupConstraints];
     }
@@ -103,10 +97,6 @@ static const CGFloat SMACollectionViewCellOffset = 5.f;
                                            NSForegroundColorAttributeName: UIColor.whiteColor,
                                            NSStrokeWidthAttributeName: @-2.0
                                            };
-    
-    [self.imageLoader loadImageFromFileURL:model.urlSquareImage completion:^(UIImage *image) {
-        self.imageView.image = image;
-    }];
 
     self.timeLabel.attributedText = [[NSAttributedString alloc]
                                      initWithString:model.time
