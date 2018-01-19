@@ -9,7 +9,6 @@
 #import "SMAForecastService.h"
 #import "SMAForecastModel.h"
 #import "SMACoreDataService.h"
-//#import "Forecast+CoreDataProperties.h"
 
 
 @interface SMAForecastService ()
@@ -36,7 +35,7 @@
     return self;
 }
 
-- (void)getForecastForCity:(NSString *)cityName completion:(void (^)(SMAForecastModel *model))completionHandler
+- (void)getForecastForCityOnline:(NSString *)cityName completion:(void (^)(SMAForecastModel *model))completionHandler
 {
     __block NSMutableDictionary *forecastInfo = [NSMutableDictionary new];
     [self.geocoder getCoordinatesFromCityName:cityName completion:^(NSDictionary *coordinates) {
@@ -66,11 +65,33 @@
             NSMutableDictionary *parameters = [weatherData mutableCopy];
             [parameters setObject:coordinates[@"city"] forKey:@"city"];
             [self.imageFetcher getImageURLsWithParameters:parameters completion:^(NSDictionary *imageURLs) {
-                [forecastInfo setObject:imageURLs[@"url_orig"] forKey:@"url_orig"];
-                [forecastInfo setObject:imageURLs[@"url_square"] forKey:@"url_square"];
                 
-                SMAForecastModel *model = [[SMAForecastModel alloc] initWithForecastInfo:forecastInfo];
-                completionHandler(model);
+                dispatch_group_t loadImagesGroup = dispatch_group_create();
+                dispatch_group_enter(loadImagesGroup);
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                    [self.imageLoader loadImageFromRemoteURL:imageURLs[@"url_orig"] completion:^(UIImage *image) {
+                        [self.imageLoader saveImage:image completion:^(NSString *urlString) {
+                            [forecastInfo setObject:urlString forKey:@"url_orig"];
+                            dispatch_group_leave(loadImagesGroup);
+                        }];
+                    }];
+                });
+                
+                dispatch_group_enter(loadImagesGroup);
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                    [self.imageLoader loadImageFromRemoteURL:imageURLs[@"url_square"] completion:^(UIImage *image) {
+                        [self.imageLoader saveImage:image completion:^(NSString *urlString) {
+                            [forecastInfo setObject:urlString forKey:@"url_square"];
+                            dispatch_group_leave(loadImagesGroup);
+                        }];
+                    }];
+                });
+                
+                dispatch_group_notify(loadImagesGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    SMAForecastModel *model = [[SMAForecastModel alloc] initWithForecastInfo:forecastInfo];
+                    [SMACoreDataService insertForecast:model];
+                    completionHandler(model);
+                });
             }];
         }];
     }];

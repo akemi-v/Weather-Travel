@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1847A2C720096575000953E3 /* SMAImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2C620096575000953E3 /* SMAImageLoader.m */; };
 		1847A2CA200CDEB7000953E3 /* SMAForecastService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2C9200CDEB7000953E3 /* SMAForecastService.m */; };
+		1847A2CD200E8F1C000953E3 /* SMAHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2CC200E8F1C000953E3 /* SMAHistoryViewController.m */; };
+		1847A2D0200F4D9D000953E3 /* SMAHistoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2CF200F4D9D000953E3 /* SMAHistoryCollectionViewCell.m */; };
 		1847A2DA2010138E000953E3 /* SMACoreDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2D92010138E000953E3 /* SMACoreDataService.m */; };
 		1847A2DD201013BA000953E3 /* SMACoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2DC201013BA000953E3 /* SMACoreDataStack.m */; };
 		18D82CCC1FF901F70073BC4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CCB1FF901F70073BC4B /* AppDelegate.m */; };
@@ -45,10 +47,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		182579FE20112131000EFE55 /* SMASearchViewControllerDelegateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMASearchViewControllerDelegateProtocol.h; sourceTree = "<group>"; };
 		1847A2C520096575000953E3 /* SMAImageLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAImageLoader.h; sourceTree = "<group>"; };
 		1847A2C620096575000953E3 /* SMAImageLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAImageLoader.m; sourceTree = "<group>"; };
 		1847A2C8200CDEB7000953E3 /* SMAForecastService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAForecastService.h; sourceTree = "<group>"; };
 		1847A2C9200CDEB7000953E3 /* SMAForecastService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastService.m; sourceTree = "<group>"; };
+		1847A2CB200E8F1C000953E3 /* SMAHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAHistoryViewController.h; sourceTree = "<group>"; };
+		1847A2CC200E8F1C000953E3 /* SMAHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAHistoryViewController.m; sourceTree = "<group>"; };
+		1847A2CE200F4D9D000953E3 /* SMAHistoryCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAHistoryCollectionViewCell.h; sourceTree = "<group>"; };
+		1847A2CF200F4D9D000953E3 /* SMAHistoryCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAHistoryCollectionViewCell.m; sourceTree = "<group>"; };
 		1847A2D82010138E000953E3 /* SMACoreDataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMACoreDataService.h; sourceTree = "<group>"; };
 		1847A2D92010138E000953E3 /* SMACoreDataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMACoreDataService.m; sourceTree = "<group>"; };
 		1847A2DB201013BA000953E3 /* SMACoreDataStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMACoreDataStack.h; sourceTree = "<group>"; };
@@ -143,6 +150,8 @@
 				18D82CF51FF92EE30073BC4B /* SMALocationSearchField.m */,
 				18D82D031FFBFE530073BC4B /* SMAForecastView.h */,
 				18D82D041FFBFE530073BC4B /* SMAForecastView.m */,
+				1847A2CE200F4D9D000953E3 /* SMAHistoryCollectionViewCell.h */,
+				1847A2CF200F4D9D000953E3 /* SMAHistoryCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,6 +161,9 @@
 			children = (
 				18D82CF11FF923EC0073BC4B /* SMASearchViewController.h */,
 				18D82CF21FF923EC0073BC4B /* SMASearchViewController.m */,
+				1847A2CB200E8F1C000953E3 /* SMAHistoryViewController.h */,
+				1847A2CC200E8F1C000953E3 /* SMAHistoryViewController.m */,
+				182579FE20112131000EFE55 /* SMASearchViewControllerDelegateProtocol.h */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -379,11 +391,13 @@
 				18E301A62002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.m in Sources */,
 				18E301A3200298C000B5F7ED /* SMAGoogleCoordinatesParser.m in Sources */,
 				18D82D081FFC03340073BC4B /* SMAForecastModel.m in Sources */,
+				1847A2D0200F4D9D000953E3 /* SMAHistoryCollectionViewCell.m in Sources */,
 				18E3019D2002897C00B5F7ED /* SMAGeocoder.m in Sources */,
 				18E301B32005777700B5F7ED /* SMAFlickrImageParser.m in Sources */,
 				1847A2CA200CDEB7000953E3 /* SMAForecastService.m in Sources */,
 				18E301A020028A9100B5F7ED /* SMAGoogleCoordinatesRequest.m in Sources */,
 				18D82D051FFBFE530073BC4B /* SMAForecastView.m in Sources */,
+				1847A2CD200E8F1C000953E3 /* SMAHistoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

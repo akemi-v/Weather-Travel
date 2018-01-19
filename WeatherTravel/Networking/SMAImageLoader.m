@@ -51,9 +51,8 @@
 - (void)loadImageFromFileURL:(NSString *)urlString completion:(void (^)(UIImage *image))completionHandler
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectiry = paths[0];
-    NSString *imagesFolderPath = [documentsDirectiry stringByAppendingPathComponent:@"CityImages"];
-    NSString *imagePath = [imagesFolderPath stringByAppendingPathComponent:urlString];
+    NSString *documentsDirectory = paths[0];
+    NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:urlString];
     
     NSError *error = nil;
     NSData *data = [NSData dataWithContentsOfFile:imagePath options:0 error:&error];
@@ -96,7 +95,7 @@
     NSError *error = nil;
     if ([data writeToFile:fullPath options:0 error:&error])
     {
-        completionHandler(fullPath);
+        completionHandler(relativePath);
     }
     else
     {

@@ -26,8 +26,8 @@
     if (self)
     {
         self.masterContext = self.persistentContainer.newBackgroundContext;
-        self.mainContext = self.persistentContainer.viewContext;
-        self.backgroundContext = self.persistentContainer.newBackgroundContext;
+        self.mainContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        self.backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         self.mainContext.parentContext = self.masterContext;
         self.backgroundContext.parentContext = self.mainContext;
     }

@@ -15,22 +15,15 @@ static const CGFloat SMAForecastLabelHeight = 25.f;
 static const CGFloat SMAForecastOffset = 8.f;
 
 
-@interface SMAForecastView ()
-
-@property (nonatomic, strong) SMAImageLoader *imageLoader;
-
-@end
-
 @implementation SMAForecastView
 
-#pragma mark - init
 
 - (instancetype)init
 {
     self = [super init];
     if (self)
     {
-        self.imageLoader = [SMAImageLoader new];
+        [self setupUI];
     }
     return self;
 }
@@ -39,20 +32,13 @@ static const CGFloat SMAForecastOffset = 8.f;
 
 - (void)setupWithForecastModel:(SMAForecastModel *)model
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [self setupUI];
-    });
     NSDictionary *strokeTextAttributes = @{
                                            NSFontAttributeName: [UIFont boldSystemFontOfSize:25.f],
-                                           NSStrokeColorAttributeName: [UIColor blackColor],
-                                           NSForegroundColorAttributeName: [UIColor whiteColor],
+                                           NSStrokeColorAttributeName: UIColor.blackColor,
+                                           NSForegroundColorAttributeName: UIColor.whiteColor,
                                            NSStrokeWidthAttributeName: @-3.0
                                            };
     
-    [self.imageLoader loadImageFromRemoteURL:model.urlOrigImage completion:^(UIImage *image) {
-        self.pictureView.image = image;
-    }];
     self.temperatureLabel.attributedText = [[NSAttributedString alloc]
                                             initWithString: [NSString stringWithFormat:@"%@ °C", model.temperature]
                                             attributes:strokeTextAttributes];
@@ -79,7 +65,7 @@ static const CGFloat SMAForecastOffset = 8.f;
 - (void)setupUI
 {
     
-    self.backgroundColor = [UIColor customPaleBlue];
+    self.backgroundColor = UIColor.customPaleBlue;
     
     self.pictureView = [UIImageView new];
     self.pictureView.translatesAutoresizingMaskIntoConstraints = NO;

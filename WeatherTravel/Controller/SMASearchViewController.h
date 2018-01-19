@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SMAForecastView.h"
+#import "SMASearchViewControllerDelegateProtocol.h"
 
 
 /**
@@ -19,5 +20,10 @@
  Вью, который отображает прогноз и фотографию
  */
 @property (nonatomic, strong) SMAForecastView *forecastView;
+
+/**
+ Делегат
+ */
+@property (nonatomic, weak) id<SMASearchViewControllerDelegate> delegate;
 
 @end

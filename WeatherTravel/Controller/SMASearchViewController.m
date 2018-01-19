@@ -26,6 +26,7 @@ static const CGFloat SMASearchFieldHeight = 50.f;
  Сервис, составляющий модель прогноза
  */
 @property (nonatomic, strong) SMAForecastService *forecastService;
+@property (nonatomic, strong) SMAImageLoader *imageLoader;
 
 @end
 
@@ -40,6 +41,7 @@ static const CGFloat SMASearchFieldHeight = 50.f;
     [super viewDidLoad];
     [self setupUI];
     self.forecastService = [SMAForecastService new];
+    self.imageLoader = [SMAImageLoader new];
 }
 
 - (void)viewDidLayoutSubviews
@@ -54,21 +56,11 @@ static const CGFloat SMASearchFieldHeight = 50.f;
     dispatch_once(&once, ^{
         [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.searchField.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), SMASearchFieldHeight);
-            
-            SMAForecastModel *model = [[SMAForecastModel alloc] initWithForecastInfo: @{
-                                                                                       @"temperature": @"-100",
-                                                                                       @"humidity": @"50%",
-                                                                                       @"summary_weather": @"overcast",
-                                                                                       @"time": @"00:00",
-                                                                                       @"date": @"today",
-                                                                                       @"city": @"Moscow",
-                                                                                       @"country": @"Russia"
-                                                                                       }];
             self.forecastView = [SMAForecastView new];
-            [self.forecastView setupWithForecastModel:model];
             self.forecastView.translatesAutoresizingMaskIntoConstraints = NO;
+            self.forecastView.pictureView.clipsToBounds = YES;
             self.forecastView.layer.opacity = 0.f;
-            [self.view addSubview:self.forecastView];            
+            [self.view addSubview:self.forecastView];
         } completion:nil];
     });
     self.searchField.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), SMASearchFieldHeight);
@@ -88,7 +80,7 @@ static const CGFloat SMASearchFieldHeight = 50.f;
  */
 - (void)setupUI
 {
-    self.view.backgroundColor = [UIColor customBlue];
+    self.view.backgroundColor = UIColor.customBlue;
     [self setupSearchField];
 }
 
@@ -131,21 +123,23 @@ static const CGFloat SMASearchFieldHeight = 50.f;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-//    SMAForecastModel *model = [SMAForecastModel new];
-    [self.forecastService getForecastForCity:textField.text completion:^(SMAForecastModel *model) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.forecastView setupWithForecastModel:model];
-        });
-    }];
-    
+    [textField resignFirstResponder];
     [UIView animateWithDuration:0.5 animations:^{
         self.forecastView.layer.opacity = 0.1f;
         self.forecastView.transform = CGAffineTransformMakeScale(0.05f, 0.05f);
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.5 animations:^{
-            self.forecastView.layer.opacity = 1.f;
-            self.forecastView.transform = CGAffineTransformIdentity;
-        }];
+    }];
+    [self.forecastService getForecastForCityOnline:textField.text completion:^(SMAForecastModel *model) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.forecastView setupWithForecastModel:model];
+            [self.imageLoader loadImageFromFileURL:model.urlOrigImage completion:^(UIImage *image) {
+                self.forecastView.pictureView.image = image;
+                [self.delegate reload];
+                [UIView animateWithDuration:0.5 animations:^{
+                    self.forecastView.layer.opacity = 1.f;
+                    self.forecastView.transform = CGAffineTransformIdentity;
+                }];
+            }];
+        });
     }];
     return YES;
 }

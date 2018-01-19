@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SMASearchViewController.h"
+#import "SMAHistoryViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,7 +26,16 @@
     SMASearchViewController *searchViewController = [SMASearchViewController new];
     searchViewController.tabBarItem = leftTabBarItem;
     
-    tabBarController.viewControllers = @[searchViewController];
+    UITabBarItem *rightTabBarItem = [[UITabBarItem alloc]initWithTabBarSystemItem:UITabBarSystemItemHistory tag:1];
+    SMAHistoryViewController *historyViewController = [SMAHistoryViewController new];
+    UINavigationController *historyNavigationController = [[UINavigationController alloc]
+                                                           initWithRootViewController:historyViewController];
+    historyNavigationController.navigationItem.title = @"История";
+    historyNavigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    historyNavigationController.tabBarItem = rightTabBarItem;
+    
+    searchViewController.delegate = historyViewController;
+    tabBarController.viewControllers = @[searchViewController, historyNavigationController];
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
