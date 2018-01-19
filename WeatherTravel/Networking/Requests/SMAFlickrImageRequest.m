@@ -45,6 +45,11 @@
 + (NSMutableURLRequest *)getUrlRequestWithParameters:(NSDictionary *)parameters
 {
     Mode mode = [parameters[@"mode"] intValue];
+    if (!mode)
+    {
+        NSLog(@"Неверные параметры");
+        return nil;
+    }
     NSURLComponents *urlComponents = [NSURLComponents componentsWithString:@"https://api.flickr.com/services/rest/"];
     NSURLQueryItem *method = [NSURLQueryItem queryItemWithName:@"method" value:@"flickr.photos.search"];
     NSURLQueryItem *apiKey = [NSURLQueryItem queryItemWithName:@"api_key" value:@"893bb425c9623527bf0b2447a5878d19"];
@@ -87,6 +92,11 @@
     NSString *projectWeatherGroupId = @"1463451@N25"; // Project Weather group ID
     NSString *summaryString = parameters[@"summary_weather"];
     NSString *cityString = parameters[@"city"];
+    if (!summaryString || !cityString)
+    {
+        NSLog(@"Неверные параметры погоды");
+        return nil;
+    }
     NSArray *tagsArray = @[summaryString, cityString];
     NSString *tagsString = [tagsArray componentsJoinedByString:@","];
     
@@ -104,6 +114,11 @@
 {
     NSString *summaryString = parameters[@"summary_weather"];
     NSString *cityString = parameters[@"city"];
+    if (!summaryString || !cityString)
+    {
+        NSLog(@"Неверные параметры");
+        return nil;
+    }
     NSArray *tagsArray = @[summaryString, cityString];
     NSString *tagsString = [tagsArray componentsJoinedByString:@","];
     
@@ -119,6 +134,11 @@
                                         withURLComponents:(NSURLComponents *)urlComponents
 {
     NSString *cityString = parameters[@"city"];
+    if (!cityString)
+    {
+        NSLog(@"Неверные параметры");
+        return nil;
+    }
     NSArray *tagsArray = @[cityString];
     NSString *tagsString = [tagsArray componentsJoinedByString:@","];
 

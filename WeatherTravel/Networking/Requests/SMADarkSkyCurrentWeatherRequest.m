@@ -15,6 +15,11 @@
     NSString *apiKey = @"7bb791f34616527998a0737f6b80b8e6";
     NSString *latitude = parameters[@"lat"];
     NSString *longitude = parameters[@"lng"];
+    if (!latitude || !longitude)
+    {
+        NSLog(@"Неверные параметры координат");
+        return nil;
+    }
     NSString *baseUrlString = [NSString
                                stringWithFormat:@"https://api.darksky.net/forecast/%@/%@,%@",
                                apiKey, latitude, longitude];
