@@ -23,6 +23,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
 @property (nonatomic, copy) NSMutableArray <SMAForecastModel *> *forecasts;
 @property (nonatomic, strong) SMAForecastService *forecastService;
 @property (nonatomic, strong) SMAImageLoader *imageLoader;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -91,6 +92,15 @@ static const CGFloat SMAItemsPerRow = 3.f;
     self.title = @"История";
     self.view.backgroundColor = UIColor.customDarkBlue;
     [self setupCollectionView];
+    [self setupActivityIndicator];
+}
+
+- (void)setupActivityIndicator
+{
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    self.activityIndicator.hidesWhenStopped = YES;
+    self.activityIndicator.center = self.view.center;
+    [self.view addSubview:self.activityIndicator];
 }
 
 - (void)setupCollectionView
@@ -187,6 +197,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SMAForecastModel *model = self.forecasts[indexPath.row];
+    [self.activityIndicator startAnimating];
     [UIView animateWithDuration:0.5 animations:^{
         self.forecastView.layer.opacity = 0.1f;
         self.forecastView.transform = CGAffineTransformMakeScale(0.05f, 0.05f);
@@ -202,6 +213,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
         [self.forecastView setupWithForecastModel:model];
         [self.imageLoader loadImageFromFileURL:model.urlOrigImage completion:^(UIImage *image) {
             self.forecastView.pictureView.image = image;
+            [self.activityIndicator stopAnimating];
             [UIView animateWithDuration:0.5 animations:^{
                 self.forecastView.layer.opacity = 1.f;
                 self.forecastView.transform = CGAffineTransformIdentity;
