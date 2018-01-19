@@ -64,8 +64,8 @@
         isCalled = YES;
         forecast = model;
     }];
-    expect(isCalled).after(5).to.beTruthy();
-    expect(forecast).after(5).toNot.beNil();
+    expect(isCalled).after(10).to.beTruthy();
+    expect(forecast).after(10).toNot.beNil();
 }
 
 - (void)testGetForecastsHistory
