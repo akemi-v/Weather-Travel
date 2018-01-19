@@ -56,6 +56,14 @@ static const CGFloat SMAItemsPerRow = 3.f;
         [self.view addSubview:self.forecastView];
     });
     [self setupConstraints];
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+                                                 initWithTarget:self
+                                                 action:@selector(tapAction:)];
+        [self.forecastView addGestureRecognizer:tapRecognizer];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -189,7 +197,6 @@ static const CGFloat SMAItemsPerRow = 3.f;
             {
                 view.layer.opacity = 0.2f;
             }
-            view.userInteractionEnabled = NO;
         }
     } completion:^(BOOL finished) {
         [self.forecastView setupWithForecastModel:model];
@@ -231,6 +238,42 @@ static const CGFloat SMAItemsPerRow = 3.f;
             [self.collectionView reloadData];
         });
     }];
+}
+
+#pragma mark - UITapGestureRecognizer
+
+- (void)tapAction:(UITapGestureRecognizer *)tap
+{
+    CATransform3D rotation;
+    rotation = CATransform3DMakeRotation( (60.0*M_PI)/180, 0.0, 0.7, 0.7);
+    
+    CATransform3D scale;
+    scale = CATransform3DMakeScale(0.1, 0.1, 0.1);
+    
+    
+    self.forecastView.alpha = 1.f;
+    
+    CATransform3D animations;
+    animations = CATransform3DConcat(rotation, scale);
+    
+    self.forecastView.layer.transform = CATransform3DIdentity;
+    self.forecastView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    
+    [UIView beginAnimations:@"animation" context:NULL];
+    [UIView setAnimationDuration:1.5];
+    self.forecastView.layer.transform = animations;
+    self.forecastView.alpha = 0.f;
+    for (id obj in self.view.subviews)
+    {
+        UIView *view = (UIView *)obj;
+        if (![view isKindOfClass:[SMAForecastView class]])
+        {
+            view.layer.opacity = 1.f;
+        }
+    }
+    [UIView commitAnimations];
+    
+    
 }
 
 
