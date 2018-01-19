@@ -58,6 +58,7 @@ static const CGFloat SMASearchFieldHeight = 50.f;
             self.searchField.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), SMASearchFieldHeight);
             self.forecastView = [SMAForecastView new];
             self.forecastView.translatesAutoresizingMaskIntoConstraints = NO;
+            self.forecastView.pictureView.clipsToBounds = YES;
             self.forecastView.layer.opacity = 0.f;
             [self.view addSubview:self.forecastView];
         } completion:nil];
@@ -123,25 +124,22 @@ static const CGFloat SMASearchFieldHeight = 50.f;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.forecastView.layer.opacity = 0.1f;
+        self.forecastView.transform = CGAffineTransformMakeScale(0.05f, 0.05f);
+    }];
     [self.forecastService getForecastForCityOnline:textField.text completion:^(SMAForecastModel *model) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.forecastView setupWithForecastModel:model];
             [self.imageLoader loadImageFromFileURL:model.urlOrigImage completion:^(UIImage *image) {
                 self.forecastView.pictureView.image = image;
                 [self.delegate reload];
+                [UIView animateWithDuration:0.5 animations:^{
+                    self.forecastView.layer.opacity = 1.f;
+                    self.forecastView.transform = CGAffineTransformIdentity;
+                }];
             }];
         });
-    }];
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        self.forecastView.layer.opacity = 0.1f;
-        self.forecastView.transform = CGAffineTransformMakeScale(0.05f, 0.05f);
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.5 animations:^{
-            self.forecastView.layer.opacity = 1.f;
-            self.forecastView.transform = CGAffineTransformIdentity;
-        }];
     }];
     return YES;
 }

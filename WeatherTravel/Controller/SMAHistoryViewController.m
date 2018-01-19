@@ -51,6 +51,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
     dispatch_once(&once, ^{
         self.forecastView = [SMAForecastView new];
         self.forecastView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.forecastView.pictureView.clipsToBounds = YES;
         self.forecastView.layer.opacity = 0.f;
         [self.view addSubview:self.forecastView];
     });
@@ -178,29 +179,29 @@ static const CGFloat SMAItemsPerRow = 3.f;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SMAForecastModel *model = self.forecasts[indexPath.row];
-    self.forecastView.layer.opacity = 0.1f;
-    [self.forecastView setupWithForecastModel:model];
-    [self.imageLoader loadImageFromFileURL:model.urlOrigImage completion:^(UIImage *image) {
-        [UIView animateWithDuration:0.5 animations:^{
-            self.forecastView.layer.opacity = 0.1f;
-            self.forecastView.transform = CGAffineTransformMakeScale(0.05f, 0.05f);
-        } completion:^(BOOL finished) {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.forecastView.layer.opacity = 0.1f;
+        self.forecastView.transform = CGAffineTransformMakeScale(0.05f, 0.05f);
+        for (id obj in self.view.subviews)
+        {
+            UIView *view = (UIView *)obj;
+            if (![view isKindOfClass:[SMAForecastView class]])
+            {
+                view.layer.opacity = 0.2f;
+            }
+            view.userInteractionEnabled = NO;
+        }
+    } completion:^(BOOL finished) {
+        [self.forecastView setupWithForecastModel:model];
+        [self.imageLoader loadImageFromFileURL:model.urlOrigImage completion:^(UIImage *image) {
+            self.forecastView.pictureView.image = image;
             [UIView animateWithDuration:0.5 animations:^{
                 self.forecastView.layer.opacity = 1.f;
                 self.forecastView.transform = CGAffineTransformIdentity;
-                self.forecastView.pictureView.image = image;
-                self.forecastView.pictureView.clipsToBounds = YES;
-                for (id obj in self.view.subviews)
-                {
-                    UIView *view = (UIView *)obj;
-                    if (![view isKindOfClass:[SMAForecastView class]])
-                    {
-                        view.layer.opacity = 0.2f;
-                    }
-                }
             }];
         }];
     }];
+    
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
