@@ -34,6 +34,7 @@
 		18E301B32005777700B5F7ED /* SMAFlickrImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301B22005777700B5F7ED /* SMAFlickrImageParser.m */; };
 		18E301B62006476400B5F7ED /* SMAImageFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301B52006476400B5F7ED /* SMAImageFetcher.m */; };
 		18E9FC982012015F00C9C3CD /* SMAGeocoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FC972012015E00C9C3CD /* SMAGeocoderTests.m */; };
+		18E9FC9A2012025600C9C3CD /* SMAForecastServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FC992012025600C9C3CD /* SMAForecastServiceTests.m */; };
 		8B0F5C37F9F9F918EE37B91A /* libPods-WeatherTravelTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51577C91124ADBAFB4A1A912 /* libPods-WeatherTravelTests.a */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		18E301B42006476400B5F7ED /* SMAImageFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAImageFetcher.h; sourceTree = "<group>"; };
 		18E301B52006476400B5F7ED /* SMAImageFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAImageFetcher.m; sourceTree = "<group>"; };
 		18E9FC972012015E00C9C3CD /* SMAGeocoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAGeocoderTests.m; sourceTree = "<group>"; };
+		18E9FC992012025600C9C3CD /* SMAForecastServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAForecastServiceTests.m; sourceTree = "<group>"; };
 		45BED385ADA561420AA71E2F /* Pods-WeatherTravelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTravelTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTravelTests/Pods-WeatherTravelTests.debug.xcconfig"; sourceTree = "<group>"; };
 		51577C91124ADBAFB4A1A912 /* libPods-WeatherTravelTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherTravelTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48D7F69516AF5B54EA5F101 /* Pods-WeatherTravelTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTravelTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTravelTests/Pods-WeatherTravelTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 		18D82CE51FF901F70073BC4B /* WeatherTravelTests */ = {
 			isa = PBXGroup;
 			children = (
+				18E9FC992012025600C9C3CD /* SMAForecastServiceTests.m */,
 				18E9FC972012015E00C9C3CD /* SMAGeocoderTests.m */,
 				18D82CE81FF901F70073BC4B /* Info.plist */,
 			);
@@ -483,6 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E9FC9A2012025600C9C3CD /* SMAForecastServiceTests.m in Sources */,
 				18E9FC982012015F00C9C3CD /* SMAGeocoderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
