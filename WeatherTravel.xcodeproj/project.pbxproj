@@ -18,7 +18,6 @@
 		18D82CD71FF901F70073BC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D82CD61FF901F70073BC4B /* Assets.xcassets */; };
 		18D82CDA1FF901F70073BC4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D82CD81FF901F70073BC4B /* LaunchScreen.storyboard */; };
 		18D82CDD1FF901F70073BC4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CDC1FF901F70073BC4B /* main.m */; };
-		18D82CE71FF901F70073BC4B /* WeatherTravelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CE61FF901F70073BC4B /* WeatherTravelTests.m */; };
 		18D82CF31FF923EC0073BC4B /* SMASearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CF21FF923EC0073BC4B /* SMASearchViewController.m */; };
 		18D82CF61FF92EE30073BC4B /* SMALocationSearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CF51FF92EE30073BC4B /* SMALocationSearchField.m */; };
 		18D82CFC1FFBC1670073BC4B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D82CFB1FFBC1670073BC4B /* Media.xcassets */; };
@@ -34,6 +33,7 @@
 		18E301AF2004168E00B5F7ED /* SMAFlickrImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301AE2004168E00B5F7ED /* SMAFlickrImageRequest.m */; };
 		18E301B32005777700B5F7ED /* SMAFlickrImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301B22005777700B5F7ED /* SMAFlickrImageParser.m */; };
 		18E301B62006476400B5F7ED /* SMAImageFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301B52006476400B5F7ED /* SMAImageFetcher.m */; };
+		18E9FC982012015F00C9C3CD /* SMAGeocoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FC972012015E00C9C3CD /* SMAGeocoderTests.m */; };
 		8B0F5C37F9F9F918EE37B91A /* libPods-WeatherTravelTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51577C91124ADBAFB4A1A912 /* libPods-WeatherTravelTests.a */; };
 /* End PBXBuildFile section */
 
@@ -70,7 +70,6 @@
 		18D82CDB1FF901F70073BC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D82CDC1FF901F70073BC4B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18D82CE21FF901F70073BC4B /* WeatherTravelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTravelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		18D82CE61FF901F70073BC4B /* WeatherTravelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherTravelTests.m; sourceTree = "<group>"; };
 		18D82CE81FF901F70073BC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D82CF11FF923EC0073BC4B /* SMASearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMASearchViewController.h; sourceTree = "<group>"; };
 		18D82CF21FF923EC0073BC4B /* SMASearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMASearchViewController.m; sourceTree = "<group>"; };
@@ -104,6 +103,7 @@
 		18E301B22005777700B5F7ED /* SMAFlickrImageParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAFlickrImageParser.m; sourceTree = "<group>"; };
 		18E301B42006476400B5F7ED /* SMAImageFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAImageFetcher.h; sourceTree = "<group>"; };
 		18E301B52006476400B5F7ED /* SMAImageFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAImageFetcher.m; sourceTree = "<group>"; };
+		18E9FC972012015E00C9C3CD /* SMAGeocoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAGeocoderTests.m; sourceTree = "<group>"; };
 		45BED385ADA561420AA71E2F /* Pods-WeatherTravelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTravelTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTravelTests/Pods-WeatherTravelTests.debug.xcconfig"; sourceTree = "<group>"; };
 		51577C91124ADBAFB4A1A912 /* libPods-WeatherTravelTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherTravelTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48D7F69516AF5B54EA5F101 /* Pods-WeatherTravelTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTravelTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTravelTests/Pods-WeatherTravelTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -274,7 +274,7 @@
 		18D82CE51FF901F70073BC4B /* WeatherTravelTests */ = {
 			isa = PBXGroup;
 			children = (
-				18D82CE61FF901F70073BC4B /* WeatherTravelTests.m */,
+				18E9FC972012015E00C9C3CD /* SMAGeocoderTests.m */,
 				18D82CE81FF901F70073BC4B /* Info.plist */,
 			);
 			path = WeatherTravelTests;
@@ -483,7 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18D82CE71FF901F70073BC4B /* WeatherTravelTests.m in Sources */,
+				18E9FC982012015F00C9C3CD /* SMAGeocoderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
