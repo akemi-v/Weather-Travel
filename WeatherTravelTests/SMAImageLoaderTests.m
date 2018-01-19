@@ -7,33 +7,98 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
+#import <Expecta/Expecta.h>
+
+#import "SMAImageLoader.h"
+
+@interface SMAImageLoader(Tests)
+
+- (NSString *)randomId;
+
+@end
 
 @interface SMAImageLoaderTests : XCTestCase
+
+@property (nonatomic, strong) SMAImageLoader *loader;
 
 @end
 
 @implementation SMAImageLoaderTests
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.loader = OCMPartialMock([SMAImageLoader new]);
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+- (void)tearDown
+{
+    self.loader = nil;
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testLoadImageFromRemoteURLWrong
+{
+    NSString *urlString = @"sdfsdf";
+    
+    __block BOOL isCalled = NO;
+    __block UIImage *img = nil;
+    [self.loader loadImageFromRemoteURL:urlString completion:^(UIImage *image) {
+        isCalled = YES;
+        img = image;
+    }];
+    expect(isCalled).after(5).beFalsy();
+    expect(img).after(5).beNil();
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+- (void)testLoadImageFromRemoteURLNotImage
+{
+    NSString *urlString = @"https://github.com";
+    
+    __block BOOL isCalled = NO;
+    __block UIImage *img = nil;
+    [self.loader loadImageFromRemoteURL:urlString completion:^(UIImage *image) {
+        isCalled = YES;
+        img = image;
     }];
+    expect(isCalled).after(5).beTruthy();
+    expect(img).after(5).beNil();
+}
+
+- (void)testLoadImageFromRemoteURLDirectLink
+{
+    NSString *urlString = @"https://s14.postimg.org/b984nbxk1/DR5_Nkt6_VAAANRii.jpg";
+    
+    __block BOOL isCalled = NO;
+    __block UIImage *img = nil;
+    [self.loader loadImageFromRemoteURL:urlString completion:^(UIImage *image) {
+        isCalled = YES;
+        img = image;
+    }];
+    expect(isCalled).after(5).beTruthy();
+    expect(img).after(5).notTo.beNil();
+}
+
+- (void)testLoadImageFromFileURLWrong
+{
+    NSString *urlString = @"sdfsdf";
+    
+    __block BOOL isCalled = NO;
+    __block UIImage *img = nil;
+    [self.loader loadImageFromFileURL:urlString completion:^(UIImage *image) {
+        isCalled = YES;
+        img = image;
+    }];
+    expect(isCalled).after(5).beFalsy();
+    expect(img).after(5).beNil();
+}
+
+- (void)testRandomId
+{
+    NSString *idString = nil;
+    idString = [self.loader randomId];
+    expect(idString).notTo.beNil();
 }
 
 @end
