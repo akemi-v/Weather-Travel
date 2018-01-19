@@ -44,12 +44,13 @@
 
 + (NSMutableURLRequest *)getUrlRequestWithParameters:(NSDictionary *)parameters
 {
-    Mode mode = [parameters[@"mode"] intValue];
-    if (!mode)
+    if (!parameters[@"mode"])
     {
         NSLog(@"Неверные параметры");
         return nil;
     }
+
+    Mode mode = [parameters[@"mode"] intValue];
     NSURLComponents *urlComponents = [NSURLComponents componentsWithString:@"https://api.flickr.com/services/rest/"];
     NSURLQueryItem *method = [NSURLQueryItem queryItemWithName:@"method" value:@"flickr.photos.search"];
     NSURLQueryItem *apiKey = [NSURLQueryItem queryItemWithName:@"api_key" value:@"893bb425c9623527bf0b2447a5878d19"];

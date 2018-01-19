@@ -44,7 +44,10 @@
 
 - (void)getImageURLsWithParameters:(NSDictionary *)parameters completion:(void (^)(NSDictionary *imageURLs))completionHandler
 {
-    [self getImageWithPlaceWeatherGroupRequest:parameters completion:completionHandler];
+    NSMutableDictionary *newParameters = [parameters mutableCopy];
+    NSString *modeString = [NSString stringWithFormat:@"%d", PlaceWeatherGroup];
+    [newParameters setObject:modeString forKey:@"mode"];
+    [self getImageWithPlaceWeatherGroupRequest:newParameters completion:completionHandler];
 }
 
 - (void)getImageWithPlaceWeatherGroupRequest:(NSDictionary *)parameters
