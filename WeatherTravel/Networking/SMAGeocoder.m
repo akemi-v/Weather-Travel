@@ -16,6 +16,10 @@
 {
     NSURLRequest *request = [SMAGoogleCoordinatesRequest
                          getUrlRequestWithParameters:@{@"cityName": cityName}];
+    if (!request)
+    {
+        return;
+    }
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {

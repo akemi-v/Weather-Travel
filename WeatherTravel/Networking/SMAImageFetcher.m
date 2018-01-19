@@ -52,6 +52,10 @@
 {
     NSURLRequest *request = [SMAFlickrImageRequest
                              getUrlRequestWithParameters:parameters];
+    if (!request)
+    {
+        return;
+    }
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request
@@ -86,6 +90,10 @@
 {
     NSURLRequest *request = [SMAFlickrImageRequest
                              getUrlRequestWithParameters:parameters];
+    if (!request)
+    {
+        return;
+    }
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request
@@ -120,6 +128,10 @@
 {
     NSURLRequest *request = [SMAFlickrImageRequest
                              getUrlRequestWithParameters:parameters];
+    if (!request)
+    {
+        return;
+    }
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request

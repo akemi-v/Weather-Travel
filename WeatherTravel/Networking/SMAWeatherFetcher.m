@@ -17,6 +17,10 @@
 {
     NSURLRequest *request = [SMADarkSkyCurrentWeatherRequest
                              getUrlRequestWithParameters:coordinates];
+    if (!request)
+    {
+        return;
+    }
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request
