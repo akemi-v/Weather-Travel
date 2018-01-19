@@ -40,7 +40,7 @@
     [self.service getForecastForCityOnline:cityName completion:^(SMAForecastModel *model) {
         isCalled = YES;
     }];
-    expect(isCalled).after(2).beFalsy();
+    expect(isCalled).after(2).to.beFalsy();
 }
 
 - (void)testGetForecastForCityOnlineNoise
@@ -51,7 +51,7 @@
     [self.service getForecastForCityOnline:cityName completion:^(SMAForecastModel *model) {
         isCalled = YES;
     }];
-    expect(isCalled).after(2).beFalsy();
+    expect(isCalled).after(2).to.beFalsy();
 }
 
 - (void)testGetForecastForCityOnlineReal
@@ -64,7 +64,7 @@
         isCalled = YES;
         forecast = model;
     }];
-    expect(isCalled).after(5).beTruthy();
+    expect(isCalled).after(5).to.beTruthy();
     expect(forecast).after(5).toNot.beNil();
 }
 
@@ -76,7 +76,7 @@
         isCalled = YES;
         forecasts = models;
     }];
-    expect(isCalled).after(5).beTruthy();
+    expect(isCalled).after(5).to.beTruthy();
     expect(forecasts).after(5).toNot.beNil();
 }
 

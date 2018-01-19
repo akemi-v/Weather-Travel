@@ -47,7 +47,7 @@
     [self.geocoder getCoordinatesFromCityName:cityName completion:^(NSDictionary *coordinates) {
         isCalled = YES;
     }];
-    expect(isCalled).after(2).beFalsy();
+    expect(isCalled).after(2).to.beFalsy();
 }
 
 - (void)testGetCoordinatesFromCityNameNoise
@@ -58,7 +58,7 @@
     [self.geocoder getCoordinatesFromCityName:cityName completion:^(NSDictionary *coordinates) {
         isCalled = YES;
     }];
-     expect(isCalled).after(2).beFalsy();
+     expect(isCalled).after(2).to.beFalsy();
 }
 
 - (void)testGetCoordinatesFromCityNameReal
@@ -71,7 +71,7 @@
         isCalled = YES;
         coords = coordinates;
     }];
-    expect(isCalled).after(2).beTruthy();
+    expect(isCalled).after(2).to.beTruthy();
     expect(coords).toNot.beNil();
 }
 

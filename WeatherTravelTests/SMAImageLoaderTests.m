@@ -48,8 +48,8 @@
         isCalled = YES;
         img = image;
     }];
-    expect(isCalled).after(5).beFalsy();
-    expect(img).after(5).beNil();
+    expect(isCalled).after(5).to.beFalsy();
+    expect(img).after(5).to.beNil();
 }
 
 - (void)testLoadImageFromRemoteURLNotImage
@@ -62,8 +62,8 @@
         isCalled = YES;
         img = image;
     }];
-    expect(isCalled).after(5).beTruthy();
-    expect(img).after(5).beNil();
+    expect(isCalled).after(5).to.beTruthy();
+    expect(img).after(5).to.beNil();
 }
 
 - (void)testLoadImageFromRemoteURLDirectLink
@@ -76,8 +76,8 @@
         isCalled = YES;
         img = image;
     }];
-    expect(isCalled).after(5).beTruthy();
-    expect(img).after(5).notTo.beNil();
+    expect(isCalled).after(5).to.beTruthy();
+    expect(img).after(5).toNot.beNil();
 }
 
 - (void)testLoadImageFromFileURLWrong
@@ -90,15 +90,15 @@
         isCalled = YES;
         img = image;
     }];
-    expect(isCalled).after(5).beFalsy();
-    expect(img).after(5).beNil();
+    expect(isCalled).after(5).to.beFalsy();
+    expect(img).after(5).to.beNil();
 }
 
 - (void)testRandomId
 {
     NSString *idString = nil;
     idString = [self.loader randomId];
-    expect(idString).notTo.beNil();
+    expect(idString).toNot.beNil();
 }
 
 @end

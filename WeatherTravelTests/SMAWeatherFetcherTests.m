@@ -42,8 +42,8 @@
         isCalled = YES;
         weatherInfo = weatherData;
     }];
-    expect(isCalled).after(5).beTruthy();
-    expect(weatherInfo).after(5).beNil();
+    expect(isCalled).after(5).to.beFalsy();
+    expect(weatherInfo).after(5).to.beNil();
 }
 
 - (void)testGetWeatherFromCoordinatesReal
@@ -60,16 +60,16 @@
         isCalled = YES;
         weatherInfo = weatherData;
     }];
-    expect(isCalled).after(5).beTruthy();
-    expect(weatherInfo).after(5).notTo.beNil();
-    expect([NSSet setWithArray:[weatherInfo allKeys]]).equal(expectedKeys);
+    expect(isCalled).after(5).to.beTruthy();
+    expect(weatherInfo).after(5).toNot.beNil();
+    expect([NSSet setWithArray:[weatherInfo allKeys]]).to.equal(expectedKeys);
 }
 
 - (void)testGetWeatherFromCoordinatesWrong
 {
     NSDictionary *coordinates = @{
                                   @"wrong": @"139.692",
-                                  };;
+                                  };
     
     __block BOOL isCalled = NO;
     __block NSDictionary *weatherInfo = nil;
@@ -77,8 +77,8 @@
         isCalled = YES;
         weatherInfo = weatherData;
     }];
-    expect(isCalled).after(5).beTruthy();
-    expect(weatherInfo).after(5).beNil();
+    expect(isCalled).after(5).to.beFalsy();
+    expect(weatherInfo).after(5).to.beNil();
 }
 
 @end
