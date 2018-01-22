@@ -17,15 +17,15 @@
     self = [super init];
     if (self)
     {
-        self.temperature = info[@"temperature"];
-        self.humidity = info[@"humidity"];
-        self.summaryWeather = info[@"summary_weather"];
-        self.time = info[@"time"];
-        self.date = info[@"date"];
-        self.city = info[@"city"];
-        self.country = info[@"country"];
-        self.urlOrigImage = info[@"url_orig"];
-        self.urlSquareImage = info[@"url_square"];
+        _temperature = info[@"temperature"];
+        _humidity = info[@"humidity"];
+        _summaryWeather = info[@"summary_weather"];
+        _time = info[@"time"];
+        _date = info[@"date"];
+        _city = info[@"city"];
+        _country = info[@"country"];
+        _urlOrigImage = info[@"url_orig"];
+        _urlSquareImage = info[@"url_square"];
     }
     return self;
 }
