@@ -27,10 +27,10 @@
     self = [super init];
     if (self)
     {
-        self.imageLoader = [SMAImageLoader new];
-        self.imageFetcher = [SMAImageFetcher new];
-        self.geocoder = [SMAGeocoder new];
-        self.weatherFetcher = [SMAWeatherFetcher new];
+        _imageLoader = [SMAImageLoader new];
+        _imageFetcher = [SMAImageFetcher new];
+        _geocoder = [SMAGeocoder new];
+        _weatherFetcher = [SMAWeatherFetcher new];
     }
     return self;
 }

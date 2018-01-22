@@ -25,11 +25,11 @@
     self = [super init];
     if (self)
     {
-        self.masterContext = self.persistentContainer.newBackgroundContext;
-        self.mainContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        self.backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-        self.mainContext.parentContext = self.masterContext;
-        self.backgroundContext.parentContext = self.mainContext;
+        _masterContext = self.persistentContainer.newBackgroundContext;
+        _mainContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        _backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        _mainContext.parentContext = _masterContext;
+        _backgroundContext.parentContext = _mainContext;
     }
     return self;
 }
