@@ -48,24 +48,22 @@ static const CGFloat SMASearchFieldHeight = 50.f;
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    CGRect viewBounds = self.view.bounds;
-    CGFloat topBarOffset = self.topLayoutGuide.length;
-    viewBounds.origin.y = -topBarOffset;
-    self.view.bounds = viewBounds;
-    
+    [self setupBounds];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     static dispatch_once_t once;
     dispatch_once(&once, ^{
+        self.searchField.frame = CGRectMake(0, CGRectGetMidY(self.view.frame), CGRectGetWidth(self.view.frame), SMASearchFieldHeight);
         [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.searchField.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), SMASearchFieldHeight);
-            self.forecastView = [SMAForecastView new];
-            self.forecastView.translatesAutoresizingMaskIntoConstraints = NO;
-            self.forecastView.pictureView.clipsToBounds = YES;
-            self.forecastView.layer.opacity = 0.f;
-            [self.view addSubview:self.forecastView];
-        } completion:nil];
+        } completion:^(BOOL finished) {
+            [self setupConstraints];
+        }];
     });
-    self.searchField.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), SMASearchFieldHeight);
-    [self setupConstraints];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,15 +79,17 @@ static const CGFloat SMASearchFieldHeight = 50.f;
  */
 - (void)setupUI
 {
-    self.view.backgroundColor = UIColor.customBlue;
+    self.view.backgroundColor = UIColor.whiteColor;
     [self setupSearchField];
     [self setupActivityIndicator];
+    [self setupForecastView];
 }
 
 - (void)setupSearchField
 {
     self.searchField = [[SMALocationSearchField alloc] initWithFrame:CGRectMake(0, CGRectGetMidY(self.view.frame), CGRectGetWidth(self.view.frame), SMASearchFieldHeight)];
     self.searchField.delegate = self;
+    self.searchField.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.searchField];
 }
 
@@ -98,7 +98,25 @@ static const CGFloat SMASearchFieldHeight = 50.f;
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.activityIndicator.hidesWhenStopped = YES;
     self.activityIndicator.center = self.view.center;
+    self.activityIndicator.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.activityIndicator];
+}
+
+- (void)setupForecastView
+{
+    self.forecastView = [SMAForecastView new];
+    self.forecastView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.forecastView.pictureView.clipsToBounds = YES;
+    self.forecastView.layer.opacity = 0.f;
+    [self.view addSubview:self.forecastView];
+}
+
+- (void)setupBounds
+{
+    CGRect viewBounds = self.view.bounds;
+    CGFloat topBarOffset = self.topLayoutGuide.length;
+    viewBounds.origin.y = -topBarOffset;
+    self.view.bounds = viewBounds;
 }
 
 - (void)setupConstraints
@@ -109,7 +127,11 @@ static const CGFloat SMASearchFieldHeight = 50.f;
                               @"searchFieldHeight": [[NSNumber alloc] initWithFloat:SMASearchFieldHeight],
                               @"tabBarHeight": [[NSNumber alloc] initWithFloat:tabBarHeight]
                               };
-    NSDictionary *views = @{@"forecastView": self.forecastView};
+    NSDictionary *views = @{
+                            @"forecastView": self.forecastView,
+                            @"searchField": self.searchField,
+                            @"activityIndicator": self.activityIndicator
+                            };
     
     NSArray *verticalConstraints = [NSLayoutConstraint
                                     constraintsWithVisualFormat:@"V:|-searchFieldHeight-[forecastView]-tabBarHeight-|"
@@ -119,6 +141,29 @@ static const CGFloat SMASearchFieldHeight = 50.f;
                                       constraintsWithVisualFormat:@"H:|[forecastView]|"
                                       options:0 metrics:metrics views:views];
     [allConstraints addObjectsFromArray:horizontalConstraints];
+    NSArray *horizontalConstraintsSearchField = [NSLayoutConstraint
+                                                 constraintsWithVisualFormat:@"H:|[searchField]|"
+                                                 options:0 metrics:metrics views:views];
+    [allConstraints addObjectsFromArray:horizontalConstraintsSearchField];
+    NSArray *verticalConstraintsSearchField = [NSLayoutConstraint
+                                               constraintsWithVisualFormat:@"V:|[searchField(searchFieldHeight)]|"
+                                               options:0 metrics:metrics views:views];
+    [allConstraints addObjectsFromArray:verticalConstraintsSearchField];
+    
+    NSLayoutConstraint *activityIndicatorConstraintX = [NSLayoutConstraint constraintWithItem:self.activityIndicator
+                                                                                    attribute:NSLayoutAttributeCenterX
+                                                                                    relatedBy:NSLayoutRelationEqual
+                                                                                       toItem:self.activityIndicator.superview
+                                                                                    attribute:NSLayoutAttributeCenterX
+                                                                                   multiplier:1.f constant:0.f];
+    [allConstraints addObject:activityIndicatorConstraintX];
+    NSLayoutConstraint *activityIndicatorConstraintY = [NSLayoutConstraint constraintWithItem:self.activityIndicator
+                                                                                    attribute:NSLayoutAttributeCenterY
+                                                                                    relatedBy:NSLayoutRelationEqual
+                                                                                       toItem:self.activityIndicator.superview
+                                                                                    attribute:NSLayoutAttributeCenterY
+                                                                                   multiplier:1.f constant:0.f];
+    [allConstraints addObject:activityIndicatorConstraintY];
     
     [self.view addConstraints:allConstraints];
     [self.view setNeedsLayout];
@@ -145,16 +190,16 @@ static const CGFloat SMASearchFieldHeight = 50.f;
         [self.forecastService getForecastForCityOnline:city completion:^(SMAForecastModel *model) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.forecastView setupWithForecastModel:model];
-                [self.imageLoader loadImageFromFileURL:model.urlOrigImage completion:^(UIImage *image) {
-                    self.forecastView.pictureView.image = image;
-                    [self.delegate reload];
-                    [self.activityIndicator stopAnimating];
-                    [UIView animateWithDuration:0.5 animations:^{
-                        self.forecastView.layer.opacity = 1.f;
-                        self.forecastView.transform = CGAffineTransformIdentity;
-                    }];
-                }];
             });
+            [self.imageLoader loadImageFromFileURL:model.urlOrigImage completion:^(UIImage *image) {
+                self.forecastView.pictureView.image = image;
+                [self.delegate reload];
+                [self.activityIndicator stopAnimating];
+                [UIView animateWithDuration:0.5 animations:^{
+                    self.forecastView.layer.opacity = 1.f;
+                    self.forecastView.transform = CGAffineTransformIdentity;
+                }];
+            }];
         }];
     });
     
