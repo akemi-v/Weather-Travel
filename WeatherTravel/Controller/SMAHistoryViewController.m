@@ -90,7 +90,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
 - (void)setupUI
 {
     self.title = @"История";
-    self.view.backgroundColor = UIColor.customDarkBlue;
+    self.view.backgroundColor = UIColor.blackColor;
     [self setupCollectionView];
     [self setupActivityIndicator];
 }
