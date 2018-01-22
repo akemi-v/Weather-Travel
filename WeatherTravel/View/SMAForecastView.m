@@ -30,6 +30,47 @@ static const CGFloat SMAForecastOffset = 8.f;
 
 #pragma mark - UI
 
+- (void)setupUI
+{
+    
+    self.backgroundColor = UIColor.customPaleBlue;
+    
+    _pictureView = [UIImageView new];
+    _pictureView.translatesAutoresizingMaskIntoConstraints = NO;
+    _pictureView.contentMode = UIViewContentModeScaleAspectFill;
+    [self addSubview:_pictureView];
+    
+    _temperatureLabel = [UILabel new];
+    _temperatureLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:_temperatureLabel];
+    
+    _humidityLabel = [UILabel new];
+    _humidityLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:_humidityLabel];
+    
+    _summaryWeatherLabel = [UILabel new];
+    _summaryWeatherLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:_summaryWeatherLabel];
+    
+    _timeLabel = [UILabel new];
+    _timeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:_timeLabel];
+    
+    _dateLabel = [UILabel new];
+    _dateLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:_dateLabel];
+    
+    _cityLabel = [UILabel new];
+    _cityLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:_cityLabel];
+    
+    _countryLabel = [UILabel new];
+    _countryLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:_countryLabel];
+    
+    [self setupConstraints];
+}
+
 - (void)setupWithForecastModel:(SMAForecastModel *)model
 {
     NSDictionary *strokeTextAttributes = @{
@@ -62,47 +103,6 @@ static const CGFloat SMAForecastOffset = 8.f;
                                         attributes:strokeTextAttributes];
 }
 
-- (void)setupUI
-{
-    
-    self.backgroundColor = UIColor.customPaleBlue;
-    
-    self.pictureView = [UIImageView new];
-    self.pictureView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.pictureView.contentMode = UIViewContentModeScaleAspectFill;
-    [self addSubview:self.pictureView];
-    
-    self.temperatureLabel = [UILabel new];
-    self.temperatureLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.temperatureLabel];
-    
-    self.humidityLabel = [UILabel new];
-    self.humidityLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.humidityLabel];
-    
-    self.summaryWeatherLabel = [UILabel new];
-    self.summaryWeatherLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.summaryWeatherLabel];
-    
-    self.timeLabel = [UILabel new];
-    self.timeLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.timeLabel];
-    
-    self.dateLabel = [UILabel new];
-    self.dateLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.dateLabel];
-    
-    self.cityLabel = [UILabel new];
-    self.cityLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.cityLabel];
-    
-    self.countryLabel = [UILabel new];
-    self.countryLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.countryLabel];
-    
-    [self setupConstraints];
-}
-
 - (void)setupConstraints
 {
     NSMutableArray *allConstraints = [NSMutableArray array];
@@ -111,14 +111,14 @@ static const CGFloat SMAForecastOffset = 8.f;
                               @"height": [[NSNumber alloc] initWithFloat:SMAForecastLabelHeight]
                               };
     NSDictionary *views = @{
-                            @"pictureView": self.pictureView,
-                            @"temperatureLabel": self.temperatureLabel,
-                            @"humidityLabel": self.humidityLabel,
-                            @"summaryLabel": self.summaryWeatherLabel,
-                            @"timeLabel": self.timeLabel,
-                            @"dateLabel": self.dateLabel,
-                            @"cityLabel": self.cityLabel,
-                            @"countryLabel": self.countryLabel
+                            @"pictureView": _pictureView,
+                            @"temperatureLabel": _temperatureLabel,
+                            @"humidityLabel": _humidityLabel,
+                            @"summaryLabel": _summaryWeatherLabel,
+                            @"timeLabel": _timeLabel,
+                            @"dateLabel": _dateLabel,
+                            @"cityLabel": _cityLabel,
+                            @"countryLabel": _countryLabel
                             };
     
     NSArray *verticalConstraintsPictureView = [NSLayoutConstraint

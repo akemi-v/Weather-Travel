@@ -22,18 +22,18 @@ static const CGFloat SMACollectionViewCellOffset = 5.f;
     self = [super initWithFrame:frame];
     if (self)
     {
-        self.imageView = [UIImageView new];
-        self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.contentView addSubview:self.imageView];
-        self.cityLabel = [UILabel new];
-        self.cityLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.contentView addSubview:self.cityLabel];
-        self.timeLabel = [UILabel new];
-        self.timeLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.contentView addSubview:self.timeLabel];
-        self.dateLabel = [UILabel new];
-        self.dateLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.contentView addSubview:self.dateLabel];
+        _imageView = [UIImageView new];
+        _imageView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.contentView addSubview:_imageView];
+        _cityLabel = [UILabel new];
+        _cityLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.contentView addSubview:_cityLabel];
+        _timeLabel = [UILabel new];
+        _timeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.contentView addSubview:_timeLabel];
+        _dateLabel = [UILabel new];
+        _dateLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.contentView addSubview:_dateLabel];
         
         [self setupConstraints];
     }
@@ -50,10 +50,10 @@ static const CGFloat SMACollectionViewCellOffset = 5.f;
                               @"offset": [[NSNumber alloc] initWithFloat:SMACollectionViewCellOffset]
                               };
     NSDictionary *views = @{
-                            @"imageView": self.imageView,
-                            @"timeLabel": self.timeLabel,
-                            @"dateLabel": self.dateLabel,
-                            @"cityLabel": self.cityLabel
+                            @"imageView": _imageView,
+                            @"timeLabel": _timeLabel,
+                            @"dateLabel": _dateLabel,
+                            @"cityLabel": _cityLabel
                             };
     NSArray *verticalConstraintsImageView = [NSLayoutConstraint
                                     constraintsWithVisualFormat:@"V:|[imageView]|"
