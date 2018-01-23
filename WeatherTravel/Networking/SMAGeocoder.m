@@ -14,6 +14,11 @@
 
 - (void)getCoordinatesFromCityName:(NSString *)cityName completion:(void (^)(NSDictionary *coordinates))completionHandler
 {
+    if (!cityName)
+    {
+        NSLog(@"No city name");
+        return;
+    }
     NSURLRequest *request = [SMAGoogleCoordinatesRequest
                          getUrlRequestWithParameters:@{@"cityName": cityName}];
     if (!request)
@@ -22,7 +27,10 @@
     }
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request
+                                                       completionHandler:^(NSData * _Nullable data,
+                                                                           NSURLResponse * _Nullable response,
+                                                                           NSError * _Nullable error) {
         
         if (!data)
         {

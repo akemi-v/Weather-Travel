@@ -11,7 +11,9 @@
 #import <Expecta/Expecta.h>
 
 #import "SMAGeocoder.h"
+#import "SMAGoogleCoordinatesRequest.h"
 #import "SMAGoogleCoordinatesParser.h"
+
 
 @interface SMAGeocoder(Tests)
 
@@ -21,7 +23,7 @@
 
 @interface SMAGeocoderTests : XCTestCase
 
-@property (nonatomic, strong) SMAGeocoder *geocoder;
+@property (nonatomic, strong) SMAGeocoder *mockGeocoder;
 
 @end
 
@@ -30,36 +32,53 @@
 - (void)setUp
 {
     [super setUp];
-    self.geocoder = OCMPartialMock([SMAGeocoder new]);
+    self.mockGeocoder = OCMPartialMock([SMAGeocoder new]);
 }
 
 - (void)tearDown
 {
-    self.geocoder = nil;
+    self.mockGeocoder = nil;
     [super tearDown];
 }
 
-- (void)testGetCoordinatesFromCityNameEmpty
+- (void)testGetCoordinatesFromCityNameNil
 {
-    NSString *cityName = @"";
+    id mockSession = OCMPartialMock([NSURLSession new]);
+    OCMStub([mockSession dataTaskWithRequest:OCMOCK_ANY completionHandler:OCMOCK_ANY]);
     
+    __block NSDictionary *coords = nil;
     __block BOOL isCalled = NO;
-    [self.geocoder getCoordinatesFromCityName:cityName completion:^(NSDictionary *coordinates) {
+    [self.mockGeocoder getCoordinatesFromCityName:nil completion:^(NSDictionary *coordinates) {
         isCalled = YES;
+        coords = coordinates;
     }];
-    expect(isCalled).after(2).to.beFalsy();
+    
+    OCMReject([mockSession dataTaskWithRequest:OCMOCK_ANY completionHandler:OCMOCK_ANY]);
+    expect(isCalled).to.beFalsy();
+    expect(coords).to.beNil();
 }
 
-- (void)testGetCoordinatesFromCityNameNoise
+- (void)testGetCoordinatesFromCityNameRequestNil
 {
-    NSString *cityName = @"dsfhjksdhfjkahfjkhdjkfhajhfdjshdajksdh";
+    id mockRequestClass = OCMClassMock([SMAGoogleCoordinatesRequest class]);
+    OCMStub([mockRequestClass getUrlRequestWithParameters:@{}]).andReturn(nil);
     
+    id mockSession = OCMPartialMock([NSURLSession new]);
+    OCMStub([mockSession dataTaskWithRequest:OCMOCK_ANY completionHandler:OCMOCK_ANY]);
+    
+    __block NSDictionary *coords = nil;
     __block BOOL isCalled = NO;
-    [self.geocoder getCoordinatesFromCityName:cityName completion:^(NSDictionary *coordinates) {
+    [self.mockGeocoder getCoordinatesFromCityName:@"" completion:^(NSDictionary *coordinates) {
         isCalled = YES;
+        coords = coordinates;
     }];
-     expect(isCalled).after(2).to.beFalsy();
+    
+    OCMReject([mockSession dataTaskWithRequest:OCMOCK_ANY completionHandler:OCMOCK_ANY]);
+    expect(isCalled).to.beFalsy();
+    expect(coords).to.beNil();
 }
+
+
 
 - (void)testGetCoordinatesFromCityNameReal
 {
@@ -67,7 +86,7 @@
     
     __block BOOL isCalled = NO;
     __block NSDictionary *coords = nil;
-    [self.geocoder getCoordinatesFromCityName:cityName completion:^(NSDictionary *coordinates) {
+    [self.mockGeocoder getCoordinatesFromCityName:cityName completion:^(NSDictionary *coordinates) {
         isCalled = YES;
         coords = coordinates;
     }];
