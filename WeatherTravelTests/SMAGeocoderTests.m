@@ -61,7 +61,7 @@
 - (void)testGetCoordinatesFromCityNameRequestNil
 {
     id mockRequestClass = OCMClassMock([SMAGoogleCoordinatesRequest class]);
-    OCMStub([mockRequestClass getUrlRequestWithParameters:@{}]).andReturn(nil);
+    OCMStub([mockRequestClass getUrlRequestWithParameters:OCMOCK_ANY]).andReturn(nil);
     
     id mockSession = OCMPartialMock([NSURLSession new]);
     OCMStub([mockSession dataTaskWithRequest:OCMOCK_ANY completionHandler:OCMOCK_ANY]);
