@@ -193,12 +193,15 @@ static const CGFloat SMASearchFieldHeight = 50.f;
             });
             [self.imageLoader loadImageFromFileURL:model.urlOrigImage completion:^(UIImage *image) {
                 self.forecastView.pictureView.image = image;
-                [self.delegate reload];
                 [self.activityIndicator stopAnimating];
                 [UIView animateWithDuration:0.5 animations:^{
                     self.forecastView.layer.opacity = 1.f;
                     self.forecastView.transform = CGAffineTransformIdentity;
                 }];
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                    [self.delegate reload];
+                });
             }];
         }];
     });
