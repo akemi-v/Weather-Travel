@@ -20,7 +20,7 @@
         return;
     }
     NSURLRequest *request = [SMAGoogleCoordinatesRequest
-                         getUrlRequestWithParameters:@{@"cityName": cityName}];
+                             getUrlRequestWithParameters:@{@"cityName": cityName}];
     if (!request)
     {
         return;
@@ -31,15 +31,15 @@
                                                        completionHandler:^(NSData * _Nullable data,
                                                                            NSURLResponse * _Nullable response,
                                                                            NSError * _Nullable error) {
-        
-        if (!data)
-        {
-            NSLog(@"Network error: %@", error.localizedDescription);
-            return;
-        }
-        NSDictionary *coordinates = [SMAGoogleCoordinatesParser parse:data];
-        completionHandler(coordinates);
-    }];
+                                                           
+                                                           if (!data || error)
+                                                           {
+                                                               NSLog(@"Network error: %@", error.localizedDescription);
+                                                               return;
+                                                           }
+                                                           NSDictionary *coordinates = [SMAGoogleCoordinatesParser parse:data];
+                                                           completionHandler(coordinates);
+                                                       }];
     
     [sessionDataTask resume];
 }
