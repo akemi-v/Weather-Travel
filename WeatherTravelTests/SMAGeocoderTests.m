@@ -42,104 +42,156 @@
     [super tearDown];
 }
 
-- (void)testGetCoordinatesFromCityNameNil
+- (void)testGetCoordinatesFromCityNameCityNameNil
 {
+    id request = OCMClassMock([SMAGoogleCoordinatesRequest class]);
+    OCMStub(ClassMethod([request getUrlRequestWithParameters:[OCMArg any]]));
+    OCMReject(ClassMethod([request getUrlRequestWithParameters:[OCMArg any]]));
+    [self.mockGeocoder getCoordinatesFromCityName:nil completion:nil];
+}
+
+- (void)testGetCoordinatesFromCityNameRequestNil
+{
+    NSString *cityName = @"";
+    id request = OCMClassMock([SMAGoogleCoordinatesRequest class]);
+    OCMStub(ClassMethod([request getUrlRequestWithParameters:@{@"cityName": cityName}])).andReturn(nil);
+    
+    [self.mockGeocoder getCoordinatesFromCityName:cityName completion:nil];
+    
+    OCMVerify(ClassMethod([request getUrlRequestWithParameters:@{@"cityName": cityName}]));
+}
+
+- (void)testGetCoordinatesFromCityName
+{
+    NSString *cityName = @"";
+    
+    id urlRequest = OCMClassMock([NSURLRequest class]);
+    id request = OCMClassMock([SMAGoogleCoordinatesRequest class]);
+    OCMStub(ClassMethod([request getUrlRequestWithParameters:@{@"cityName": cityName}])).andReturn(urlRequest);
+    
+    id configuration = OCMClassMock([NSURLSessionConfiguration class]);
+    OCMStub(ClassMethod([configuration defaultSessionConfiguration])).andReturn(configuration);
+    
+    id session = OCMClassMock([NSURLSession class]);
+    OCMStub(ClassMethod([session sessionWithConfiguration:configuration])).andReturn(session);
+    
+    id sessionDataTask = OCMClassMock([NSURLSessionDataTask class]);
+    OCMStub([session dataTaskWithRequest:urlRequest completionHandler:[OCMArg any]]).andReturn(sessionDataTask);
+    
+    [self.mockGeocoder getCoordinatesFromCityName:cityName completion:nil];
+    
+    OCMVerify([sessionDataTask resume]);
+    [urlRequest stopMocking];
+    [configuration stopMocking];
+    [session stopMocking];
+}
+
+- (void)testGetCoordinatesFromCityNameWithReceivedDataNil
+{
+    NSString *cityName = @"";
+    
+    id urlRequest = OCMClassMock([NSURLRequest class]);
+    id request = OCMClassMock([SMAGoogleCoordinatesRequest class]);
+    OCMStub(ClassMethod([request getUrlRequestWithParameters:@{@"cityName": cityName}])).andReturn(urlRequest);
+    
+    id configuration = OCMClassMock([NSURLSessionConfiguration class]);
+    OCMStub(ClassMethod([configuration defaultSessionConfiguration])).andReturn(configuration);
+    
+    id session = OCMClassMock([NSURLSession class]);
+    OCMStub(ClassMethod([session sessionWithConfiguration:configuration])).andReturn(session);
+    
+    NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:400 userInfo:nil];
+    id sessionDataTask = OCMClassMock([NSURLSessionDataTask class]);
+    OCMStub([session dataTaskWithRequest:urlRequest completionHandler:([OCMArg invokeBlockWithArgs:[NSNull null], [OCMArg any], error, nil])]).andReturn(sessionDataTask);
+
+    id parser = OCMClassMock([SMAGoogleCoordinatesParser class]);
+    OCMStub(ClassMethod([parser parse:[OCMArg any]]));
+    
     __block NSDictionary *coords = nil;
     __block BOOL isCalled = NO;
-    [self.mockGeocoder getCoordinatesFromCityName:nil completion:^(NSDictionary *coordinates) {
+    [self.mockGeocoder getCoordinatesFromCityName:cityName completion:^(NSDictionary *coordinates) {
         isCalled = YES;
         coords = coordinates;
     }];
     
-    expect(isCalled).to.beFalsy();
+    OCMVerify([sessionDataTask resume]);
+    OCMReject([parser parse:[OCMArg any]]);
     expect(coords).to.beNil();
-}
-
-- (void)testGetCoordinatesFromCityNameWhenRequestNil
-{
-    id mockRequestClass = OCMClassMock([SMAGoogleCoordinatesRequest class]);
-    OCMStub([mockRequestClass getUrlRequestWithParameters:OCMOCK_ANY]).andReturn(nil);
-    
-    __block NSDictionary *coords = nil;
-    __block BOOL isCalled = NO;
-    [self.mockGeocoder getCoordinatesFromCityName:@"" completion:^(NSDictionary *coordinates) {
-        isCalled = YES;
-        coords = coordinates;
-    }];
-    
     expect(isCalled).to.beFalsy();
-    expect(coords).to.beNil();
+    [urlRequest stopMocking];
+    [configuration stopMocking];
+    [session stopMocking];
 }
 
-- (void)testGetCoordinatesFromCityNameWhenReceivedDataNil
+- (void)testGetCoordinatesFromCityNameWithReceivedDataCorrect
 {
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"maps.googleapis.com"];
-    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:400 userInfo:nil];
-        return [OHHTTPStubsResponse responseWithError:error];
-    }];
+    NSString *cityName = @"";
     
-    __block NSDictionary *coords = nil;
-    __block BOOL isCalled = NO;
+    id urlRequest = OCMClassMock([NSURLRequest class]);
+    id request = OCMClassMock([SMAGoogleCoordinatesRequest class]);
+    OCMStub(ClassMethod([request getUrlRequestWithParameters:@{@"cityName": cityName}])).andReturn(urlRequest);
     
-    [self.mockGeocoder getCoordinatesFromCityName:@"" completion:^(NSDictionary *coordinates) {
-        isCalled = YES;
-        coords = coordinates;
-    }];
+    id configuration = OCMClassMock([NSURLSessionConfiguration class]);
+    OCMStub(ClassMethod([configuration defaultSessionConfiguration])).andReturn(configuration);
     
-    expect(isCalled).after(5).to.beFalsy();
-    expect(coords).after(5).to.beNil();
-}
-
-- (void)testGetCoordinatesFromCityNameWhenReceivedWrongData
-{
-    NSDictionary *expectedResult = @{@"wrong": @"23"};
+    id session = OCMClassMock([NSURLSession class]);
+    OCMStub(ClassMethod([session sessionWithConfiguration:configuration])).andReturn(session);
     
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"maps.googleapis.com"];
-    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        NSData *data = [NSJSONSerialization dataWithJSONObject:expectedResult options:0 error:nil];
-        return [OHHTTPStubsResponse responseWithData:data statusCode:200 headers:nil];
-    }];
+    id sessionDataTask = OCMClassMock([NSURLSessionDataTask class]);
+    OCMStub([session dataTaskWithRequest:urlRequest completionHandler:([OCMArg invokeBlockWithArgs:[OCMArg isNotNil], [OCMArg any], [NSNull null], nil])]).andReturn(sessionDataTask);
     
-    __block NSDictionary *coords = nil;
-    __block BOOL isCalled = NO;
-    
-    [self.mockGeocoder getCoordinatesFromCityName:@"" completion:^(NSDictionary *coordinates) {
-        isCalled = YES;
-        coords = coordinates;
-    }];
-    
-    expect(isCalled).after(5).to.beTruthy();
-    expect(coords).after(5).to.beNil();
-}
-
-- (void)testGetCoordinatesFromCityNameWhenDataParsedSuccessfully
-{
     NSDictionary *expectedResult = @{@"result": @"23"};
+    id parser = OCMClassMock([SMAGoogleCoordinatesParser class]);
+    OCMStub(ClassMethod([parser parse:[OCMArg any]])).andReturn(expectedResult);
     
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"maps.googleapis.com"];
-    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        NSData *data = [NSJSONSerialization dataWithJSONObject:expectedResult options:0 error:nil];
-        return [OHHTTPStubsResponse responseWithData:data statusCode:200 headers:nil];
-    }];
-    
-    id mockParserClass = OCMClassMock([SMAGoogleCoordinatesParser class]);
-    OCMStub([mockParserClass parse:OCMOCK_ANY]).andReturn(expectedResult);
-    
-    __block NSDictionary *coords = nil;
+    __block NSDictionary *result = nil;
     __block BOOL isCalled = NO;
-    
-    [self.mockGeocoder getCoordinatesFromCityName:@"" completion:^(NSDictionary *coordinates) {
+    [self.mockGeocoder getCoordinatesFromCityName:cityName completion:^(NSDictionary *coordinates) {
         isCalled = YES;
-        coords = coordinates;
+        result = coordinates;
     }];
     
-    expect(isCalled).after(5).to.beTruthy();
-    expect(coords).after(5).toNot.beNil();
-    expect(coords).after(5).to.equal(expectedResult);
+    OCMVerify([sessionDataTask resume]);
+    expect(result).to.equal(expectedResult);
+    expect(isCalled).to.beTruthy();
+    [urlRequest stopMocking];
+    [configuration stopMocking];
+    [session stopMocking];
+}
+
+- (void)testGetCoordinatesFromCityNameWithReceivedDataIncorrect
+{
+    NSString *cityName = @"";
+    
+    id urlRequest = OCMClassMock([NSURLRequest class]);
+    id request = OCMClassMock([SMAGoogleCoordinatesRequest class]);
+    OCMStub(ClassMethod([request getUrlRequestWithParameters:@{@"cityName": cityName}])).andReturn(urlRequest);
+    
+    id configuration = OCMClassMock([NSURLSessionConfiguration class]);
+    OCMStub(ClassMethod([configuration defaultSessionConfiguration])).andReturn(configuration);
+    
+    id session = OCMClassMock([NSURLSession class]);
+    OCMStub(ClassMethod([session sessionWithConfiguration:configuration])).andReturn(session);
+    
+    id sessionDataTask = OCMClassMock([NSURLSessionDataTask class]);
+    OCMStub([session dataTaskWithRequest:urlRequest completionHandler:([OCMArg invokeBlockWithArgs:[OCMArg isNotNil], [OCMArg any], [NSNull null], nil])]).andReturn(sessionDataTask);
+    
+    id parser = OCMClassMock([SMAGoogleCoordinatesParser class]);
+    OCMStub(ClassMethod([parser parse:[OCMArg any]])).andReturn(nil);
+    
+    __block NSDictionary *result = nil;
+    __block BOOL isCalled = NO;
+    [self.mockGeocoder getCoordinatesFromCityName:cityName completion:^(NSDictionary *coordinates) {
+        isCalled = YES;
+        result = coordinates;
+    }];
+    
+    OCMVerify([sessionDataTask resume]);
+    expect(result).to.beNil();
+    expect(isCalled).to.beTruthy();
+    [urlRequest stopMocking];
+    [configuration stopMocking];
+    [session stopMocking];
 }
 
 @end
