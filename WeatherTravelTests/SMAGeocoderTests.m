@@ -100,7 +100,8 @@
     id session = OCMClassMock([NSURLSession class]);
     OCMStub(ClassMethod([session sessionWithConfiguration:configuration])).andReturn(session);
     
-    NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:400 userInfo:nil];
+    id error = OCMPartialMock([NSError new]);
+    OCMStub([error localizedDescription]).andReturn(nil);
     id sessionDataTask = OCMClassMock([NSURLSessionDataTask class]);
     OCMStub([session dataTaskWithRequest:urlRequest completionHandler:([OCMArg invokeBlockWithArgs:[NSNull null], [OCMArg any], error, nil])]).andReturn(sessionDataTask);
 
@@ -115,12 +116,16 @@
     }];
     
     OCMVerify([sessionDataTask resume]);
+    OCMVerify([error localizedDescription]);
     OCMReject([parser parse:[OCMArg any]]);
     expect(coords).to.beNil();
     expect(isCalled).to.beFalsy();
     [urlRequest stopMocking];
     [configuration stopMocking];
     [session stopMocking];
+    [error stopMocking];
+    [sessionDataTask stopMocking];
+    [parser stopMocking];
 }
 
 - (void)testGetCoordinatesFromCityNameWithReceivedDataCorrect
