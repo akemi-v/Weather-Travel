@@ -35,44 +35,20 @@ static const CGFloat SMAItemsPerRow = 3.f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupUI];
+    [self setupConstraints];
     self.forecastService = [SMAForecastService new];
     self.imageLoader = [SMAImageLoader new];
-    [self setupUI];
+    
+    [self.forecastService getForecastsHistoryCompletion:^(NSArray<SMAForecastModel *> *models) {
+        self.forecasts = [models mutableCopy];
+    }];
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    CGRect viewBounds = self.view.bounds;
-    CGFloat topBarOffset = self.topLayoutGuide.length;
-    viewBounds.origin.y = -topBarOffset;
-    self.view.bounds = viewBounds;
-    
-    static dispatch_once_t once;
-    dispatch_once(&once, ^{
-        self.forecastView = [SMAForecastView new];
-        self.forecastView.translatesAutoresizingMaskIntoConstraints = NO;
-        self.forecastView.pictureView.clipsToBounds = YES;
-        self.forecastView.layer.opacity = 0.f;
-        [self.view addSubview:self.forecastView];
-    });
-    [self setupConstraints];
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
-                                                 initWithTarget:self
-                                                 action:@selector(tapAction:)];
-        [self.forecastView addGestureRecognizer:tapRecognizer];
-    });
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self.forecastService getForecastsHistoryCompletion:^(NSArray<SMAForecastModel *> *models) {
-        self.forecasts = [models mutableCopy];
-        
-    }];
+    [self setupBounds];
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,6 +69,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
     self.view.backgroundColor = UIColor.blackColor;
     [self setupCollectionView];
     [self setupActivityIndicator];
+    [self setupForecastView];
 }
 
 - (void)setupActivityIndicator
@@ -121,13 +98,40 @@ static const CGFloat SMAItemsPerRow = 3.f;
     self.collectionView.delegate = self;
 }
 
+- (void)setupForecastView
+{
+    self.forecastView = [SMAForecastView new];
+    self.forecastView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.forecastView.pictureView.clipsToBounds = YES;
+    self.forecastView.layer.opacity = 0.f;
+    [self.view addSubview:self.forecastView];
+    [self setupTapRecognizer];
+}
+
+- (void)setupTapRecognizer
+{
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self
+                                             action:@selector(tapAction:)];
+    [self.forecastView addGestureRecognizer:tapRecognizer];
+}
+
+- (void)setupBounds
+{
+    CGRect viewBounds = self.view.bounds;
+    CGFloat topBarOffset = self.topLayoutGuide.length;
+    viewBounds.origin.y = -topBarOffset;
+    self.view.bounds = viewBounds;
+}
+
 - (void)setupConstraints
 {
     CGFloat topForecastOffset = SMAForecastOffset;
     CGFloat bottomForecastOffset = CGRectGetHeight(self.tabBarController.tabBar.frame) + self.topLayoutGuide.length + SMAForecastOffset;
     NSMutableArray *allConstraints = [NSMutableArray array];
     NSDictionary *views = @{@"collectionView": self.collectionView,
-                            @"forecastView": self.forecastView
+                            @"forecastView": self.forecastView,
+                            @"activityIndicator": self.activityIndicator
                             };
     NSDictionary *metrics = @{
                               @"offset": [[NSNumber alloc] initWithFloat:SMACollectionViewOffset],
@@ -152,6 +156,21 @@ static const CGFloat SMAItemsPerRow = 3.f;
                                                   constraintsWithVisualFormat:@"H:|-forecastSideOffset-[forecastView]-forecastSideOffset-|"
                                                   options:0 metrics:metrics views:views];
     [allConstraints addObjectsFromArray:horizontalConstraintsForecastView];
+    
+    NSLayoutConstraint *activityIndicatorConstraintX = [NSLayoutConstraint constraintWithItem:self.activityIndicator
+                                                                                    attribute:NSLayoutAttributeCenterX
+                                                                                    relatedBy:NSLayoutRelationEqual
+                                                                                       toItem:self.collectionView
+                                                                                    attribute:NSLayoutAttributeCenterX
+                                                                                   multiplier:1.f constant:0.f];
+    [allConstraints addObject:activityIndicatorConstraintX];
+    NSLayoutConstraint *activityIndicatorConstraintY = [NSLayoutConstraint constraintWithItem:self.activityIndicator
+                                                                                    attribute:NSLayoutAttributeCenterY
+                                                                                    relatedBy:NSLayoutRelationEqual
+                                                                                       toItem:self.collectionView
+                                                                                    attribute:NSLayoutAttributeCenterY
+                                                                                   multiplier:1.f constant:0.f];
+    [allConstraints addObject:activityIndicatorConstraintY];
     
     [self.view addConstraints:allConstraints];
     [self.view setNeedsLayout];
@@ -240,7 +259,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
     [self.collectionView.collectionViewLayout invalidateLayout];
 }
 
-#pragma mark - SMASeatchViewControllerDelegate
+#pragma mark - SMASearchViewControllerDelegate
 
 - (void)reload
 {
