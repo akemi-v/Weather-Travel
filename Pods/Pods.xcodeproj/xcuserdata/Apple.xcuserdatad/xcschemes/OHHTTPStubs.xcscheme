@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '46D68D26DCAAC4D999D549BA45F0B0EC'
-               BlueprintName = 'Expecta'
+               BlueprintIdentifier = '0A578B91EB23BBD0EB78884A6FCB29D9'
+               BlueprintName = 'OHHTTPStubs'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libExpecta.a'>
+               BuildableName = 'libOHHTTPStubs.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
