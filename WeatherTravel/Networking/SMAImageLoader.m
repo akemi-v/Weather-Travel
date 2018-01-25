@@ -27,6 +27,10 @@
 - (void)loadImageFromRemoteURL:(NSString *)urlString completion:(void (^)(UIImage *))completionHandler
 {
     NSURL *url = [NSURL URLWithString:urlString];
+    if (!url)
+    {
+        return;
+    }
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     if (!request)
     {
@@ -54,9 +58,15 @@
 
 - (void)loadImageFromFileURL:(NSString *)urlString completion:(void (^)(UIImage *image))completionHandler
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = [self getPathForDirectoriesInDomains];
     NSString *documentsDirectory = paths[0];
     NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:urlString];
+    
+    if (!imagePath)
+    {
+        NSLog(@"Нет пути к папке");
+        return;
+    }
     
     NSError *error = nil;
     NSData *data = [NSData dataWithContentsOfFile:imagePath options:0 error:&error];
@@ -74,13 +84,19 @@
 
 - (void)saveImage:(UIImage *)image completion:(void (^)(NSString *urlString))completionHandler
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = [self getPathForDirectoriesInDomains];
     NSString *documentsDirectory = paths[0];
     NSString *imageName = [NSString stringWithFormat:@"%@.jpg", [self randomId]];
     NSString *folderName = @"CityImages";
     NSString *relativePath = [folderName stringByAppendingPathComponent:imageName];
     NSString *folderPath = [documentsDirectory stringByAppendingPathComponent:folderName];
     NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:relativePath];
+    
+    if (!fullPath)
+    {
+        NSLog(@"Нет пути к папке");
+        return;
+    }
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:folderPath])
@@ -95,7 +111,14 @@
     }
     
     
-    NSData *data = UIImageJPEGRepresentation(image, 1.f);
+    NSData *data = [self representationOfImage:image];
+    
+    if (!data)
+    {
+        NSLog(@"Ошибка в генерировании данных по изображению");
+        return;
+    }
+    
     NSError *error = nil;
     if ([data writeToFile:fullPath options:0 error:&error])
     {
@@ -110,6 +133,16 @@
 - (NSString *)randomId
 {
     return [[NSProcessInfo processInfo] globallyUniqueString];
+}
+
+- (NSArray *)getPathForDirectoriesInDomains
+{
+    return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+}
+
+- (NSData *)representationOfImage:(UIImage *)image
+{
+    return UIImageJPEGRepresentation(image, 1.f);
 }
 
 @end
