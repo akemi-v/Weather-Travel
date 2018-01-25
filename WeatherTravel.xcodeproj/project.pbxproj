@@ -34,7 +34,6 @@
 		18E301B32005777700B5F7ED /* SMAFlickrImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301B22005777700B5F7ED /* SMAFlickrImageParser.m */; };
 		18E301B62006476400B5F7ED /* SMAImageFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301B52006476400B5F7ED /* SMAImageFetcher.m */; };
 		18E9FC982012015F00C9C3CD /* SMAGeocoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FC972012015E00C9C3CD /* SMAGeocoderTests.m */; };
-		18E9FC9A2012025600C9C3CD /* SMAForecastServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FC992012025600C9C3CD /* SMAForecastServiceTests.m */; };
 		18E9FC9C201210A800C9C3CD /* SMAImageLoaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FC9B201210A800C9C3CD /* SMAImageLoaderTests.m */; };
 		18E9FC9E2012226700C9C3CD /* SMAWeatherFetcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FC9D2012226700C9C3CD /* SMAWeatherFetcherTests.m */; };
 		18E9FCA020122F5900C9C3CD /* SMAImageFetcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FC9F20122F5900C9C3CD /* SMAImageFetcherTests.m */; };
@@ -111,7 +110,6 @@
 		18E301B42006476400B5F7ED /* SMAImageFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAImageFetcher.h; sourceTree = "<group>"; };
 		18E301B52006476400B5F7ED /* SMAImageFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAImageFetcher.m; sourceTree = "<group>"; };
 		18E9FC972012015E00C9C3CD /* SMAGeocoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAGeocoderTests.m; sourceTree = "<group>"; };
-		18E9FC992012025600C9C3CD /* SMAForecastServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAForecastServiceTests.m; sourceTree = "<group>"; };
 		18E9FC9B201210A800C9C3CD /* SMAImageLoaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAImageLoaderTests.m; sourceTree = "<group>"; };
 		18E9FC9D2012226700C9C3CD /* SMAWeatherFetcherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAWeatherFetcherTests.m; sourceTree = "<group>"; };
 		18E9FC9F20122F5900C9C3CD /* SMAImageFetcherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAImageFetcherTests.m; sourceTree = "<group>"; };
@@ -288,7 +286,6 @@
 		18D82CE51FF901F70073BC4B /* WeatherTravelTests */ = {
 			isa = PBXGroup;
 			children = (
-				18E9FC992012025600C9C3CD /* SMAForecastServiceTests.m */,
 				18E9FC972012015E00C9C3CD /* SMAGeocoderTests.m */,
 				18D82CE81FF901F70073BC4B /* Info.plist */,
 				18E9FC9B201210A800C9C3CD /* SMAImageLoaderTests.m */,
@@ -507,7 +504,6 @@
 				18E9FC9E2012226700C9C3CD /* SMAWeatherFetcherTests.m in Sources */,
 				18E9FCA020122F5900C9C3CD /* SMAImageFetcherTests.m in Sources */,
 				18E9FCA220124E1C00C9C3CD /* SMADarkSkyCurrentWeatherParserTests.m in Sources */,
-				18E9FC9A2012025600C9C3CD /* SMAForecastServiceTests.m in Sources */,
 				18E9FC9C201210A800C9C3CD /* SMAImageLoaderTests.m in Sources */,
 				18E9FCA62012745300C9C3CD /* SMAFlickrImageParserTests.m in Sources */,
 				18E9FCA42012706600C9C3CD /* SMAGoogleCoordinatesParserTests.m in Sources */,
