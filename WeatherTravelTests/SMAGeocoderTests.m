@@ -9,7 +9,6 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 #import <Expecta/Expecta.h>
-#import <OHHTTPStubs/OHHTTPStubs.h>
 
 #import "SMAGeocoder.h"
 #import "SMAGoogleCoordinatesRequest.h"

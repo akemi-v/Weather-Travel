@@ -4,5 +4,4 @@ target 'WeatherTravelTests' do
   inherit! :search_paths
   pod 'OCMock'
   pod 'Expecta'
-  pod 'OHHTTPStubs'
 end
