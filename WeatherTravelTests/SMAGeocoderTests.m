@@ -48,6 +48,8 @@
     OCMStub(ClassMethod([request getUrlRequestWithParameters:[OCMArg any]]));
     OCMReject(ClassMethod([request getUrlRequestWithParameters:[OCMArg any]]));
     [self.mockGeocoder getCoordinatesFromCityName:nil completion:nil];
+    
+    [request stopMocking];
 }
 
 - (void)testGetCoordinatesFromCityNameRequestNil
@@ -55,10 +57,9 @@
     NSString *cityName = @"";
     id request = OCMClassMock([SMAGoogleCoordinatesRequest class]);
     OCMStub(ClassMethod([request getUrlRequestWithParameters:@{@"cityName": cityName}])).andReturn(nil);
-    
     [self.mockGeocoder getCoordinatesFromCityName:cityName completion:nil];
-    
     OCMVerify(ClassMethod([request getUrlRequestWithParameters:@{@"cityName": cityName}]));
+    [request stopMocking];
 }
 
 - (void)testGetCoordinatesFromCityName
@@ -82,8 +83,10 @@
     
     OCMVerify([sessionDataTask resume]);
     [urlRequest stopMocking];
+    [request stopMocking];
     [configuration stopMocking];
     [session stopMocking];
+    [sessionDataTask stopMocking];
 }
 
 - (void)testGetCoordinatesFromCityNameWithReceivedDataNil
@@ -121,6 +124,7 @@
     expect(coords).to.beNil();
     expect(isCalled).to.beFalsy();
     [urlRequest stopMocking];
+    [request stopMocking];
     [configuration stopMocking];
     [session stopMocking];
     [error stopMocking];
@@ -160,8 +164,11 @@
     expect(result).to.equal(expectedResult);
     expect(isCalled).to.beTruthy();
     [urlRequest stopMocking];
+    [request stopMocking];
     [configuration stopMocking];
     [session stopMocking];
+    [sessionDataTask stopMocking];
+    [parser stopMocking];
 }
 
 - (void)testGetCoordinatesFromCityNameWithReceivedDataIncorrect
@@ -195,8 +202,10 @@
     expect(result).to.beNil();
     expect(isCalled).to.beTruthy();
     [urlRequest stopMocking];
+    [request stopMocking];
     [configuration stopMocking];
     [session stopMocking];
+    [parser stopMocking];
 }
 
 @end
