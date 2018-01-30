@@ -20,7 +20,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
 @interface SMAHistoryViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, copy) NSMutableArray <SMAForecastModel *> *forecasts;
+@property (nonatomic, strong) NSArray <SMAForecastModel *> *forecasts;
 @property (nonatomic, strong) SMAForecastService *forecastService;
 @property (nonatomic, strong) SMAImageLoader *imageLoader;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
@@ -41,7 +41,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
     self.imageLoader = [SMAImageLoader new];
     
     [self.forecastService getForecastsHistoryCompletion:^(NSArray<SMAForecastModel *> *models) {
-        self.forecasts = [models mutableCopy];
+        self.forecasts = models;
     }];
 }
 
@@ -264,7 +264,7 @@ static const CGFloat SMAItemsPerRow = 3.f;
 - (void)reload
 {
     [self.forecastService getForecastsHistoryCompletion:^(NSArray<SMAForecastModel *> *models) {
-        self.forecasts = [models mutableCopy];
+        self.forecasts = models;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.collectionView reloadData];
         });
