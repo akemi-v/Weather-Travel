@@ -54,6 +54,7 @@
                                                        }];
     
     [sessionDataTask resume];
+    [session finishTasksAndInvalidate];
 }
 
 - (void)loadImageFromFileURL:(NSString *)urlString completion:(void (^)(UIImage *image))completionHandler

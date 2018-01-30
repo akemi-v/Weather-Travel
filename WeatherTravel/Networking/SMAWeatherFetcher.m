@@ -36,6 +36,7 @@
                                                        }];
     
     [sessionDataTask resume];
+    [session finishTasksAndInvalidate];
 }
 
 

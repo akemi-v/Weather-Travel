@@ -87,6 +87,7 @@
                                                        }];
     
     [sessionDataTask resume];
+    [session finishTasksAndInvalidate];
 }
 
 - (void)getImageWithPlaceWeatherRequest:(NSDictionary *)parameters completion:(void (^)(NSDictionary *imageURLs))completionHandler
@@ -125,6 +126,7 @@
                                                        }];
     
     [sessionDataTask resume];
+    [session finishTasksAndInvalidate];
 }
 
 - (void)getImageWithPlaceRequest:(NSDictionary *)parameters completion:(void (^)(NSDictionary *imageURLs))completionHandler
@@ -159,6 +161,7 @@
                                                        }];
     
     [sessionDataTask resume];
+    [session finishTasksAndInvalidate];
 }
 
 
