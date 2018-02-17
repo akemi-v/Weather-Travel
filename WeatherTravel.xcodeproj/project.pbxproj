@@ -7,12 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1847A2C720096575000953E3 /* SMAImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2C620096575000953E3 /* SMAImageLoader.m */; };
+		1847A2CA200CDEB7000953E3 /* SMAForecastService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2C9200CDEB7000953E3 /* SMAForecastService.m */; };
+		1847A2CD200E8F1C000953E3 /* SMAHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2CC200E8F1C000953E3 /* SMAHistoryViewController.m */; };
+		1847A2D0200F4D9D000953E3 /* SMAHistoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2CF200F4D9D000953E3 /* SMAHistoryCollectionViewCell.m */; };
+		1847A2DA2010138E000953E3 /* SMACoreDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2D92010138E000953E3 /* SMACoreDataService.m */; };
+		1847A2DD201013BA000953E3 /* SMACoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847A2DC201013BA000953E3 /* SMACoreDataStack.m */; };
 		18D82CCC1FF901F70073BC4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CCB1FF901F70073BC4B /* AppDelegate.m */; };
 		18D82CD51FF901F70073BC4B /* WeatherTravel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CD31FF901F70073BC4B /* WeatherTravel.xcdatamodeld */; };
 		18D82CD71FF901F70073BC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D82CD61FF901F70073BC4B /* Assets.xcassets */; };
 		18D82CDA1FF901F70073BC4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D82CD81FF901F70073BC4B /* LaunchScreen.storyboard */; };
 		18D82CDD1FF901F70073BC4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CDC1FF901F70073BC4B /* main.m */; };
-		18D82CE71FF901F70073BC4B /* WeatherTravelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CE61FF901F70073BC4B /* WeatherTravelTests.m */; };
+		18D82CF31FF923EC0073BC4B /* SMASearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CF21FF923EC0073BC4B /* SMASearchViewController.m */; };
+		18D82CF61FF92EE30073BC4B /* SMALocationSearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82CF51FF92EE30073BC4B /* SMALocationSearchField.m */; };
+		18D82CFC1FFBC1670073BC4B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D82CFB1FFBC1670073BC4B /* Media.xcassets */; };
+		18D82D021FFBD6D20073BC4B /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D011FFBD6D20073BC4B /* UIColor+CustomColors.m */; };
+		18D82D051FFBFE530073BC4B /* SMAForecastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D041FFBFE530073BC4B /* SMAForecastView.m */; };
+		18D82D081FFC03340073BC4B /* SMAForecastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D82D071FFC03340073BC4B /* SMAForecastModel.m */; };
+		18E3019D2002897C00B5F7ED /* SMAGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E3019B2002897C00B5F7ED /* SMAGeocoder.m */; };
+		18E301A020028A9100B5F7ED /* SMAGoogleCoordinatesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E3019F20028A9100B5F7ED /* SMAGoogleCoordinatesRequest.m */; };
+		18E301A3200298C000B5F7ED /* SMAGoogleCoordinatesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301A2200298C000B5F7ED /* SMAGoogleCoordinatesParser.m */; };
+		18E301A62002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301A52002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.m */; };
+		18E301A92002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301A82002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m */; };
+		18E301AC2003832900B5F7ED /* SMAWeatherFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301AB2003832900B5F7ED /* SMAWeatherFetcher.m */; };
+		18E301AF2004168E00B5F7ED /* SMAFlickrImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301AE2004168E00B5F7ED /* SMAFlickrImageRequest.m */; };
+		18E301B32005777700B5F7ED /* SMAFlickrImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301B22005777700B5F7ED /* SMAFlickrImageParser.m */; };
+		18E301B62006476400B5F7ED /* SMAImageFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E301B52006476400B5F7ED /* SMAImageFetcher.m */; };
+		18E9FC982012015F00C9C3CD /* SMAGeocoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FC972012015E00C9C3CD /* SMAGeocoderTests.m */; };
+		18E9FC9C201210A800C9C3CD /* SMAImageLoaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FC9B201210A800C9C3CD /* SMAImageLoaderTests.m */; };
+		18E9FC9E2012226700C9C3CD /* SMAWeatherFetcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FC9D2012226700C9C3CD /* SMAWeatherFetcherTests.m */; };
+		18E9FCA020122F5900C9C3CD /* SMAImageFetcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FC9F20122F5900C9C3CD /* SMAImageFetcherTests.m */; };
+		18E9FCA220124E1C00C9C3CD /* SMADarkSkyCurrentWeatherParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FCA120124E1C00C9C3CD /* SMADarkSkyCurrentWeatherParserTests.m */; };
+		18E9FCA42012706600C9C3CD /* SMAGoogleCoordinatesParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FCA32012706600C9C3CD /* SMAGoogleCoordinatesParserTests.m */; };
+		18E9FCA62012745300C9C3CD /* SMAFlickrImageParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FCA52012745300C9C3CD /* SMAFlickrImageParserTests.m */; };
+		1A593E9E72F38A56F1BA52DE /* libPods-WeatherTravelTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A11E4832B4CAB2CC958CE4E7 /* libPods-WeatherTravelTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +54,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		182579FE20112131000EFE55 /* SMASearchViewControllerDelegateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMASearchViewControllerDelegateProtocol.h; sourceTree = "<group>"; };
+		1847A2C520096575000953E3 /* SMAImageLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAImageLoader.h; sourceTree = "<group>"; };
+		1847A2C620096575000953E3 /* SMAImageLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAImageLoader.m; sourceTree = "<group>"; };
+		1847A2C8200CDEB7000953E3 /* SMAForecastService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAForecastService.h; sourceTree = "<group>"; };
+		1847A2C9200CDEB7000953E3 /* SMAForecastService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastService.m; sourceTree = "<group>"; };
+		1847A2CB200E8F1C000953E3 /* SMAHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAHistoryViewController.h; sourceTree = "<group>"; };
+		1847A2CC200E8F1C000953E3 /* SMAHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAHistoryViewController.m; sourceTree = "<group>"; };
+		1847A2CE200F4D9D000953E3 /* SMAHistoryCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAHistoryCollectionViewCell.h; sourceTree = "<group>"; };
+		1847A2CF200F4D9D000953E3 /* SMAHistoryCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAHistoryCollectionViewCell.m; sourceTree = "<group>"; };
+		1847A2D82010138E000953E3 /* SMACoreDataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMACoreDataService.h; sourceTree = "<group>"; };
+		1847A2D92010138E000953E3 /* SMACoreDataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMACoreDataService.m; sourceTree = "<group>"; };
+		1847A2DB201013BA000953E3 /* SMACoreDataStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMACoreDataStack.h; sourceTree = "<group>"; };
+		1847A2DC201013BA000953E3 /* SMACoreDataStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMACoreDataStack.m; sourceTree = "<group>"; };
 		18D82CC71FF901F70073BC4B /* WeatherTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D82CCA1FF901F70073BC4B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18D82CCB1FF901F70073BC4B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -35,8 +76,49 @@
 		18D82CDB1FF901F70073BC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D82CDC1FF901F70073BC4B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18D82CE21FF901F70073BC4B /* WeatherTravelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTravelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		18D82CE61FF901F70073BC4B /* WeatherTravelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherTravelTests.m; sourceTree = "<group>"; };
 		18D82CE81FF901F70073BC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18D82CF11FF923EC0073BC4B /* SMASearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMASearchViewController.h; sourceTree = "<group>"; };
+		18D82CF21FF923EC0073BC4B /* SMASearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMASearchViewController.m; sourceTree = "<group>"; };
+		18D82CF41FF92EE30073BC4B /* SMALocationSearchField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMALocationSearchField.h; sourceTree = "<group>"; };
+		18D82CF51FF92EE30073BC4B /* SMALocationSearchField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMALocationSearchField.m; sourceTree = "<group>"; };
+		18D82CFB1FFBC1670073BC4B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		18D82D001FFBD6D20073BC4B /* UIColor+CustomColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
+		18D82D011FFBD6D20073BC4B /* UIColor+CustomColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
+		18D82D031FFBFE530073BC4B /* SMAForecastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAForecastView.h; sourceTree = "<group>"; };
+		18D82D041FFBFE530073BC4B /* SMAForecastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastView.m; sourceTree = "<group>"; };
+		18D82D061FFC03340073BC4B /* SMAForecastModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAForecastModel.h; sourceTree = "<group>"; };
+		18D82D071FFC03340073BC4B /* SMAForecastModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAForecastModel.m; sourceTree = "<group>"; };
+		18E30199200283B400B5F7ED /* SMAParserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAParserProtocol.h; sourceTree = "<group>"; };
+		18E3019A200283BC00B5F7ED /* SMARequestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMARequestProtocol.h; sourceTree = "<group>"; };
+		18E3019B2002897C00B5F7ED /* SMAGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAGeocoder.m; sourceTree = "<group>"; };
+		18E3019C2002897C00B5F7ED /* SMAGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAGeocoder.h; sourceTree = "<group>"; };
+		18E3019E20028A9100B5F7ED /* SMAGoogleCoordinatesRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAGoogleCoordinatesRequest.h; sourceTree = "<group>"; };
+		18E3019F20028A9100B5F7ED /* SMAGoogleCoordinatesRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAGoogleCoordinatesRequest.m; sourceTree = "<group>"; };
+		18E301A1200298C000B5F7ED /* SMAGoogleCoordinatesParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAGoogleCoordinatesParser.h; sourceTree = "<group>"; };
+		18E301A2200298C000B5F7ED /* SMAGoogleCoordinatesParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAGoogleCoordinatesParser.m; sourceTree = "<group>"; };
+		18E301A42002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMADarkSkyCurrentWeatherRequest.h; sourceTree = "<group>"; };
+		18E301A52002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMADarkSkyCurrentWeatherRequest.m; sourceTree = "<group>"; };
+		18E301A72002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMADarkSkyCurrentWeatherParser.h; sourceTree = "<group>"; };
+		18E301A82002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMADarkSkyCurrentWeatherParser.m; sourceTree = "<group>"; };
+		18E301AA2003832800B5F7ED /* SMAWeatherFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAWeatherFetcher.h; sourceTree = "<group>"; };
+		18E301AB2003832900B5F7ED /* SMAWeatherFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAWeatherFetcher.m; sourceTree = "<group>"; };
+		18E301AD2004168E00B5F7ED /* SMAFlickrImageRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAFlickrImageRequest.h; sourceTree = "<group>"; };
+		18E301AE2004168E00B5F7ED /* SMAFlickrImageRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAFlickrImageRequest.m; sourceTree = "<group>"; };
+		18E301B02005731A00B5F7ED /* Enums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
+		18E301B12005777700B5F7ED /* SMAFlickrImageParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAFlickrImageParser.h; sourceTree = "<group>"; };
+		18E301B22005777700B5F7ED /* SMAFlickrImageParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAFlickrImageParser.m; sourceTree = "<group>"; };
+		18E301B42006476400B5F7ED /* SMAImageFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAImageFetcher.h; sourceTree = "<group>"; };
+		18E301B52006476400B5F7ED /* SMAImageFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAImageFetcher.m; sourceTree = "<group>"; };
+		18E9FC972012015E00C9C3CD /* SMAGeocoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAGeocoderTests.m; sourceTree = "<group>"; };
+		18E9FC9B201210A800C9C3CD /* SMAImageLoaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAImageLoaderTests.m; sourceTree = "<group>"; };
+		18E9FC9D2012226700C9C3CD /* SMAWeatherFetcherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAWeatherFetcherTests.m; sourceTree = "<group>"; };
+		18E9FC9F20122F5900C9C3CD /* SMAImageFetcherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAImageFetcherTests.m; sourceTree = "<group>"; };
+		18E9FCA120124E1C00C9C3CD /* SMADarkSkyCurrentWeatherParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMADarkSkyCurrentWeatherParserTests.m; sourceTree = "<group>"; };
+		18E9FCA32012706600C9C3CD /* SMAGoogleCoordinatesParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAGoogleCoordinatesParserTests.m; sourceTree = "<group>"; };
+		18E9FCA52012745300C9C3CD /* SMAFlickrImageParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAFlickrImageParserTests.m; sourceTree = "<group>"; };
+		372E14E72612F02DA9C46993 /* Pods-WeatherTravelTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTravelTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTravelTests/Pods-WeatherTravelTests.release.xcconfig"; sourceTree = "<group>"; };
+		38AD83EED1322961348F641A /* Pods-WeatherTravelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTravelTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTravelTests/Pods-WeatherTravelTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A11E4832B4CAB2CC958CE4E7 /* libPods-WeatherTravelTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherTravelTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,18 +133,121 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A593E9E72F38A56F1BA52DE /* libPods-WeatherTravelTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1847A2D7200FF578000953E3 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				1847A2D82010138E000953E3 /* SMACoreDataService.h */,
+				1847A2D92010138E000953E3 /* SMACoreDataService.m */,
+				1847A2DB201013BA000953E3 /* SMACoreDataStack.h */,
+				1847A2DC201013BA000953E3 /* SMACoreDataStack.m */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		18C8B3852002359F00F554D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18D82D061FFC03340073BC4B /* SMAForecastModel.h */,
+				18D82D071FFC03340073BC4B /* SMAForecastModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18C8B386200235A800F554D6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18D82CF41FF92EE30073BC4B /* SMALocationSearchField.h */,
+				18D82CF51FF92EE30073BC4B /* SMALocationSearchField.m */,
+				18D82D031FFBFE530073BC4B /* SMAForecastView.h */,
+				18D82D041FFBFE530073BC4B /* SMAForecastView.m */,
+				1847A2CE200F4D9D000953E3 /* SMAHistoryCollectionViewCell.h */,
+				1847A2CF200F4D9D000953E3 /* SMAHistoryCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18C8B387200235AD00F554D6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18D82CF11FF923EC0073BC4B /* SMASearchViewController.h */,
+				18D82CF21FF923EC0073BC4B /* SMASearchViewController.m */,
+				1847A2CB200E8F1C000953E3 /* SMAHistoryViewController.h */,
+				1847A2CC200E8F1C000953E3 /* SMAHistoryViewController.m */,
+				182579FE20112131000EFE55 /* SMASearchViewControllerDelegateProtocol.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		18C8B388200235F100F554D6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				18D82D001FFBD6D20073BC4B /* UIColor+CustomColors.h */,
+				18D82D011FFBD6D20073BC4B /* UIColor+CustomColors.m */,
+				18E301B02005731A00B5F7ED /* Enums.h */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		18C8B3892002364100F554D6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				18C8B38D20023D9600F554D6 /* Parsers */,
+				18C8B38C20023D9000F554D6 /* Requests */,
+				1847A2C520096575000953E3 /* SMAImageLoader.h */,
+				1847A2C620096575000953E3 /* SMAImageLoader.m */,
+				18E3019C2002897C00B5F7ED /* SMAGeocoder.h */,
+				18E3019B2002897C00B5F7ED /* SMAGeocoder.m */,
+				18E301AA2003832800B5F7ED /* SMAWeatherFetcher.h */,
+				18E301AB2003832900B5F7ED /* SMAWeatherFetcher.m */,
+				18E301B42006476400B5F7ED /* SMAImageFetcher.h */,
+				18E301B52006476400B5F7ED /* SMAImageFetcher.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		18C8B38C20023D9000F554D6 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				18E3019A200283BC00B5F7ED /* SMARequestProtocol.h */,
+				18E301A42002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.h */,
+				18E301A52002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.m */,
+				18E3019E20028A9100B5F7ED /* SMAGoogleCoordinatesRequest.h */,
+				18E3019F20028A9100B5F7ED /* SMAGoogleCoordinatesRequest.m */,
+				18E301AD2004168E00B5F7ED /* SMAFlickrImageRequest.h */,
+				18E301AE2004168E00B5F7ED /* SMAFlickrImageRequest.m */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		18C8B38D20023D9600F554D6 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				18E30199200283B400B5F7ED /* SMAParserProtocol.h */,
+				18E301A72002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.h */,
+				18E301A82002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m */,
+				18E301A1200298C000B5F7ED /* SMAGoogleCoordinatesParser.h */,
+				18E301A2200298C000B5F7ED /* SMAGoogleCoordinatesParser.m */,
+				18E301B12005777700B5F7ED /* SMAFlickrImageParser.h */,
+				18E301B22005777700B5F7ED /* SMAFlickrImageParser.m */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
 		18D82CBE1FF901F70073BC4B = {
 			isa = PBXGroup;
 			children = (
 				18D82CC91FF901F70073BC4B /* WeatherTravel */,
 				18D82CE51FF901F70073BC4B /* WeatherTravelTests */,
 				18D82CC81FF901F70073BC4B /* Products */,
+				FA56EFEB49908CC9AD2A9465 /* Pods */,
+				AD67AEC679B2B2D0F280E9E5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,13 +263,22 @@
 		18D82CC91FF901F70073BC4B /* WeatherTravel */ = {
 			isa = PBXGroup;
 			children = (
+				1847A2D7200FF578000953E3 /* Core Data */,
+				18C8B3892002364100F554D6 /* Networking */,
+				18C8B388200235F100F554D6 /* Helpers */,
+				18C8B3852002359F00F554D6 /* Model */,
+				18C8B386200235A800F554D6 /* View */,
+				18C8B387200235AD00F554D6 /* Controller */,
 				18D82CCA1FF901F70073BC4B /* AppDelegate.h */,
 				18D82CCB1FF901F70073BC4B /* AppDelegate.m */,
+				18D82CD31FF901F70073BC4B /* WeatherTravel.xcdatamodeld */,
 				18D82CD61FF901F70073BC4B /* Assets.xcassets */,
+				18D82CFB1FFBC1670073BC4B /* Media.xcassets */,
 				18D82CD81FF901F70073BC4B /* LaunchScreen.storyboard */,
 				18D82CDB1FF901F70073BC4B /* Info.plist */,
 				18D82CDC1FF901F70073BC4B /* main.m */,
-				18D82CD31FF901F70073BC4B /* WeatherTravel.xcdatamodeld */,
+				1847A2C8200CDEB7000953E3 /* SMAForecastService.h */,
+				1847A2C9200CDEB7000953E3 /* SMAForecastService.m */,
 			);
 			path = WeatherTravel;
 			sourceTree = "<group>";
@@ -92,10 +286,33 @@
 		18D82CE51FF901F70073BC4B /* WeatherTravelTests */ = {
 			isa = PBXGroup;
 			children = (
-				18D82CE61FF901F70073BC4B /* WeatherTravelTests.m */,
+				18E9FC972012015E00C9C3CD /* SMAGeocoderTests.m */,
 				18D82CE81FF901F70073BC4B /* Info.plist */,
+				18E9FC9B201210A800C9C3CD /* SMAImageLoaderTests.m */,
+				18E9FC9D2012226700C9C3CD /* SMAWeatherFetcherTests.m */,
+				18E9FC9F20122F5900C9C3CD /* SMAImageFetcherTests.m */,
+				18E9FCA120124E1C00C9C3CD /* SMADarkSkyCurrentWeatherParserTests.m */,
+				18E9FCA32012706600C9C3CD /* SMAGoogleCoordinatesParserTests.m */,
+				18E9FCA52012745300C9C3CD /* SMAFlickrImageParserTests.m */,
 			);
 			path = WeatherTravelTests;
+			sourceTree = "<group>";
+		};
+		AD67AEC679B2B2D0F280E9E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A11E4832B4CAB2CC958CE4E7 /* libPods-WeatherTravelTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA56EFEB49908CC9AD2A9465 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				38AD83EED1322961348F641A /* Pods-WeatherTravelTests.debug.xcconfig */,
+				372E14E72612F02DA9C46993 /* Pods-WeatherTravelTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +339,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18D82CEE1FF901F70073BC4B /* Build configuration list for PBXNativeTarget "WeatherTravelTests" */;
 			buildPhases = (
+				AD0A7F87EEB1CA0E8DE7880E /* [CP] Check Pods Manifest.lock */,
 				18D82CDE1FF901F70073BC4B /* Sources */,
 				18D82CDF1FF901F70073BC4B /* Frameworks */,
 				18D82CE01FF901F70073BC4B /* Resources */,
+				F3CB70AFED9D50706F299673 /* [CP] Embed Pods Frameworks */,
+				1CC34DACACC40588753203F0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D82CDA1FF901F70073BC4B /* LaunchScreen.storyboard in Resources */,
+				18D82CFC1FFBC1670073BC4B /* Media.xcassets in Resources */,
 				18D82CD71FF901F70073BC4B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +415,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1CC34DACACC40588753203F0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherTravelTests/Pods-WeatherTravelTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD0A7F87EEB1CA0E8DE7880E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeatherTravelTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3CB70AFED9D50706F299673 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherTravelTests/Pods-WeatherTravelTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		18D82CC31FF901F70073BC4B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -201,7 +473,27 @@
 			files = (
 				18D82CD51FF901F70073BC4B /* WeatherTravel.xcdatamodeld in Sources */,
 				18D82CDD1FF901F70073BC4B /* main.m in Sources */,
+				1847A2DA2010138E000953E3 /* SMACoreDataService.m in Sources */,
+				18E301A92002EC8700B5F7ED /* SMADarkSkyCurrentWeatherParser.m in Sources */,
+				18E301AC2003832900B5F7ED /* SMAWeatherFetcher.m in Sources */,
+				18E301B62006476400B5F7ED /* SMAImageFetcher.m in Sources */,
+				18D82CF31FF923EC0073BC4B /* SMASearchViewController.m in Sources */,
+				18D82CF61FF92EE30073BC4B /* SMALocationSearchField.m in Sources */,
+				1847A2DD201013BA000953E3 /* SMACoreDataStack.m in Sources */,
 				18D82CCC1FF901F70073BC4B /* AppDelegate.m in Sources */,
+				1847A2C720096575000953E3 /* SMAImageLoader.m in Sources */,
+				18D82D021FFBD6D20073BC4B /* UIColor+CustomColors.m in Sources */,
+				18E301AF2004168E00B5F7ED /* SMAFlickrImageRequest.m in Sources */,
+				18E301A62002E5E200B5F7ED /* SMADarkSkyCurrentWeatherRequest.m in Sources */,
+				18E301A3200298C000B5F7ED /* SMAGoogleCoordinatesParser.m in Sources */,
+				18D82D081FFC03340073BC4B /* SMAForecastModel.m in Sources */,
+				1847A2D0200F4D9D000953E3 /* SMAHistoryCollectionViewCell.m in Sources */,
+				18E3019D2002897C00B5F7ED /* SMAGeocoder.m in Sources */,
+				18E301B32005777700B5F7ED /* SMAFlickrImageParser.m in Sources */,
+				1847A2CA200CDEB7000953E3 /* SMAForecastService.m in Sources */,
+				18E301A020028A9100B5F7ED /* SMAGoogleCoordinatesRequest.m in Sources */,
+				18D82D051FFBFE530073BC4B /* SMAForecastView.m in Sources */,
+				1847A2CD200E8F1C000953E3 /* SMAHistoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +501,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18D82CE71FF901F70073BC4B /* WeatherTravelTests.m in Sources */,
+				18E9FC9E2012226700C9C3CD /* SMAWeatherFetcherTests.m in Sources */,
+				18E9FCA020122F5900C9C3CD /* SMAImageFetcherTests.m in Sources */,
+				18E9FCA220124E1C00C9C3CD /* SMADarkSkyCurrentWeatherParserTests.m in Sources */,
+				18E9FC9C201210A800C9C3CD /* SMAImageLoaderTests.m in Sources */,
+				18E9FCA62012745300C9C3CD /* SMAFlickrImageParserTests.m in Sources */,
+				18E9FCA42012706600C9C3CD /* SMAGoogleCoordinatesParserTests.m in Sources */,
+				18E9FC982012015F00C9C3CD /* SMAGeocoderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +581,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -332,7 +630,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -371,6 +669,7 @@
 		};
 		18D82CEF1FF901F70073BC4B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38AD83EED1322961348F641A /* Pods-WeatherTravelTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -386,6 +685,7 @@
 		};
 		18D82CF01FF901F70073BC4B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 372E14E72612F02DA9C46993 /* Pods-WeatherTravelTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
